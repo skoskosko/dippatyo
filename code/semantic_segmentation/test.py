@@ -39,39 +39,14 @@ for image, target in tqdm.tqdm(loader):
 
     _ti = target[0].to("cpu").numpy()
     ti = numpy.zeros(shape=(_ti.shape[1], _ti.shape[2], 3) , dtype=numpy.uint8)
-    for i, color in enumerate(labels):
+    
 
-        
-       
-        # print(ti[:, :, 0].shape)
-        # print(_ti[i].shape)
-        if i  == 22:
-            print(numpy.sum(_ti[i]))
-            print(color)
+    Y, X = numpy.where(_ti[0]==1) # unmovable
+    ti[Y, X, :] = (40, 209, 31)
+    
+    Y, X = numpy.where(_ti[1]==1) # movable
+    ti[Y, X, :] = (194, 17, 73)
 
-        Y, X = numpy.where(_ti[i]>0)
-        ti[Y, X, :] = color
-        # ti[:, :, 1] = _ti[i] * color[1]
-        # ti[:, :, 2] = _ti[i] * color[2]
-        # if numpy.sum(_ti[i, :, :]) > 0 and i > 2:
-        #     print(color)
-        #     print(i)
-        #     # val = _ti[i, :, :]
-        #     print(numpy.sum(_ti[i, :, :]))
-            
-        #     print(_ti[i, :, :])
-            
-        #     print(ti)
-        #     raise Exception("stop")
-
-    # print(ti)
-    # test = torch.from_numpy(ti)
-    # print(test.shape)
-    # print(image[0])
-    # print(ti.shape)
-    # print(test)
-    # I = cv2.cvtColor(ti, cv2.COLOR_BGR2RGB)
-    # target_image = Image.fromarray(ti, 'RGB')
     target_image = Image.fromarray(ti, 'RGB')
     target_image.show()
 

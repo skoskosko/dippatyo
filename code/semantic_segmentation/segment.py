@@ -14,7 +14,7 @@ torch.cuda.empty_cache()
 # torch.cuda.memory.
 
 EPOCHES = 50
-BATCH_SIZE = 50
+BATCH_SIZE = 25
 DEVICE = 'cuda'
 # torch.cuda.share
 
@@ -43,7 +43,7 @@ vloader = torch.utils.data.DataLoader(
 # print(len(dataset))
 
 # download or load the model from disk
-model = torchvision.models.segmentation.fcn_resnet50(pretrained=False, num_classes=31)
+model = torchvision.models.segmentation.fcn_resnet50(pretrained=False, num_classes=2)
 
 # model.load_state_dict(torch.load("model_best.pth"), strict=False)
 
