@@ -48,10 +48,10 @@ for image, target in tqdm.tqdm(loader):
     y_pred = model(test)["out"]
     _ti = y_pred[0].detach().to("cpu").numpy()
     ti = numpy.zeros(shape=(_ti.shape[1], _ti.shape[2], 3) , dtype=numpy.uint8)
-    Y, X = numpy.where(_ti[0]>0.5) # unmovable
+    Y, X = numpy.where(_ti[0]>0.9) # unmovable
     print(_ti[0])
     ti[Y, X, :] = (255, 255, 255)
-    Y, X = numpy.where(_ti[1]>0.5) # movable
+    Y, X = numpy.where(_ti[1]>0.9) # movable
     ti[Y, X, :] = (255, 0, 0)
     target_image = Image.fromarray(ti, 'RGB')
     target_image.show()

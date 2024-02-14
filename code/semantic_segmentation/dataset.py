@@ -9,7 +9,7 @@ import cv2
 from PIL import Image
 import numpy
 import sys
-
+import tqdm
 
 movable_labels = {
     0: 0, # 'unlabeled'
@@ -52,38 +52,43 @@ movable_labels = {
 
 class CityScapesDataset(torch.utils.data.Dataset):
 
-    def __init__(self):
+    def __init__(self, in_memory=False):
         """
         """
+        self._in_memory = in_memory
         self.root_dir = "/home/eskotakku/Documents/Dippatyo/dataset"
         self.image_root = os.path.join(self.root_dir, "leftImg8bit_trainvaltest", "leftImg8bit", "train")
         self.truth_root = os.path.join(self.root_dir, "gtFine_trainvaltest", "gtFine", "train")
 
         self.items = []
 
-        for city in os.listdir(self.image_root):
+        for city in tqdm.tqdm(os.listdir(self.image_root)):
             dir = os.path.join(self.image_root, city)
             if os.path.isdir(dir):
-                for file in os.listdir(dir):
+                for file in tqdm.tqdm(os.listdir(dir)):
                     f = os.path.join(dir, file)
                     if os.path.isfile(f):
                         color = os.path.join(self.truth_root, city, file.replace("_leftImg8bit.png", "_gtFine_labelIds.png"))
                         if not os.path.isfile(color):
                             raise Exception(color)
-                        self.items.append({"image": f, "gt": color})
+                        if self._in_memory:
+                            self.items.append({"image": self.read_image(f), "gt": self.read_gt(color)})
+                        else:
+                            self.items.append({"image": f, "gt": color})
 
     def __len__(self):
         return len(self.items)
 
 
-    def __getitem__(self, idx):
-        if torch.is_tensor(idx):
-            idx = idx.tolist()
+    def read_image(self, path):
+        image = read_image(path, mode=ImageReadMode.RGB)
+        return image
 
-        image = read_image(self.items[idx]["image"], mode=ImageReadMode.RGB)
-        gt = read_image(self.items[idx]["gt"], mode=ImageReadMode.UNCHANGED)
 
-        _gt = torch.zeros(size=(2, image.shape[1], image.shape[2]), dtype=torch.bool)
+    def read_gt(self, path):
+        gt = read_image(path, mode=ImageReadMode.UNCHANGED)
+
+        _gt = torch.zeros(size=(2, gt.shape[1], gt.shape[2]), dtype=torch.bool)
         _gt[:,:,:] = torch.tensor(0, dtype=torch.bool)
 
         for i, val in movable_labels.items():
@@ -93,9 +98,24 @@ class CityScapesDataset(torch.utils.data.Dataset):
                 _gt[1, Y, X] = torch.tensor(1, dtype=torch.bool)
             else: # unmoving
                 _gt[0, Y, X] = torch.tensor(1, dtype=torch.bool)
-          
+        return _gt
+    
+    def __getitem__(self, idx):
+        if torch.is_tensor(idx):
+            idx = idx.tolist()
+        
+        _image = self.items[idx]["image"]
+        _gt = self.items[idx]["gt"]
+
+        if self._in_memory:
+            _image = self.items[idx]["image"]
+            _gt = self.items[idx]["gt"]
+        else:
+            _image = self.read_image(self.items[idx]["image"])
+            _gt = self.read_gt(self.items[idx]["gt"])
+
         # 2048x1024
-        image = v2.Resize(size=256)(image)
+        image = v2.Resize(size=256)(_image)
         gt = v2.Resize(size=256, interpolation=v2.InterpolationMode.NEAREST, antialias=False)(_gt)
 
         # 1024 x 512
