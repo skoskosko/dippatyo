@@ -13,8 +13,8 @@ dataset = CityScapesDataset()
 torch.cuda.empty_cache()
 # torch.cuda.memory.
 
-EPOCHES = 10
-BATCH_SIZE = 2
+EPOCHES = 50
+BATCH_SIZE = 50
 DEVICE = 'cuda'
 # torch.cuda.share
 
@@ -35,15 +35,17 @@ valid_ds = torch.utils.data.Subset(dataset, odds)
 
 # define training and validation data loaders
 loader = torch.utils.data.DataLoader(
-    train_ds, batch_size=BATCH_SIZE, shuffle=True, num_workers=0)
+    train_ds, batch_size=BATCH_SIZE, shuffle=True, num_workers=20)
 
 vloader = torch.utils.data.DataLoader(
-    valid_ds, batch_size=BATCH_SIZE, shuffle=False, num_workers=0)
+    valid_ds, batch_size=BATCH_SIZE, shuffle=False, num_workers=20)
 
 # print(len(dataset))
 
 # download or load the model from disk
-model = torchvision.models.segmentation.fcn_resnet50(pretrained=False, num_classes=3)
+model = torchvision.models.segmentation.fcn_resnet50(pretrained=False, num_classes=31)
+
+# model.load_state_dict(torch.load("model_best.pth"), strict=False)
 
 # model.share_memory()
 
@@ -73,6 +75,7 @@ class SoftDiceLoss(torch.nn.Module):
         return 1 - dc
 
 
+loss_fn = torch.nn.CrossEntropyLoss()
 
 @torch.no_grad()
 def validation(model, loader, loss_fn):
@@ -86,14 +89,14 @@ def validation(model, loader, loss_fn):
     return numpy.array(losses).mean()
 
 
-bce_fn = torch.nn.BCEWithLogitsLoss()
-dice_fn = SoftDiceLoss()
+# bce_fn = torch.nn.BCEWithLogitsLoss()
+# dice_fn = SoftDiceLoss()
 
-def loss_fn(y_pred, y_true):
-    bce = bce_fn(y_pred, y_true)
-    dice = dice_fn(y_pred.sigmoid(), y_true)
-    return 0.8*bce+ 0.2*dice
-# loss_func = torch.nn.CrossEntropyLoss()
+# def loss_fn(y_pred, y_true):
+#     bce = bce_fn(y_pred, y_true)
+#     dice = dice_fn(y_pred.sigmoid(), y_true)
+#     return 0.8*bce+ 0.2*dice
+
 
 
 header = r'''
@@ -102,14 +105,14 @@ Epoch |  Loss |  Loss | Time, m
 '''
 #          Epoch         metrics            time
 raw_line = '{:6d}' + '\u2502{:7.3f}'*2 + '\u2502{:6.2f}'
-best_loss = 10
+best_loss = 10000
 
 for epoch in range(1, EPOCHES+1):
     losses = []
     start_time = time.time()
     model.train()
     model.to(DEVICE)
-    for image, target in tqdm.tqdm(loader):
+    for image, target in tqdm.tqdm(loader): # tqdm.tqdm(loader):
         
         image, target = image.to(DEVICE), target.to(DEVICE)
 
@@ -118,17 +121,22 @@ for epoch in range(1, EPOCHES+1):
         loss = loss_fn(output, target)
         loss.backward()
         optimizer.step()
-        losses.append(loss.item())
-    # vloss = validation(model, vloader, loss_fn)
-    print(header)
-    print(raw_line.format(epoch, numpy.array(losses).mean(), vloss,
-                              (time.time()-start_time)/60**1))
-    losses = []
-    
-    if vloss < best_loss:
-        best_loss = vloss
-        torch.save(model.state_dict(), 'model_best.pth')
 
+        losses.append(loss.item())
+
+    # print(losses)
+    if epoch % 5 == 0:
+        vloss = validation(model, vloader, loss_fn)
+        print(header)
+        print(raw_line.format(epoch, numpy.array(losses).mean(), vloss,
+                                (time.time()-start_time)/60**1))
+        losses = []
+        
+        if vloss < best_loss:
+            best_loss = vloss
+            torch.save(model.state_dict(), 'model_best.pth')
+    else:
+        print(numpy.array(losses).mean())
 
 # # set computation device
 # device = 'cuda'
