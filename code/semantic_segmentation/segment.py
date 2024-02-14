@@ -5,7 +5,7 @@ import argparse
 import segmentation_utils
 import cv2
 from PIL import Image
-from dataset import CityScapesDataset, labels
+from dataset import CityScapesDataset
 import time
 import tqdm
 

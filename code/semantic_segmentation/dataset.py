@@ -83,15 +83,16 @@ class CityScapesDataset(torch.utils.data.Dataset):
         image = read_image(self.items[idx]["image"], mode=ImageReadMode.RGB)
         gt = read_image(self.items[idx]["gt"], mode=ImageReadMode.UNCHANGED)
 
-        _gt = torch.zeros(size=(2, image.shape[1], image.shape[2]) )
+        _gt = torch.zeros(size=(2, image.shape[1], image.shape[2]), dtype=torch.bool)
+        _gt[:,:,:] = torch.tensor(0, dtype=torch.bool)
 
         for i, val in movable_labels.items():
             Y, X = numpy.where(gt[0]==torch.tensor(i, dtype=torch.int8))
             
             if val == 1: # movable
-                _gt[1, Y, X] = 1
+                _gt[1, Y, X] = torch.tensor(1, dtype=torch.bool)
             else: # unmoving
-                _gt[0, Y, X] = 1
+                _gt[0, Y, X] = torch.tensor(1, dtype=torch.bool)
           
         # 2048x1024
         image = v2.Resize(size=256)(image)
