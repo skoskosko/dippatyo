@@ -1,0 +1,13 @@
+\chapter{Johdanto}%
+\label{ch:johdanto}
+
+
+Koneoppimisella voidaan hakea ratkaisua monenlaisiin ongelmiin. Yhtenä suurimpana esteenä sen toetuettamisessa on kuitenkin hyvän koulutusdatan hankkiminen. Erikoisemmissa tapauksissa, joissa datan käsittelyksi ei riitä vain kuvien eri alueiden luokittelu, onkin tästä syystä erittäin hankala löytää sopivia datamalleja. Tälläisissä tilanteissa myös totuuden määrittäminen hankalaoituu, koska datasta haetaan kuva-analyysillä tietoja joita edes ihminen ei voi kuvasta suoraan kertoa.
+
+Kuvan käsittelyä ja siitä datan tunnistamista on tehty paljon ennen koneoppimisen yleistymistä. Näin ollen on luonnollista, että koneoppimis mallien koulutusdataa on parsittu sen avulla. Ja lopusksi saadun datan avulla voidaan esitellä kone-oppimis malli joka virtaviivaistaa tämän koko prosessin.
+
+Tämä työn on tarkoitus tutkia, millaisia lopputuloksia on mahdollista saada rakentamalla, dataset stereodatan sekä semanttisen segmentoinnin pohjalta, josta algoritmillisesti poistetaan irtonaiset objektit ja niiden takana oleva syvyys arvioidaan. Lopputuloksena syntyvän mallin avulla, voidaan kuvan perusteella arvioida tilan tai alueen todellista statusta kun helposti liikutettavat asiat on sieltä poistettu tai siirrtyvät.
+
+Tälläinen malli voisi pidemmälle jalostettuna, olla hyödyllinen monissa eri käyttötarkoituksissa. Esimerkiksi itseajavien laitteiden käytössä muuttuvissa ympäristöissä. Tai tilojen 3d scannauksessa viihde tai suunnittelu käyttöön. Pidemmälle jalostettuna tämänlaista mallia voisi hyödyntää esimerkiksi pelien tasojen 3d skannaukseen suoraan siirreltävillä tavaroilla varusteltuna.
+
+Käytettävä data on itseajavien autojen kehitykseen liittyvää kaupunkidataa. Josta löytyy valmiina, syvyysdata. Kuitenkin koska mallin ja sen rakentamistyökalujen tulee olla hyödynnettävissä myös muulla datalla, käydään läpi myös stereokuvasta syvyysdatan hankinta. Segmentointi dataa ei uudelleen generoida, koska segmentointimalleja on paljon käytettävissä, jolloin sen itse rakentaminen tuskin on tarpeellista.
