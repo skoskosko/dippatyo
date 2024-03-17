@@ -25,9 +25,9 @@ Tämä yhdistetään haluttuun määrään ympäröivien pikselien dispariteetti
 
 Käytetyssä ohjelmakoodissa SGM function implementoinnin hoiti 
 
-\url{https://docs.opencv.org/3.4/d2/d85/classcv_1_1StereoSGBM.html}
+"\url{https://docs.opencv.org/3.4/d2/d85/classcv_1_1StereoSGBM.html}"
 
-\url{https://en.wikipedia.org/wiki/Semi-global_matching}
+"\url{https://en.wikipedia.org/wiki/Semi-global_matching}"
 
 \section{Neuroverkot}
 
@@ -43,7 +43,7 @@ Kun näitä neuroneita asetetaan eri kerroksiin siten että verkon sisääntulo 
 
 Neuroverkko on siis vain kasa yksinkertaisia matemaattisia funktioita, joiden toimintaa vain tuurilla arvoidaan jotta saadaan haluttu lopputulos. Tätä tuuria pyritään parantamaan ohjaamalla verkon koulutusta. Tämä tapahtuu tappiofunktion (loss function) sekä takaisinvirtausalgoritmin (backpopagation algorithm) avulla. Loss functionin tehtävä on kertoa kuinka paljon saatu tulos eroaa halutusta. Esimerkki tapauksessamme tämä käytännössä katsoisi onko kissa kuvan arvo mikä sen pitäisi olla. Tämän työn lopputulos on verkko joka yrittää luoda kuvasta 3d pistekartan. Siinä tapauksessa siis neliösumma tai jokin muu tapa virheen tunnistamiseen olisi parempi. Kun virhe on tunnistettu verkkoa muokataan takaisinvirtaus algoritmin perusteella. Tähän ei ole yhtä parasta ratkaisua, vaan eri verkkojen ja käyttökohteiden tapauksessa eri algoritmit voivat tuoda huomattavasti parempia tuloksia.
 
-\url{https://en.wikipedia.org/wiki/Artificial_neural_network}
+"\url{https://en.wikipedia.org/wiki/Artificial_neural_network}"
 
 \section{Semantic segmentation}
 
@@ -58,9 +58,9 @@ Semantic segmentation eli kuvan segmentointi on yksi yleinen käyttökohde neuro
 
 Kun segmentointi mallin kanssa työskennellään se kuitenkin tuo hieman lisähaastetta datasetin vaatimuksiin koska kuvien pitää olla käsitelty tarkemmin kuin vain varustettuna alueilla missä on asioita. Tämä möyskin hieman muutta tappiofunktion käsittelyä. Koska mallin ei ole tarkoitus palautta pistejoukkoja vaan alueita, ei voida vain verrata ovatko tunnistetut pisteet lähellä koulutuspisteitä, vaan tulee tehdä jonkinnäköistä pinta-alaan perustuvaa analyysiä. 
 
-(Kirjoita lisää)
+"Kirjoita lisää"
 
-\url{https://en.wikipedia.org/wiki/Image_segmentation}
+"\url{https://en.wikipedia.org/wiki/Image_segmentation}"
 
 \section{3d pisteavaruus}
 
@@ -77,5 +77,5 @@ Lopullinen haluttu tuotos on 3d  pisteavaruus. 3d pisteavaruus voidaan ajatella 
 3d pistekartat ovat hyvin perusmuotoinen ja epäoptimoitu tapa käsitellä 3d dataa. Jos sitä haluttaisiin optimoida 3d mallin kannattaisi muuttaa kolmioiksi tai muiksi monikulmioiksi joiden perusteella tämä data käsiteltäisiin. Mutta koska edellämainitusti oma datamme voidaan esittää 2d syvyydellisenä kuvana, meillä ei ole tähän tarvetta.
 
     
-\url{https://en.wikipedia.org/wiki/Point_cloud}
+"\url{https://en.wikipedia.org/wiki/Point_cloud}"
 

@@ -1,8 +1,22 @@
 \chapter{Yhteenveto}%
 \label{ch:yhteenveto}
 
-\section{tekeekö datalla mitään }
+\section{Tulokset}
+
+"Korjoitan kun on tuloksia"
+
+\section{Käyttökohteet}
+
+Nykyisellään ainoa realistinen käyttökohde on itseajavien autojen ajoreittien suunnittelussa. Kuitenkin jos saataisiin segmentointi ja syvyysdataa esimerkiksi dronekuvista tai sisätiloista, voisi tätä mallia käyttää myös niiden skannaamiseen.
+
+Mallin käyttäminen näihin tarkoituksiin ei pitäisi olla mikään ongelma, todennäköisesti ongelma olisi sama kuin nykyiselläänkin, eli datan muokkaus. Kuitenkin käytetyt tekniikat ja luodut skriptit pitäsi olla täysin käytettävissä minkä tahansa stereo datan kanssa. ja segmentointidatan ei tarvitse olla samasta lähteestä. Sisätilojen ilmamkuvasta kuvattujen asioiden ja muiden tälläisten segmentointidatan löytämisen ei pitäisi nykypäivänä olla hankalaa.
 
 \section{Kehitysehdotukset}
 
-\section{muut käyttökohteet}
+Jos mallia optimoisi jollekkin pienemmälle verkolle sitä voisi ajaa suoraan esimerkiksi dronessa. Tämä mahdollistaisi esimerkiksi maaston skannaamisen ja datan välittömän käyttämisen laitteiden reitityksen suunnitteluun. Mallia voisi ehkä myös parantaa jos ajateltaisiin lähtökohtana olevan stereokuva. Näin syvyysdata voisi olla luotettavampaa, koska lähdedatalla olisi varma laskettava totuus. 
+
+Tämä ei ole täysin suoraan semantic segmentationia tai muuta yleistä koneoppimista. Tästä johtuen voisi miettiä olisiko jokin muu malli kuin sematic segmentationiin suunniteltu parempi. Tämä kuitenkin olisi loputon suo ja vaatisi hyvin paljon töitä. Se kuitenkin voisi olla tarpeellista jos malli halutaan ajaa edge laitteella niinkuin dronella. 
+
+Ehkä hyödyllisin jatkokehitys voisi olla loppudatan lisäanalyysi. Jos kuvien tuottamat 3d pisteavaruudet saataisiin yhdistettyä, voitaisiin muodostaa tilojen 3d skannauksia. Tämä olisi asia mikä tekisi tästä mallista oikeasti hyödyllisen ja tuotteistettavan. Nykyisellään sen käytännön hyöty ei ole kovin suuri muuhun kuin järjestelmille jotka erikseen tätä tarvitsevat. Mutta erilaisten tilojen 3d skannaus ilman esteitä olisi hyödyllistä monilla aloilla. Maan mittauksessa, sisustuksessa kaupunki suunnittelussa ja monessa muussa.
+
+
