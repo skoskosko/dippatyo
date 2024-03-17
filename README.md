@@ -1,3 +1,6 @@
+https://intra.tuni.fi/fi/opiskelu/opiskelu-0/opinnaytetyot/diplomityo
+
+
 Combining stereo detection with semantic segmentation to create 3d pointcloud with seperate objects
 
 Tämä dataset hoitaa kaiken
@@ -31,29 +34,15 @@ https://trepo.tuni.fi/handle/10024/149199   !!!!!!!!!!!!!!!!!!!!!!!!! 3d depth
 
 
 
-## Kirjopita otsikkotasot
-
-Kinda done.
-
-## Tee paska toteutus
-
-Paska on
-
-## kirjoita paskan toteutuksen pohjalta
-
-
-
-## Hae lähteitä paskaan toteutukseesi
-
-## Lue lähteet
+## Kirjoita lähteiden avulla lisää
 
 ## Tee 3d point cloud koska sitä yritetään
 
-## Korjaa paska koodisi
+## Korjaa koodisi
 Treenaa sematic segmentation
 Treenaa disparity
 Koita yhdistää ne. 
 Kirjoita disparityn siistimis algoritmi
 
 
-## KIRJOITA LISÄÄ TÄSTÄ PASKASTA
+## KIRJOITA LISÄÄ TÄSTÄ
