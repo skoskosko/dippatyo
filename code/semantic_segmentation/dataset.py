@@ -56,7 +56,7 @@ class CityScapesDataset(torch.utils.data.Dataset):
         """
         """
         self._in_memory = in_memory
-        self.root_dir = "/home/eskotakku/Documents/Dippatyo/dataset"
+        self.root_dir = "/home/esko/Documents/Dippatyo/dataset"
         self.image_root = os.path.join(self.root_dir, "leftImg8bit_trainvaltest", "leftImg8bit", "train")
         self.truth_root = os.path.join(self.root_dir, "gtFine_trainvaltest", "gtFine", "train")
 

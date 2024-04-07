@@ -12,7 +12,7 @@ from torchvision.transforms.functional import to_pil_image
 
 DEVICE = "cuda"
 
-model = torchvision.models.segmentation.fcn_resnet50(pretrained=False, num_classes=2)
+model = torchvision.models.segmentation.fcn_resnet50(weights=None, num_classes=2)
 model.load_state_dict(torch.load("model_best.pth"), strict=False)
 model.eval()
 model.to(DEVICE)
@@ -49,7 +49,7 @@ for image, target in tqdm.tqdm(loader):
     _ti = y_pred[0].detach().to("cpu").numpy()
     ti = numpy.zeros(shape=(_ti.shape[1], _ti.shape[2], 3) , dtype=numpy.uint8)
     Y, X = numpy.where(_ti[0]>0.9) # unmovable
-    print(_ti[0])
+    # print(_ti[0])
     ti[Y, X, :] = (255, 255, 255)
     Y, X = numpy.where(_ti[1]>0.9) # movable
     ti[Y, X, :] = (255, 0, 0)

@@ -27,5 +27,4 @@ export CITYSCAPES_DATASET=/home/eskotakku/Documents/Dippatyo/dataset/gtFine_trai
 export QT_QPA_PLATFORM=wayland
 csViewer
 
-EI TOIMI! VITTU
 

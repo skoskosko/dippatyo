@@ -1,0 +1,24 @@
+// Workspace settings
+{
+    // The following will hide the js and map files in the editor
+    "files.exclude": {
+        "masters-thesis/*.aux": true,
+        "masters-thesis/*.bbl": true,
+        "masters-thesis/*.bcf": true,
+        "masters-thesis/*.big": true,
+        "masters-thesis/*.fdb_latexmk": true,
+        "masters-thesis/*.blg": true,
+        "masters-thesis/*.fls": true,
+        "masters-thesis/*.glg": true,
+        "masters-thesis/*.glo": true,
+        "masters-thesis/*.gls": true,
+        "masters-thesis/*.ist": true,
+        "masters-thesis/*.out": true,
+        "masters-thesis/*.run.xml": true,
+        "masters-thesis/*.toc": true,
+        "masters-thesis/*.upa": true,
+        "masters-thesis/*.upb": true,
+        "masters-thesis/*.xmpdata": true,
+        "masters-thesis/*.xmpi": true,
+    }
+}
