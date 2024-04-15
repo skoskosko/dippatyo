@@ -43,9 +43,8 @@ dataset: "CityScapes" = CityScapes("/home/esko/Documents/Dippatyo/dataset")
     # save if approved
 for image in dataset.images:
     # print(image._dipsarity)
-    # image.disparity(), image.classification()
-    grid = make_grid([image.left(), image.classification_image(), image.disparity()])
+    # image.left(), image.classification_image(),
+    grid = make_grid([image.disparity()])
     show(grid)
 
     plt.show()
-    raise Exception("STOP")

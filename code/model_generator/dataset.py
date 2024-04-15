@@ -94,17 +94,26 @@ class ImageItem():
         return v2.Resize(size=self.size)(read_image(self._image, mode=ImageReadMode.RGB))
 
     def disparity(self):
-        image = Image.open(self._dipsarity).convert('RGB')
+        disp = cv2.imread(self._dipsarity, cv2.IMREAD_UNCHANGED)
 
-        trnsfrms = transforms.Compose([transforms.Resize(self.size), 
-                        transforms.ToTensor()])
-        img_tensor = trnsfrms(image)
+        image = numpy.zeros(shape=(disp.shape[0], disp.shape[1], 3) , dtype=numpy.uint8)
 
-        # print(self._dipsarity)
-        # img = cv2.imread(self._dipsarity, cv2.IMREAD_GRAYSCALE)
-        # img = read_image(self._dipsarity, mode=ImageReadMode.UNCHANGED)
-        return img_tensor # v2.Resize(size=self.size, interpolation=v2.InterpolationMode.NEAREST)(img)
-    
+        mi = disp.min()
+        ma = disp.max()
+        step = (ma + 1) / 255
+
+        for i in range(0, 255):
+            s = step * i
+            e = step * (i+1)
+            X, Y = numpy.where(numpy.logical_and(disp>=s, disp<=e)) # unmovable
+            image[X, Y, :] = (i, i, i)
+
+        transform = transforms.Compose([ 
+            transforms.PILToTensor() 
+        ]) 
+        img_tensor = transform(Image.fromarray(image, 'RGB')) 
+        return v2.Resize(size=self.size, interpolation=v2.InterpolationMode.NEAREST)(img_tensor)
+
 
 class CityScapes():
 
