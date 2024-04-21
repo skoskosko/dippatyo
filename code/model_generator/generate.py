@@ -6,13 +6,15 @@
 
 
 from dataset import CityScapes
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 from matplotlib import pyplot as plt
 from torchvision.utils import make_grid
 import torchvision.transforms.functional as F
 import torchvision.transforms as transforms
 from PIL import Image
 import torch
+from estimator import HorisontalEstimator
+
 
 import numpy
 
@@ -29,7 +31,7 @@ def in_group(coordinate, group) -> bool:
             return True
     return False
 
-def group_coordinates(grid):
+def group_coordinates(grid) -> List[numpy.ndarray]:
     groups = []
     Y, X = numpy.where(grid==1) # unmovable
     for i in range(len(Y)):
@@ -80,14 +82,13 @@ dataset: "CityScapes" = CityScapes("/home/esko/Documents/Dippatyo/dataset")
     # assume area same as around it
     # Ask image to be approved
     # save if approved
-for image in dataset.images[100:400]:
+for image in dataset.images[400:405]:
 
-    classification = image.classification_image()
-    disparity = image.disparity()
+    classification: torch.Tensor = image.classification_image()
+    disparity: torch.Tensor = image.disparity()
 
-    c = image.classification()
-    d = torch.Tensor.numpy(disparity)
-
+    c: torch.Tensor = image.classification()
+    d: numpy.ndarray = torch.Tensor.numpy(disparity)
     groups = group_coordinates(torch.Tensor.numpy(c[0, :, :]))
     
     for group in groups:        
@@ -95,8 +96,14 @@ for image in dataset.images[100:400]:
         Y, X = numpy.where(group==1)
         for i in range(len(Y)):
             d[:, Y[i], X[i]] = color
-    
-    grid = make_grid([image.left(), image.classification_image(), image.disparity(), torch.from_numpy(d)])
+
+    # Estimate new disparity
+    estimator = HorisontalEstimator()
+    estimate = estimator.estimate(groups, disparity)
+
+
+
+    grid = make_grid([image.left(), image.classification_image(), image.disparity(), torch.from_numpy(d), estimate])
 
     show(grid)
 

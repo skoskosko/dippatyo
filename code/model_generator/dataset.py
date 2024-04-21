@@ -57,7 +57,7 @@ class ImageItem():
         self.size: int = 512
 
 
-    def classification(self):
+    def classification(self) -> torch.Tensor:
         gt = read_image(self._classification, mode=ImageReadMode.UNCHANGED)
 
         _gt = torch.zeros(size=(1, gt.shape[1], gt.shape[2]), dtype=torch.bool)
@@ -73,7 +73,7 @@ class ImageItem():
 
         return v2.Resize(size=self.size, interpolation=v2.InterpolationMode.NEAREST)(_gt)
 
-    def classification_image(self):
+    def classification_image(self) -> torch.Tensor:
         _ti = self.classification()
         ti = numpy.zeros(shape=(_ti.shape[1], _ti.shape[2], 3) , dtype=numpy.uint8)
         Y, X = numpy.where(_ti[0]==0) # unmovable
@@ -87,18 +87,17 @@ class ImageItem():
         img_tensor = transform(target_image)
         return img_tensor
 
-    def left(self):
+    def left(self) -> torch.Tensor:
         return v2.Resize(size=self.size)(read_image(self._image, mode=ImageReadMode.RGB))
     
-    def right(self):
+    def right(self) -> torch.Tensor:
         return v2.Resize(size=self.size)(read_image(self._image, mode=ImageReadMode.RGB))
 
-    def disparity(self):
+    def disparity(self) -> torch.Tensor:
         disp = cv2.imread(self._dipsarity, cv2.IMREAD_UNCHANGED)
 
         image = numpy.zeros(shape=(disp.shape[0], disp.shape[1], 3) , dtype=numpy.uint8)
 
-        mi = disp.min()
         ma = disp.max()
         step = (ma + 1) / 255
 
