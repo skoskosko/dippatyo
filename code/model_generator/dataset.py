@@ -60,31 +60,31 @@ class ImageItem():
     def classification(self):
         gt = read_image(self._classification, mode=ImageReadMode.UNCHANGED)
 
-        _gt = torch.zeros(size=(2, gt.shape[1], gt.shape[2]), dtype=torch.bool)
-        _gt[:,:,:] = torch.tensor(0, dtype=torch.bool)
+        _gt = torch.zeros(size=(1, gt.shape[1], gt.shape[2]), dtype=torch.bool)
+        _gt[0, :,:] = torch.tensor(0, dtype=torch.bool)
 
         for i, val in self.movable_labels.items():
             Y, X = numpy.where(gt[0]==torch.tensor(i, dtype=torch.int8))
             
             if val == 1: # movable
-                _gt[1, Y, X] = torch.tensor(1, dtype=torch.bool)
-            else: # unmoving
                 _gt[0, Y, X] = torch.tensor(1, dtype=torch.bool)
         
+        
+
         return v2.Resize(size=self.size, interpolation=v2.InterpolationMode.NEAREST)(_gt)
 
     def classification_image(self):
         _ti = self.classification()
         ti = numpy.zeros(shape=(_ti.shape[1], _ti.shape[2], 3) , dtype=numpy.uint8)
-        Y, X = numpy.where(_ti[0]==1) # unmovable
+        Y, X = numpy.where(_ti[0]==0) # unmovable
         ti[Y, X, :] = (40, 209, 31)
-        Y, X = numpy.where(_ti[1]==1) # movable
+        Y, X = numpy.where(_ti[0]==1) # movable
         ti[Y, X, :] = (194, 17, 73)
         target_image = Image.fromarray(ti, 'RGB')
         transform = transforms.Compose([ 
             transforms.PILToTensor() 
         ]) 
-        img_tensor = transform(target_image) 
+        img_tensor = transform(target_image)
         return img_tensor
 
     def left(self):
