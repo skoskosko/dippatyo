@@ -13,7 +13,7 @@ import torchvision.transforms.functional as F
 import torchvision.transforms as transforms
 from PIL import Image
 import torch
-from estimator import HorisontalEstimator
+from estimator import HorisontalEstimator, VerticalEstimator, EstimatorBase
 
 
 import numpy
@@ -98,12 +98,14 @@ for image in dataset.images[400:405]:
             d[:, Y[i], X[i]] = color
 
     # Estimate new disparity
-    estimator = HorisontalEstimator()
-    estimate = estimator.estimate(groups, disparity)
+    
+    h_estimate = HorisontalEstimator().estimate(groups, disparity)
+    v_estimate = VerticalEstimator().estimate(groups, disparity)
+    m_estimate = EstimatorBase().combine_estimators(groups, h_estimate, v_estimate)
 
 
 
-    grid = make_grid([image.left(), image.classification_image(), image.disparity(), torch.from_numpy(d), estimate])
+    grid = make_grid([image.left(), image.classification_image(), image.disparity(), torch.from_numpy(d), h_estimate, v_estimate, m_estimate])
 
     show(grid)
 
