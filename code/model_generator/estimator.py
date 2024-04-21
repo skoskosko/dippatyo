@@ -37,3 +37,29 @@ class HorisontalEstimator(EstimatorBase):
                         output[:, y, _x] = (numpy.rint(color), numpy.rint(color), numpy.rint(color))
         return torch.from_numpy(output)
                 
+class VerticalEstimator(EstimatorBase):
+    pass
+
+    def estimate(self, groups: List[numpy.ndarray], disparity: torch.Tensor) -> torch.Tensor:
+        output = numpy.copy(torch.Tensor.numpy(disparity))
+
+        for group in groups:
+            
+            for x in range(group.shape[1]):
+                y = numpy.where(group[:, x]==1)[0]
+                if len(y):
+                    start = numpy.average(disparity[:, y[0]-20:y[0]-1, x], axis=1)
+                    end = numpy.average(disparity[:, y[-1]+1:y[-1]+20, x], axis=1)
+                    
+                    change = (end[0]-start[0]) / len(y)
+                    for i, _y in enumerate(y):
+                        color = start[0] + change * i
+
+                        
+                        if color < 0:
+                            color = 0
+                        elif color > 255:
+                            color = 255
+    
+                        output[:, _y, x] = (numpy.rint(color), numpy.rint(color), numpy.rint(color))
+        return torch.from_numpy(output)
