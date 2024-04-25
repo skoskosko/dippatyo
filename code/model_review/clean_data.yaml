@@ -1,3 +1,67 @@
+aachen:
+  aachen_000001_000019.png: vertical
+  aachen_000004_000019.png: vertical_50
+  aachen_000005_000019.png: vertical
+  aachen_000008_000019.png: vertical
+  aachen_000009_000019.png: combined
+  aachen_000014_000019.png: vertical
+  aachen_000018_000019.png: failure
+  aachen_000024_000019.png: vertical
+  aachen_000025_000019.png: vertical
+  aachen_000026_000019.png: vertical
+  aachen_000029_000019.png: vertical
+  aachen_000030_000019.png: vertical
+  aachen_000031_000019.png: horisontal_50
+  aachen_000032_000019.png: vertical
+  aachen_000041_000019.png: vertical
+  aachen_000042_000019.png: vertical
+  aachen_000044_000019.png: vertical
+  aachen_000045_000019.png: combined
+  aachen_000048_000019.png: vertical_50
+  aachen_000053_000019.png: horisontal
+  aachen_000056_000019.png: combined
+  aachen_000058_000019.png: combined
+  aachen_000059_000019.png: combined
+  aachen_000061_000019.png: vertical
+  aachen_000062_000019.png: vertical
+  aachen_000065_000019.png: horisontal
+  aachen_000072_000019.png: vertical
+  aachen_000074_000019.png: combined
+  aachen_000081_000019.png: vertical
+  aachen_000083_000019.png: vertical
+  aachen_000090_000019.png: combined
+  aachen_000091_000019.png: vertical
+  aachen_000092_000019.png: vertical
+  aachen_000094_000019.png: vertical
+  aachen_000095_000019.png: vertical
+  aachen_000102_000019.png: vertical
+  aachen_000107_000019.png: vertical
+  aachen_000109_000019.png: vertical
+  aachen_000111_000019.png: vertical
+  aachen_000113_000019.png: vertical
+  aachen_000115_000019.png: horisontal
+  aachen_000117_000019.png: vertical
+  aachen_000120_000019.png: vertical
+  aachen_000121_000019.png: vertical
+  aachen_000122_000019.png: vertical
+  aachen_000123_000019.png: vertical
+  aachen_000126_000019.png: vertical
+  aachen_000130_000019.png: vertical
+  aachen_000131_000019.png: vertical
+  aachen_000133_000019.png: horisontal
+  aachen_000134_000019.png: failure
+  aachen_000135_000019.png: vertical_50
+  aachen_000140_000019.png: vertical
+  aachen_000141_000019.png: vertical
+  aachen_000142_000019.png: vertical
+  aachen_000148_000019.png: combined
+  aachen_000154_000019.png: vertical
+  aachen_000159_000019.png: horisontal
+  aachen_000162_000019.png: vertical
+  aachen_000165_000019.png: vertical
+  aachen_000166_000019.png: vertical
+  aachen_000168_000019.png: horisontal
+  aachen_000169_000019.png: vertical
 bremen:
   bremen_000000_000019.png: combined
   bremen_000001_000019.png: failure
@@ -318,27 +382,40 @@ bremen:
 cologne:
   cologne_000000_000019.png: failure
   cologne_000001_000019.png: vertical
+  cologne_000002_000019.png: horisontal_50
   cologne_000003_000019.png: combined_50
   cologne_000004_000019.png: failure
+  cologne_000005_000019.png: vertical
   cologne_000006_000019.png: horisontal_50
   cologne_000007_000019.png: vertical_50
+  cologne_000008_000019.png: failure
   cologne_000009_000019.png: failure
   cologne_000010_000019.png: vertical
   cologne_000011_000019.png: horisontal_50
   cologne_000012_000019.png: failure
   cologne_000013_000019.png: vertical
+  cologne_000014_000019.png: failure
   cologne_000015_000019.png: vertical
+  cologne_000016_000019.png: vertical
   cologne_000017_000019.png: horisontal
   cologne_000018_000019.png: vertical
   cologne_000019_000019.png: horisontal_50
+  cologne_000020_000019.png: failure
+  cologne_000021_000019.png: vertical
+  cologne_000022_000019.png: combined
   cologne_000023_000019.png: vertical
+  cologne_000024_000019.png: vertical
   cologne_000025_000019.png: vertical_50
+  cologne_000026_000019.png: vertical
   cologne_000027_000019.png: combined_50
   cologne_000028_000019.png: vertical
+  cologne_000029_000019.png: failure
+  cologne_000030_000019.png: combined
   cologne_000031_000019.png: failure
   cologne_000032_000019.png: combined
   cologne_000033_000019.png: failure
   cologne_000034_000019.png: combined
+  cologne_000035_000019.png: vertical
   cologne_000036_000019.png: vertical
   cologne_000037_000019.png: combined
   cologne_000038_000019.png: failure
@@ -349,59 +426,86 @@ cologne:
   cologne_000043_000019.png: vertical
   cologne_000044_000019.png: vertical
   cologne_000045_000019.png: failure
+  cologne_000046_000019.png: vertical
   cologne_000047_000019.png: failure
   cologne_000048_000019.png: vertical_50
   cologne_000049_000019.png: failure
   cologne_000050_000019.png: vertical
+  cologne_000051_000019.png: vertical
   cologne_000052_000019.png: vertical
   cologne_000053_000019.png: combined_50
   cologne_000054_000019.png: vertical
   cologne_000055_000019.png: vertical_50
   cologne_000056_000019.png: failure
+  cologne_000057_000019.png: vertical
+  cologne_000058_000019.png: failure
   cologne_000059_000019.png: failure
   cologne_000060_000019.png: failure
   cologne_000061_000019.png: failure
+  cologne_000062_000019.png: vertical
   cologne_000063_000019.png: horisontal
+  cologne_000064_000019.png: vertical
   cologne_000065_000019.png: vertical
+  cologne_000066_000019.png: vertical
   cologne_000067_000019.png: failure
+  cologne_000068_000019.png: vertical_50
   cologne_000069_000019.png: failure
+  cologne_000070_000019.png: vertical
+  cologne_000071_000019.png: failure
+  cologne_000072_000019.png: vertical
   cologne_000073_000019.png: vertical
   cologne_000074_000019.png: failure
   cologne_000075_000019.png: failure
   cologne_000076_000019.png: failure
   cologne_000077_000019.png: vertical
   cologne_000078_000019.png: combined
+  cologne_000079_000019.png: vertical
   cologne_000080_000019.png: vertical
   cologne_000081_000019.png: vertical_50
   cologne_000082_000019.png: failure
   cologne_000083_000019.png: vertical
+  cologne_000084_000019.png: vertical
+  cologne_000085_000019.png: vertical
   cologne_000086_000019.png: failure
   cologne_000087_000019.png: failure
+  cologne_000088_000019.png: vertical
   cologne_000089_000019.png: vertical
+  cologne_000090_000019.png: vertical
   cologne_000091_000019.png: vertical
   cologne_000092_000019.png: vertical
   cologne_000093_000019.png: vertical
   cologne_000094_000019.png: failure
+  cologne_000095_000019.png: vertical
+  cologne_000096_000019.png: vertical
   cologne_000097_000019.png: failure
+  cologne_000098_000019.png: vertical
   cologne_000099_000019.png: horisontal
   cologne_000100_000019.png: failure
   cologne_000101_000019.png: combined
   cologne_000102_000019.png: vertical
+  cologne_000103_000019.png: vertical
   cologne_000104_000019.png: failure
   cologne_000105_000019.png: vertical
+  cologne_000106_000019.png: failure
   cologne_000107_000019.png: vertical
   cologne_000108_000019.png: failure
   cologne_000109_000019.png: vertical
+  cologne_000110_000019.png: horisontal_50
+  cologne_000111_000019.png: vertical
   cologne_000112_000019.png: failure
   cologne_000113_000019.png: failure
   cologne_000114_000019.png: vertical
   cologne_000115_000019.png: failure
+  cologne_000116_000019.png: vertical
   cologne_000117_000019.png: vertical
   cologne_000118_000019.png: vertical
   cologne_000119_000019.png: horisontal_50
+  cologne_000120_000019.png: vertical
   cologne_000121_000019.png: failure
   cologne_000122_000019.png: combined
   cologne_000123_000019.png: vertical
+  cologne_000124_000019.png: failure
+  cologne_000125_000019.png: failure
   cologne_000126_000019.png: failure
   cologne_000127_000019.png: vertical_50
   cologne_000128_000019.png: failure
@@ -409,20 +513,335 @@ cologne:
   cologne_000130_000019.png: vertical
   cologne_000131_000019.png: combined
   cologne_000132_000019.png: failure
+  cologne_000133_000019.png: failure
   cologne_000134_000019.png: failure
   cologne_000135_000019.png: failure
+  cologne_000136_000019.png: failure
   cologne_000137_000019.png: vertical
   cologne_000138_000019.png: horisontal_50
   cologne_000139_000019.png: vertical
   cologne_000140_000019.png: horisontal
   cologne_000141_000019.png: vertical
   cologne_000142_000019.png: vertical
+  cologne_000143_000019.png: failure
   cologne_000144_000019.png: vertical
   cologne_000145_000019.png: vertical
   cologne_000146_000019.png: vertical
+  cologne_000147_000019.png: vertical
+  cologne_000148_000019.png: combined
+  cologne_000149_000019.png: vertical
   cologne_000150_000019.png: vertical
   cologne_000151_000019.png: combined
+  cologne_000152_000019.png: combined
   cologne_000153_000019.png: vertical_50
+darmstadt:
+  darmstadt_000000_000019.png: vertical
+  darmstadt_000001_000019.png: vertical
+  darmstadt_000002_000019.png: horisontal
+  darmstadt_000003_000019.png: failure
+  darmstadt_000004_000019.png: failure
+  darmstadt_000005_000019.png: vertical
+  darmstadt_000006_000019.png: combined_50
+  darmstadt_000007_000019.png: vertical
+  darmstadt_000008_000019.png: vertical
+  darmstadt_000009_000019.png: vertical
+  darmstadt_000010_000019.png: vertical
+  darmstadt_000011_000019.png: horisontal
+  darmstadt_000012_000019.png: combined
+  darmstadt_000013_000019.png: vertical_50
+  darmstadt_000014_000019.png: failure
+  darmstadt_000015_000019.png: vertical
+  darmstadt_000016_000019.png: vertical
+  darmstadt_000017_000019.png: vertical
+  darmstadt_000018_000019.png: failure
+  darmstadt_000019_000019.png: vertical
+  darmstadt_000020_000019.png: vertical
+  darmstadt_000021_000019.png: horisontal_50
+  darmstadt_000022_000019.png: failure
+  darmstadt_000023_000019.png: vertical
+  darmstadt_000024_000019.png: vertical
+  darmstadt_000025_000019.png: vertical
+  darmstadt_000026_000019.png: vertical
+  darmstadt_000027_000019.png: failure
+  darmstadt_000028_000019.png: failure
+  darmstadt_000029_000019.png: failure
+  darmstadt_000030_000019.png: vertical
+  darmstadt_000031_000019.png: failure
+  darmstadt_000032_000019.png: failure
+  darmstadt_000033_000019.png: vertical
+  darmstadt_000034_000019.png: failure
+  darmstadt_000035_000019.png: combined
+  darmstadt_000036_000019.png: vertical
+  darmstadt_000037_000019.png: failure
+  darmstadt_000038_000019.png: failure
+  darmstadt_000039_000019.png: vertical
+  darmstadt_000040_000019.png: combined
+  darmstadt_000041_000019.png: vertical
+  darmstadt_000042_000019.png: vertical
+  darmstadt_000043_000019.png: vertical
+  darmstadt_000044_000019.png: combined
+  darmstadt_000045_000019.png: failure
+  darmstadt_000046_000019.png: vertical
+  darmstadt_000047_000019.png: vertical
+  darmstadt_000048_000019.png: vertical
+  darmstadt_000049_000019.png: vertical
+  darmstadt_000050_000019.png: vertical
+  darmstadt_000051_000019.png: combined
+  darmstadt_000052_000019.png: vertical
+  darmstadt_000053_000019.png: horisontal_50
+  darmstadt_000054_000019.png: horisontal_50
+  darmstadt_000055_000019.png: vertical
+  darmstadt_000056_000019.png: failure
+  darmstadt_000057_000019.png: failure
+  darmstadt_000058_000019.png: failure
+  darmstadt_000059_000019.png: failure
+  darmstadt_000060_000019.png: combined
+  darmstadt_000061_000019.png: vertical
+  darmstadt_000062_000019.png: vertical
+  darmstadt_000063_000019.png: failure
+  darmstadt_000064_000019.png: vertical
+  darmstadt_000065_000019.png: vertical
+  darmstadt_000066_000019.png: vertical
+  darmstadt_000067_000019.png: vertical
+  darmstadt_000068_000019.png: vertical
+  darmstadt_000069_000019.png: failure
+  darmstadt_000070_000019.png: failure
+  darmstadt_000071_000019.png: failure
+  darmstadt_000072_000019.png: vertical
+  darmstadt_000073_000019.png: vertical
+  darmstadt_000074_000019.png: vertical
+  darmstadt_000075_000019.png: combined
+  darmstadt_000076_000019.png: horisontal_50
+  darmstadt_000077_000019.png: vertical
+  darmstadt_000078_000019.png: vertical
+  darmstadt_000079_000019.png: vertical
+  darmstadt_000080_000019.png: combined
+  darmstadt_000081_000019.png: vertical
+  darmstadt_000082_000019.png: horisontal
+  darmstadt_000083_000019.png: vertical
+  darmstadt_000084_000019.png: vertical
+dusseldorf:
+  dusseldorf_000000_000019.png: vertical
+  dusseldorf_000001_000019.png: vertical
+  dusseldorf_000002_000019.png: combined
+  dusseldorf_000003_000019.png: vertical
+  dusseldorf_000004_000019.png: failure
+  dusseldorf_000005_000019.png: vertical
+  dusseldorf_000006_000019.png: failure
+  dusseldorf_000007_000019.png: vertical_50
+  dusseldorf_000008_000019.png: vertical
+  dusseldorf_000009_000019.png: vertical_50
+  dusseldorf_000010_000019.png: vertical
+  dusseldorf_000011_000019.png: combined_50
+  dusseldorf_000012_000019.png: vertical
+  dusseldorf_000013_000019.png: vertical
+  dusseldorf_000014_000019.png: vertical
+  dusseldorf_000015_000019.png: failure
+  dusseldorf_000016_000019.png: vertical
+  dusseldorf_000017_000019.png: vertical
+  dusseldorf_000018_000019.png: vertical
+  dusseldorf_000019_000019.png: vertical_50
+  dusseldorf_000020_000019.png: vertical
+  dusseldorf_000021_000019.png: combined
+  dusseldorf_000022_000019.png: combined
+  dusseldorf_000023_000019.png: combined
+  dusseldorf_000024_000019.png: failure
+  dusseldorf_000025_000019.png: combined_50
+  dusseldorf_000026_000019.png: vertical
+  dusseldorf_000027_000019.png: vertical
+  dusseldorf_000028_000019.png: vertical
+  dusseldorf_000029_000019.png: failure
+  dusseldorf_000030_000019.png: vertical
+  dusseldorf_000031_000019.png: combined
+  dusseldorf_000032_000019.png: vertical_50
+  dusseldorf_000033_000019.png: vertical
+  dusseldorf_000034_000019.png: vertical
+  dusseldorf_000035_000019.png: vertical
+  dusseldorf_000036_000019.png: vertical
+  dusseldorf_000037_000019.png: failure
+  dusseldorf_000038_000019.png: vertical
+  dusseldorf_000039_000019.png: combined
+  dusseldorf_000040_000019.png: vertical_50
+  dusseldorf_000041_000019.png: vertical
+  dusseldorf_000042_000019.png: combined_50
+  dusseldorf_000043_000019.png: vertical_50
+  dusseldorf_000044_000019.png: vertical
+  dusseldorf_000045_000019.png: failure
+  dusseldorf_000046_000019.png: combined
+  dusseldorf_000047_000019.png: vertical
+  dusseldorf_000048_000019.png: vertical_50
+  dusseldorf_000049_000019.png: vertical_50
+  dusseldorf_000050_000019.png: combined
+  dusseldorf_000051_000019.png: combined
+  dusseldorf_000052_000019.png: vertical
+  dusseldorf_000053_000019.png: combined
+  dusseldorf_000054_000019.png: vertical_50
+  dusseldorf_000055_000019.png: failure
+  dusseldorf_000056_000019.png: combined_50
+  dusseldorf_000057_000019.png: vertical
+  dusseldorf_000058_000019.png: vertical
+  dusseldorf_000059_000019.png: vertical
+  dusseldorf_000060_000019.png: vertical
+  dusseldorf_000061_000019.png: combined_50
+  dusseldorf_000062_000019.png: combined
+  dusseldorf_000063_000019.png: vertical
+  dusseldorf_000064_000019.png: vertical
+  dusseldorf_000065_000019.png: vertical
+  dusseldorf_000066_000019.png: vertical
+  dusseldorf_000067_000019.png: vertical
+  dusseldorf_000068_000019.png: horisontal
+  dusseldorf_000069_000019.png: vertical
+  dusseldorf_000070_000019.png: vertical
+  dusseldorf_000071_000019.png: vertical_50
+  dusseldorf_000072_000019.png: vertical_50
+  dusseldorf_000073_000019.png: vertical_50
+  dusseldorf_000074_000019.png: vertical
+  dusseldorf_000075_000019.png: vertical
+  dusseldorf_000076_000019.png: vertical
+  dusseldorf_000077_000019.png: vertical_50
+  dusseldorf_000078_000019.png: horisontal
+  dusseldorf_000079_000019.png: vertical
+  dusseldorf_000080_000019.png: vertical
+  dusseldorf_000081_000019.png: vertical
+  dusseldorf_000082_000019.png: horisontal
+  dusseldorf_000083_000019.png: horisontal
+  dusseldorf_000084_000019.png: vertical
+  dusseldorf_000085_000019.png: vertical
+  dusseldorf_000086_000019.png: vertical
+  dusseldorf_000087_000019.png: vertical
+  dusseldorf_000088_000019.png: vertical
+  dusseldorf_000089_000019.png: vertical_50
+  dusseldorf_000090_000019.png: failure
+  dusseldorf_000091_000019.png: combined
+  dusseldorf_000092_000019.png: vertical_50
+  dusseldorf_000093_000019.png: combined_50
+  dusseldorf_000094_000019.png: horisontal_50
+  dusseldorf_000095_000019.png: combined
+  dusseldorf_000096_000019.png: vertical
+  dusseldorf_000097_000019.png: vertical
+  dusseldorf_000098_000019.png: combined
+  dusseldorf_000099_000019.png: combined
+  dusseldorf_000100_000019.png: horisontal_50
+  dusseldorf_000101_000019.png: combined
+  dusseldorf_000102_000019.png: combined
+  dusseldorf_000103_000019.png: combined
+  dusseldorf_000104_000019.png: vertical_50
+  dusseldorf_000105_000019.png: vertical
+  dusseldorf_000106_000019.png: combined
+  dusseldorf_000107_000019.png: vertical
+  dusseldorf_000108_000019.png: combined
+  dusseldorf_000109_000019.png: failure
+  dusseldorf_000110_000019.png: vertical
+  dusseldorf_000111_000019.png: failure
+  dusseldorf_000112_000019.png: combined_50
+  dusseldorf_000113_000019.png: vertical
+  dusseldorf_000114_000019.png: vertical
+  dusseldorf_000115_000019.png: vertical
+  dusseldorf_000116_000019.png: vertical
+  dusseldorf_000117_000019.png: failure
+  dusseldorf_000118_000019.png: vertical
+  dusseldorf_000119_000019.png: vertical
+  dusseldorf_000120_000019.png: horisontal_50
+  dusseldorf_000121_000019.png: combined
+  dusseldorf_000122_000019.png: vertical
+  dusseldorf_000123_000019.png: vertical
+  dusseldorf_000124_000019.png: vertical
+  dusseldorf_000125_000019.png: vertical
+  dusseldorf_000126_000019.png: vertical
+  dusseldorf_000127_000019.png: vertical
+  dusseldorf_000128_000019.png: vertical
+  dusseldorf_000129_000019.png: vertical
+  dusseldorf_000130_000019.png: vertical
+  dusseldorf_000131_000019.png: vertical
+  dusseldorf_000132_000019.png: vertical
+  dusseldorf_000133_000019.png: vertical
+  dusseldorf_000134_000019.png: horisontal_50
+  dusseldorf_000135_000019.png: combined
+  dusseldorf_000136_000019.png: vertical
+  dusseldorf_000137_000019.png: vertical_50
+  dusseldorf_000138_000019.png: vertical
+  dusseldorf_000139_000019.png: horisontal_50
+  dusseldorf_000140_000019.png: vertical
+  dusseldorf_000141_000019.png: combined_50
+  dusseldorf_000142_000019.png: vertical
+  dusseldorf_000143_000019.png: vertical_50
+  dusseldorf_000144_000019.png: horisontal
+  dusseldorf_000145_000019.png: vertical
+  dusseldorf_000146_000019.png: vertical
+  dusseldorf_000147_000019.png: vertical
+  dusseldorf_000148_000019.png: horisontal
+  dusseldorf_000149_000019.png: vertical
+  dusseldorf_000150_000019.png: vertical
+  dusseldorf_000151_000019.png: vertical
+  dusseldorf_000152_000019.png: horisontal_50
+  dusseldorf_000153_000019.png: vertical
+  dusseldorf_000154_000019.png: vertical
+  dusseldorf_000155_000019.png: vertical_50
+  dusseldorf_000156_000019.png: combined
+  dusseldorf_000157_000019.png: vertical_50
+  dusseldorf_000158_000019.png: vertical
+  dusseldorf_000159_000019.png: vertical
+  dusseldorf_000160_000019.png: vertical
+  dusseldorf_000161_000019.png: vertical_50
+  dusseldorf_000162_000019.png: vertical_50
+  dusseldorf_000163_000019.png: failure
+  dusseldorf_000164_000019.png: horisontal_50
+  dusseldorf_000165_000019.png: combined
+  dusseldorf_000166_000019.png: vertical
+  dusseldorf_000167_000019.png: vertical
+  dusseldorf_000168_000019.png: vertical
+  dusseldorf_000169_000019.png: combined_50
+  dusseldorf_000170_000019.png: vertical_50
+  dusseldorf_000171_000019.png: vertical_50
+  dusseldorf_000172_000019.png: horisontal_50
+  dusseldorf_000173_000019.png: vertical_50
+  dusseldorf_000174_000019.png: combined
+  dusseldorf_000175_000019.png: combined
+  dusseldorf_000176_000019.png: vertical
+  dusseldorf_000177_000019.png: vertical
+  dusseldorf_000178_000019.png: horisontal
+  dusseldorf_000179_000019.png: vertical
+  dusseldorf_000180_000019.png: vertical
+  dusseldorf_000181_000019.png: vertical
+  dusseldorf_000182_000019.png: vertical
+  dusseldorf_000183_000019.png: combined_50
+  dusseldorf_000184_000019.png: failure
+  dusseldorf_000185_000019.png: failure
+  dusseldorf_000186_000019.png: horisontal_50
+  dusseldorf_000187_000019.png: combined
+  dusseldorf_000188_000019.png: vertical_50
+  dusseldorf_000189_000019.png: vertical
+  dusseldorf_000190_000019.png: vertical
+  dusseldorf_000191_000019.png: vertical
+  dusseldorf_000192_000019.png: vertical
+  dusseldorf_000193_000019.png: horisontal
+  dusseldorf_000194_000019.png: vertical
+  dusseldorf_000195_000019.png: vertical_50
+  dusseldorf_000196_000019.png: vertical_50
+  dusseldorf_000197_000019.png: vertical
+  dusseldorf_000198_000019.png: vertical
+  dusseldorf_000199_000019.png: vertical
+  dusseldorf_000200_000019.png: vertical
+  dusseldorf_000201_000019.png: vertical
+  dusseldorf_000202_000019.png: failure
+  dusseldorf_000203_000019.png: vertical
+  dusseldorf_000204_000019.png: vertical_50
+  dusseldorf_000205_000019.png: vertical
+  dusseldorf_000206_000019.png: failure
+  dusseldorf_000207_000019.png: vertical
+  dusseldorf_000208_000019.png: vertical
+  dusseldorf_000209_000019.png: combined
+  dusseldorf_000210_000019.png: vertical
+  dusseldorf_000211_000019.png: failure
+  dusseldorf_000212_000019.png: combined_50
+  dusseldorf_000213_000019.png: vertical
+  dusseldorf_000214_000019.png: vertical_50
+  dusseldorf_000215_000019.png: combined
+  dusseldorf_000216_000019.png: combined
+  dusseldorf_000217_000019.png: combined
+  dusseldorf_000218_000019.png: combined
+  dusseldorf_000219_000019.png: failure
+  dusseldorf_000220_000019.png: combined
 erfurt:
   erfurt_000000_000019.png: combined
   erfurt_000001_000019.png: vertical
@@ -533,6 +952,375 @@ erfurt:
   erfurt_000106_000019.png: vertical
   erfurt_000107_000019.png: failure
   erfurt_000108_000019.png: vertical_50
+hamburg:
+  hamburg_000000_000042.png: vertical
+  hamburg_000000_000629.png: horisontal
+  hamburg_000000_001106.png: combined
+  hamburg_000000_001613.png: combined
+  hamburg_000000_002095.png: vertical
+  hamburg_000000_002338.png: vertical
+  hamburg_000000_003488.png: vertical
+  hamburg_000000_003904.png: vertical
+  hamburg_000000_004985.png: vertical
+  hamburg_000000_005639.png: failure
+  hamburg_000000_006192.png: vertical
+  hamburg_000000_006322.png: vertical
+  hamburg_000000_007737.png: combined
+  hamburg_000000_008221.png: vertical
+  hamburg_000000_008494.png: vertical
+  hamburg_000000_011641.png: failure
+  hamburg_000000_013577.png: combined
+  hamburg_000000_014030.png: vertical_50
+  hamburg_000000_014940.png: vertical
+  hamburg_000000_015350.png: vertical
+  hamburg_000000_016447.png: vertical
+  hamburg_000000_016691.png: vertical
+  hamburg_000000_016928.png: failure
+  hamburg_000000_018592.png: vertical
+  hamburg_000000_018878.png: failure
+  hamburg_000000_019373.png: vertical
+  hamburg_000000_019760.png: vertical
+  hamburg_000000_019892.png: vertical
+  hamburg_000000_020211.png: vertical
+  hamburg_000000_020563.png: failure
+  hamburg_000000_021353.png: vertical
+  hamburg_000000_021961.png: horisontal
+  hamburg_000000_022524.png: vertical
+  hamburg_000000_023472.png: vertical
+  hamburg_000000_024251.png: vertical
+  hamburg_000000_025802.png: vertical
+  hamburg_000000_025986.png: horisontal_50
+  hamburg_000000_026675.png: failure
+  hamburg_000000_027304.png: failure
+  hamburg_000000_027857.png: vertical
+  hamburg_000000_028056.png: failure
+  hamburg_000000_028439.png: combined
+  hamburg_000000_028608.png: combined
+  hamburg_000000_029144.png: horisontal
+  hamburg_000000_029378.png: failure
+  hamburg_000000_029676.png: horisontal_50
+  hamburg_000000_030279.png: vertical
+  hamburg_000000_030953.png: vertical
+  hamburg_000000_031971.png: horisontal
+  hamburg_000000_032266.png: vertical
+  hamburg_000000_032460.png: vertical
+  hamburg_000000_032719.png: failure
+  hamburg_000000_032906.png: failure
+  hamburg_000000_033506.png: horisontal
+  hamburg_000000_034049.png: vertical
+  hamburg_000000_035568.png: vertical
+  hamburg_000000_036003.png: vertical
+  hamburg_000000_036427.png: combined
+  hamburg_000000_036527.png: failure
+  hamburg_000000_037036.png: vertical
+  hamburg_000000_037161.png: vertical
+  hamburg_000000_037279.png: combined
+  hamburg_000000_037741.png: vertical
+  hamburg_000000_038446.png: vertical
+  hamburg_000000_038511.png: vertical
+  hamburg_000000_038729.png: vertical
+  hamburg_000000_038915.png: combined
+  hamburg_000000_039264.png: vertical
+  hamburg_000000_039420.png: vertical
+  hamburg_000000_039546.png: combined
+  hamburg_000000_040021.png: failure
+  hamburg_000000_041667.png: failure
+  hamburg_000000_042505.png: vertical
+  hamburg_000000_042885.png: combined_50
+  hamburg_000000_043944.png: vertical
+  hamburg_000000_044251.png: vertical
+  hamburg_000000_044400.png: vertical
+  hamburg_000000_044747.png: failure
+  hamburg_000000_044996.png: failure
+  hamburg_000000_045437.png: combined_50
+  hamburg_000000_045704.png: failure
+  hamburg_000000_045908.png: vertical
+  hamburg_000000_046078.png: vertical
+  hamburg_000000_046510.png: failure
+  hamburg_000000_046566.png: failure
+  hamburg_000000_046619.png: failure
+  hamburg_000000_046872.png: vertical
+  hamburg_000000_047057.png: vertical
+  hamburg_000000_047108.png: vertical
+  hamburg_000000_047157.png: vertical
+  hamburg_000000_047220.png: vertical
+  hamburg_000000_047390.png: vertical
+  hamburg_000000_048138.png: combined
+  hamburg_000000_048494.png: vertical
+  hamburg_000000_048750.png: vertical
+  hamburg_000000_048960.png: vertical
+  hamburg_000000_049558.png: combined
+  hamburg_000000_050160.png: vertical
+  hamburg_000000_051855.png: failure
+  hamburg_000000_052122.png: failure
+  hamburg_000000_052904.png: failure
+  hamburg_000000_053086.png: vertical
+  hamburg_000000_053486.png: failure
+  hamburg_000000_053563.png: failure
+  hamburg_000000_053776.png: vertical
+  hamburg_000000_053886.png: vertical
+  hamburg_000000_054029.png: combined_50
+  hamburg_000000_054220.png: vertical
+  hamburg_000000_054555.png: failure
+  hamburg_000000_054850.png: failure
+  hamburg_000000_055039.png: vertical
+  hamburg_000000_055414.png: vertical
+  hamburg_000000_055894.png: failure
+  hamburg_000000_056229.png: combined_50
+  hamburg_000000_056508.png: vertical
+  hamburg_000000_057487.png: vertical
+  hamburg_000000_057678.png: vertical
+  hamburg_000000_057816.png: combined
+  hamburg_000000_058591.png: failure
+  hamburg_000000_059339.png: vertical
+  hamburg_000000_059720.png: combined_50
+  hamburg_000000_060215.png: combined
+  hamburg_000000_060586.png: failure
+  hamburg_000000_060907.png: vertical
+  hamburg_000000_061048.png: failure
+  hamburg_000000_061468.png: vertical
+  hamburg_000000_061790.png: vertical
+  hamburg_000000_062039.png: vertical
+  hamburg_000000_062371.png: vertical
+  hamburg_000000_062710.png: vertical
+  hamburg_000000_062964.png: vertical
+  hamburg_000000_063403.png: failure
+  hamburg_000000_063698.png: vertical
+  hamburg_000000_064269.png: vertical
+  hamburg_000000_064825.png: combined_50
+  hamburg_000000_065055.png: failure
+  hamburg_000000_065604.png: vertical
+  hamburg_000000_065843.png: combined
+  hamburg_000000_065983.png: failure
+  hamburg_000000_066424.png: failure
+  hamburg_000000_066706.png: failure
+  hamburg_000000_066988.png: failure
+  hamburg_000000_067223.png: vertical
+  hamburg_000000_067338.png: vertical
+  hamburg_000000_067587.png: combined
+  hamburg_000000_067799.png: vertical
+  hamburg_000000_068693.png: vertical
+  hamburg_000000_068916.png: vertical
+  hamburg_000000_069096.png: combined_50
+  hamburg_000000_069177.png: vertical
+  hamburg_000000_069289.png: vertical
+  hamburg_000000_069417.png: vertical
+  hamburg_000000_070334.png: failure
+  hamburg_000000_070444.png: failure
+  hamburg_000000_071016.png: failure
+  hamburg_000000_071150.png: failure
+  hamburg_000000_071675.png: vertical
+  hamburg_000000_071942.png: vertical
+  hamburg_000000_073314.png: vertical_50
+  hamburg_000000_073389.png: vertical
+  hamburg_000000_073549.png: vertical
+  hamburg_000000_073672.png: vertical
+  hamburg_000000_073758.png: vertical
+  hamburg_000000_073999.png: vertical
+  hamburg_000000_074139.png: failure
+  hamburg_000000_074267.png: vertical
+  hamburg_000000_074425.png: combined
+  hamburg_000000_074545.png: failure
+  hamburg_000000_074694.png: combined
+  hamburg_000000_076392.png: failure
+  hamburg_000000_076966.png: vertical
+  hamburg_000000_077144.png: horisontal
+  hamburg_000000_077642.png: vertical
+  hamburg_000000_077756.png: failure
+  hamburg_000000_077927.png: failure
+  hamburg_000000_078407.png: vertical
+  hamburg_000000_078579.png: vertical
+  hamburg_000000_078842.png: horisontal_50
+  hamburg_000000_079376.png: horisontal_50
+  hamburg_000000_079657.png: failure
+  hamburg_000000_080169.png: vertical
+  hamburg_000000_080438.png: horisontal_50
+  hamburg_000000_080674.png: combined
+  hamburg_000000_080878.png: failure
+  hamburg_000000_081299.png: failure
+  hamburg_000000_082187.png: failure
+  hamburg_000000_082301.png: vertical_50
+  hamburg_000000_083586.png: vertical
+  hamburg_000000_083696.png: vertical
+  hamburg_000000_084746.png: combined_50
+  hamburg_000000_084865.png: vertical
+  hamburg_000000_085073.png: failure
+  hamburg_000000_085321.png: combined
+  hamburg_000000_085413.png: failure
+  hamburg_000000_085645.png: vertical
+  hamburg_000000_085982.png: failure
+  hamburg_000000_086499.png: vertical_50
+  hamburg_000000_086636.png: vertical
+  hamburg_000000_087216.png: vertical
+  hamburg_000000_087822.png: failure
+  hamburg_000000_088054.png: vertical
+  hamburg_000000_088197.png: vertical
+  hamburg_000000_088627.png: vertical
+  hamburg_000000_088783.png: vertical
+  hamburg_000000_088939.png: vertical
+  hamburg_000000_088983.png: failure
+  hamburg_000000_089491.png: failure
+  hamburg_000000_089696.png: vertical
+  hamburg_000000_090398.png: failure
+  hamburg_000000_090742.png: vertical
+  hamburg_000000_091038.png: vertical
+  hamburg_000000_091155.png: failure
+  hamburg_000000_091900.png: combined
+  hamburg_000000_092476.png: vertical
+  hamburg_000000_092850.png: vertical
+  hamburg_000000_093325.png: failure
+  hamburg_000000_093572.png: vertical
+  hamburg_000000_093787.png: vertical
+  hamburg_000000_094185.png: vertical
+  hamburg_000000_094717.png: combined
+  hamburg_000000_095561.png: vertical
+  hamburg_000000_096063.png: failure
+  hamburg_000000_096624.png: horisontal_50
+  hamburg_000000_097086.png: failure
+  hamburg_000000_097447.png: vertical
+  hamburg_000000_098061.png: vertical
+  hamburg_000000_098400.png: failure
+  hamburg_000000_098616.png: horisontal_50
+  hamburg_000000_098862.png: vertical
+  hamburg_000000_099109.png: failure
+  hamburg_000000_099368.png: vertical
+  hamburg_000000_099902.png: failure
+  hamburg_000000_100300.png: failure
+  hamburg_000000_101724.png: vertical
+  hamburg_000000_102379.png: failure
+  hamburg_000000_102574.png: failure
+  hamburg_000000_103075.png: vertical
+  hamburg_000000_103186.png: vertical
+  hamburg_000000_103367.png: horisontal
+  hamburg_000000_103541.png: vertical
+  hamburg_000000_103856.png: vertical
+  hamburg_000000_104428.png: vertical
+  hamburg_000000_104857.png: horisontal
+  hamburg_000000_105123.png: horisontal_50
+  hamburg_000000_105296.png: vertical_50
+  hamburg_000000_105464.png: vertical
+  hamburg_000000_105724.png: combined
+  hamburg_000000_106102.png: vertical
+jena:
+  jena_000000_000019.png: vertical
+  jena_000001_000019.png: vertical
+  jena_000002_000019.png: combined
+  jena_000003_000019.png: vertical_50
+  jena_000004_000019.png: vertical
+  jena_000005_000019.png: vertical
+  jena_000006_000019.png: vertical
+  jena_000007_000019.png: vertical
+  jena_000008_000019.png: vertical
+  jena_000009_000019.png: vertical
+  jena_000010_000019.png: combined
+  jena_000011_000019.png: vertical_50
+  jena_000012_000019.png: vertical
+  jena_000013_000019.png: failure
+  jena_000014_000019.png: vertical
+  jena_000015_000019.png: combined
+  jena_000016_000019.png: vertical
+  jena_000017_000019.png: vertical
+  jena_000018_000019.png: failure
+  jena_000019_000019.png: vertical
+  jena_000020_000019.png: combined
+  jena_000021_000019.png: vertical
+  jena_000022_000019.png: vertical
+  jena_000023_000019.png: combined
+  jena_000024_000019.png: vertical
+  jena_000025_000019.png: horisontal_50
+  jena_000026_000019.png: failure
+  jena_000027_000019.png: vertical
+  jena_000028_000019.png: vertical
+  jena_000029_000019.png: vertical
+  jena_000030_000019.png: vertical
+  jena_000031_000019.png: combined
+  jena_000032_000019.png: combined
+  jena_000033_000019.png: vertical
+  jena_000034_000019.png: combined
+  jena_000035_000019.png: vertical
+  jena_000036_000019.png: vertical
+  jena_000037_000019.png: vertical_50
+  jena_000038_000019.png: vertical
+  jena_000039_000019.png: vertical
+  jena_000040_000019.png: combined
+  jena_000041_000019.png: vertical
+  jena_000042_000019.png: vertical
+  jena_000043_000019.png: vertical
+  jena_000044_000019.png: vertical
+  jena_000045_000019.png: vertical
+  jena_000046_000019.png: vertical
+  jena_000047_000019.png: combined
+  jena_000048_000019.png: vertical
+  jena_000049_000019.png: vertical
+  jena_000050_000019.png: vertical
+  jena_000051_000019.png: vertical
+  jena_000052_000019.png: vertical
+  jena_000053_000019.png: failure
+  jena_000054_000019.png: horisontal
+  jena_000055_000019.png: vertical
+  jena_000056_000019.png: horisontal_50
+  jena_000057_000019.png: combined
+  jena_000058_000019.png: combined_50
+  jena_000059_000019.png: horisontal_50
+  jena_000060_000019.png: vertical
+  jena_000061_000019.png: vertical
+  jena_000062_000019.png: vertical
+  jena_000063_000019.png: combined
+  jena_000064_000019.png: failure
+  jena_000065_000019.png: vertical
+  jena_000066_000019.png: vertical
+  jena_000067_000019.png: vertical
+  jena_000068_000019.png: vertical
+  jena_000069_000019.png: vertical_50
+  jena_000070_000019.png: failure
+  jena_000071_000019.png: vertical
+  jena_000072_000019.png: combined
+  jena_000073_000019.png: vertical
+  jena_000074_000019.png: vertical
+  jena_000075_000019.png: failure
+  jena_000076_000019.png: vertical
+  jena_000077_000019.png: vertical
+  jena_000078_000019.png: vertical
+  jena_000079_000019.png: combined
+  jena_000080_000019.png: vertical
+  jena_000081_000019.png: vertical
+  jena_000082_000019.png: vertical
+  jena_000083_000019.png: failure
+  jena_000084_000019.png: vertical
+  jena_000085_000019.png: failure
+  jena_000086_000019.png: vertical
+  jena_000087_000019.png: vertical
+  jena_000088_000019.png: vertical
+  jena_000089_000019.png: failure
+  jena_000090_000019.png: vertical
+  jena_000091_000019.png: combined
+  jena_000092_000019.png: vertical
+  jena_000093_000019.png: failure
+  jena_000094_000019.png: failure
+  jena_000095_000019.png: failure
+  jena_000096_000019.png: vertical
+  jena_000097_000019.png: vertical
+  jena_000098_000019.png: vertical
+  jena_000099_000019.png: vertical
+  jena_000100_000019.png: vertical
+  jena_000101_000019.png: failure
+  jena_000102_000019.png: combined
+  jena_000103_000019.png: vertical
+  jena_000104_000019.png: vertical
+  jena_000105_000019.png: failure
+  jena_000106_000019.png: combined
+  jena_000107_000019.png: vertical
+  jena_000108_000019.png: vertical
+  jena_000109_000019.png: vertical_50
+  jena_000110_000019.png: failure
+  jena_000111_000019.png: horisontal
+  jena_000112_000019.png: vertical
+  jena_000113_000019.png: vertical
+  jena_000114_000019.png: failure
+  jena_000115_000019.png: failure
+  jena_000116_000019.png: vertical
+  jena_000117_000019.png: combined
+  jena_000118_000019.png: vertical
 stuttgart:
   stuttgart_000000_000019.png: horisontal_50
   stuttgart_000001_000019.png: failure
@@ -730,6 +1518,247 @@ stuttgart:
   stuttgart_000193_000019.png: horisontal_50
   stuttgart_000194_000019.png: failure
   stuttgart_000195_000019.png: horisontal_50
+tubingen:
+  tubingen_000000_000019.png: vertical
+  tubingen_000001_000019.png: vertical_50
+  tubingen_000002_000019.png: vertical
+  tubingen_000003_000019.png: vertical
+  tubingen_000004_000019.png: horisontal
+  tubingen_000005_000019.png: failure
+  tubingen_000006_000019.png: vertical_50
+  tubingen_000007_000019.png: vertical_50
+  tubingen_000008_000019.png: failure
+  tubingen_000009_000019.png: vertical
+  tubingen_000010_000019.png: vertical_50
+  tubingen_000011_000019.png: combined
+  tubingen_000012_000019.png: vertical
+  tubingen_000013_000019.png: vertical_50
+  tubingen_000014_000019.png: combined
+  tubingen_000015_000019.png: vertical
+  tubingen_000016_000019.png: horisontal_50
+  tubingen_000017_000019.png: vertical
+  tubingen_000018_000019.png: vertical
+  tubingen_000019_000019.png: combined
+  tubingen_000020_000019.png: combined
+  tubingen_000021_000019.png: vertical
+  tubingen_000022_000019.png: combined
+  tubingen_000023_000019.png: vertical
+  tubingen_000024_000019.png: vertical
+  tubingen_000025_000019.png: vertical_50
+  tubingen_000026_000019.png: vertical
+  tubingen_000027_000019.png: combined_50
+  tubingen_000028_000019.png: combined
+  tubingen_000029_000019.png: vertical_50
+  tubingen_000030_000019.png: vertical
+  tubingen_000031_000019.png: failure
+  tubingen_000032_000019.png: combined_50
+  tubingen_000033_000019.png: horisontal_50
+  tubingen_000034_000019.png: failure
+  tubingen_000035_000019.png: failure
+  tubingen_000036_000019.png: horisontal
+  tubingen_000037_000019.png: combined_50
+  tubingen_000038_000019.png: failure
+  tubingen_000039_000019.png: failure
+  tubingen_000040_000019.png: horisontal_50
+  tubingen_000041_000019.png: vertical
+  tubingen_000042_000019.png: combined
+  tubingen_000043_000019.png: combined
+  tubingen_000044_000019.png: horisontal
+  tubingen_000045_000019.png: combined
+  tubingen_000046_000019.png: combined_50
+  tubingen_000047_000019.png: failure
+  tubingen_000048_000019.png: combined_50
+  tubingen_000049_000019.png: failure
+  tubingen_000050_000019.png: horisontal_50
+  tubingen_000051_000019.png: vertical_50
+  tubingen_000052_000019.png: vertical
+  tubingen_000053_000019.png: failure
+  tubingen_000054_000019.png: vertical
+  tubingen_000055_000019.png: failure
+  tubingen_000056_000019.png: combined
+  tubingen_000057_000019.png: failure
+  tubingen_000058_000019.png: horisontal
+  tubingen_000059_000019.png: failure
+  tubingen_000060_000019.png: vertical
+  tubingen_000061_000019.png: vertical
+  tubingen_000062_000019.png: vertical
+  tubingen_000063_000019.png: horisontal_50
+  tubingen_000064_000019.png: failure
+  tubingen_000065_000019.png: failure
+  tubingen_000066_000019.png: failure
+  tubingen_000067_000019.png: combined
+  tubingen_000068_000019.png: vertical
+  tubingen_000069_000019.png: vertical_50
+  tubingen_000070_000019.png: vertical_50
+  tubingen_000071_000019.png: failure
+  tubingen_000072_000019.png: failure
+  tubingen_000073_000019.png: combined
+  tubingen_000074_000019.png: vertical
+  tubingen_000075_000019.png: vertical
+  tubingen_000076_000019.png: vertical_50
+  tubingen_000077_000019.png: horisontal
+  tubingen_000078_000019.png: vertical
+  tubingen_000079_000019.png: vertical
+  tubingen_000080_000019.png: failure
+  tubingen_000081_000019.png: combined
+  tubingen_000082_000019.png: failure
+  tubingen_000083_000019.png: horisontal
+  tubingen_000084_000019.png: vertical_50
+  tubingen_000085_000019.png: failure
+  tubingen_000086_000019.png: vertical
+  tubingen_000087_000019.png: vertical
+  tubingen_000088_000019.png: vertical_50
+  tubingen_000089_000019.png: vertical
+  tubingen_000090_000019.png: failure
+  tubingen_000091_000019.png: failure
+  tubingen_000092_000019.png: horisontal
+  tubingen_000093_000019.png: combined
+  tubingen_000094_000019.png: vertical_50
+  tubingen_000095_000019.png: combined_50
+  tubingen_000096_000019.png: vertical
+  tubingen_000097_000019.png: vertical_50
+  tubingen_000098_000019.png: vertical
+  tubingen_000099_000019.png: combined
+  tubingen_000100_000019.png: vertical
+  tubingen_000101_000019.png: combined
+  tubingen_000102_000019.png: vertical_50
+  tubingen_000103_000019.png: horisontal_50
+  tubingen_000104_000019.png: horisontal_50
+  tubingen_000105_000019.png: vertical
+  tubingen_000106_000019.png: vertical
+  tubingen_000107_000019.png: vertical_50
+  tubingen_000108_000019.png: horisontal
+  tubingen_000109_000019.png: combined
+  tubingen_000110_000019.png: vertical
+  tubingen_000111_000019.png: vertical
+  tubingen_000112_000019.png: horisontal_50
+  tubingen_000113_000019.png: vertical_50
+  tubingen_000114_000019.png: combined
+  tubingen_000115_000019.png: vertical
+  tubingen_000116_000019.png: combined
+  tubingen_000117_000019.png: vertical
+  tubingen_000118_000019.png: combined
+  tubingen_000119_000019.png: vertical
+  tubingen_000120_000019.png: vertical
+  tubingen_000121_000019.png: horisontal_50
+  tubingen_000122_000019.png: failure
+  tubingen_000123_000019.png: combined_50
+  tubingen_000124_000019.png: failure
+  tubingen_000125_000019.png: vertical
+  tubingen_000126_000019.png: combined
+  tubingen_000127_000019.png: vertical
+  tubingen_000128_000019.png: combined_50
+  tubingen_000129_000019.png: horisontal
+  tubingen_000130_000019.png: combined
+  tubingen_000131_000019.png: vertical
+  tubingen_000132_000019.png: vertical
+  tubingen_000133_000019.png: vertical
+  tubingen_000134_000019.png: combined
+  tubingen_000135_000019.png: combined
+  tubingen_000136_000019.png: combined_50
+  tubingen_000137_000019.png: horisontal_50
+  tubingen_000138_000019.png: horisontal_50
+  tubingen_000139_000019.png: failure
+  tubingen_000140_000019.png: failure
+  tubingen_000141_000019.png: failure
+  tubingen_000142_000019.png: vertical
+  tubingen_000143_000019.png: vertical_50
+ulm:
+  ulm_000000_000019.png: vertical
+  ulm_000001_000019.png: vertical
+  ulm_000002_000019.png: failure
+  ulm_000003_000019.png: vertical
+  ulm_000004_000019.png: combined
+  ulm_000005_000019.png: failure
+  ulm_000006_000019.png: vertical
+  ulm_000007_000019.png: vertical
+  ulm_000008_000019.png: combined
+  ulm_000009_000019.png: horisontal
+  ulm_000010_000019.png: failure
+  ulm_000011_000019.png: failure
+  ulm_000012_000019.png: failure
+  ulm_000013_000019.png: horisontal_50
+  ulm_000014_000019.png: failure
+  ulm_000015_000019.png: combined_50
+  ulm_000016_000019.png: failure
+  ulm_000017_000019.png: vertical
+  ulm_000018_000019.png: vertical_50
+  ulm_000019_000019.png: vertical
+  ulm_000020_000019.png: failure
+  ulm_000021_000019.png: vertical
+  ulm_000022_000019.png: vertical
+  ulm_000023_000019.png: vertical
+  ulm_000024_000019.png: failure
+  ulm_000025_000019.png: vertical
+  ulm_000026_000019.png: horisontal_50
+  ulm_000027_000019.png: horisontal
+  ulm_000028_000019.png: combined
+  ulm_000029_000019.png: failure
+  ulm_000030_000019.png: failure
+  ulm_000031_000019.png: combined
+  ulm_000032_000019.png: vertical
+  ulm_000033_000019.png: failure
+  ulm_000034_000019.png: vertical
+  ulm_000035_000019.png: combined
+  ulm_000036_000019.png: vertical
+  ulm_000037_000019.png: failure
+  ulm_000038_000019.png: failure
+  ulm_000039_000019.png: vertical
+  ulm_000040_000019.png: combined
+  ulm_000041_000019.png: vertical
+  ulm_000042_000019.png: vertical
+  ulm_000043_000019.png: combined
+  ulm_000044_000019.png: vertical
+  ulm_000045_000019.png: combined
+  ulm_000046_000019.png: vertical
+  ulm_000047_000019.png: combined
+  ulm_000048_000019.png: vertical
+  ulm_000049_000019.png: combined
+  ulm_000050_000019.png: vertical
+  ulm_000051_000019.png: combined
+  ulm_000052_000019.png: combined
+  ulm_000053_000019.png: horisontal
+  ulm_000054_000019.png: vertical
+  ulm_000055_000019.png: combined
+  ulm_000056_000019.png: vertical
+  ulm_000057_000019.png: failure
+  ulm_000058_000019.png: vertical
+  ulm_000059_000019.png: failure
+  ulm_000060_000019.png: failure
+  ulm_000061_000019.png: vertical
+  ulm_000062_000019.png: combined
+  ulm_000063_000019.png: vertical
+  ulm_000064_000019.png: vertical
+  ulm_000065_000019.png: vertical
+  ulm_000066_000019.png: horisontal
+  ulm_000067_000019.png: vertical
+  ulm_000068_000019.png: combined
+  ulm_000069_000019.png: failure
+  ulm_000070_000019.png: vertical
+  ulm_000071_000019.png: vertical
+  ulm_000072_000019.png: vertical
+  ulm_000073_000019.png: vertical
+  ulm_000074_000019.png: combined_50
+  ulm_000075_000019.png: failure
+  ulm_000076_000019.png: vertical
+  ulm_000077_000019.png: vertical
+  ulm_000078_000019.png: vertical
+  ulm_000079_000019.png: vertical
+  ulm_000080_000019.png: horisontal_50
+  ulm_000081_000019.png: combined
+  ulm_000082_000019.png: vertical
+  ulm_000083_000019.png: combined_50
+  ulm_000084_000019.png: combined
+  ulm_000085_000019.png: vertical
+  ulm_000086_000019.png: vertical
+  ulm_000087_000019.png: failure
+  ulm_000088_000019.png: failure
+  ulm_000089_000019.png: vertical
+  ulm_000090_000019.png: vertical
+  ulm_000091_000019.png: vertical
+  ulm_000092_000019.png: vertical
+  ulm_000093_000019.png: vertical
+  ulm_000094_000019.png: vertical
 weimar:
   weimar_000000_000019.png: vertical_50
   weimar_000001_000019.png: combined
