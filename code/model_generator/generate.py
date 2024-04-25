@@ -11,6 +11,8 @@ from matplotlib import pyplot as plt
 from torchvision.utils import make_grid
 import torchvision.transforms.functional as F
 import torchvision.transforms as transforms
+import os
+
 from PIL import Image
 import torch
 from estimator import HorisontalEstimator, VerticalEstimator, EstimatorBase
@@ -82,7 +84,7 @@ dataset: "CityScapes" = CityScapes("/home/esko/Documents/Dippatyo/dataset")
     # assume area same as around it
     # Ask image to be approved
     # save if approved
-for image in dataset.images[400:405]:
+for image in dataset.images:
 
     classification: torch.Tensor = image.classification_image()
     disparity: torch.Tensor = image.disparity()
@@ -101,12 +103,36 @@ for image in dataset.images[400:405]:
     
     h_estimate = HorisontalEstimator().estimate(groups, disparity)
     v_estimate = VerticalEstimator().estimate(groups, disparity)
-    m_estimate = EstimatorBase().combine_estimators(groups, h_estimate, v_estimate)
+    c_estimate = EstimatorBase().combine_estimators(groups, h_estimate, v_estimate)
+
+    h_50_estimate = HorisontalEstimator().estimate(groups, disparity, b=50)
+    v_50_estimate = VerticalEstimator().estimate(groups, disparity, b=50)
+    c_50_estimate = EstimatorBase().combine_estimators(groups, h_50_estimate, v_50_estimate)
+
+    
+
+    def save_estimate(type, city, name, image):
+        path = "/home/esko/Documents/Dippatyo/output"
+        if not os.path.exists(os.path.join(path, type)):
+            os.makedirs(os.path.join(path, type))
+        if not os.path.exists(os.path.join(path, type, city)):
+            os.makedirs(os.path.join(path, type, city))
+        transform = transforms.ToPILImage()
+        img = transform(image)
+        img.save(os.path.join(path, type, city, name))
 
 
+    save_estimate("horisontal", image.city, image.name, h_estimate)
+    save_estimate("vertical", image.city, image.name, v_estimate)
+    save_estimate("combined", image.city, image.name, c_estimate)
 
-    grid = make_grid([image.left(), image.classification_image(), image.disparity(), torch.from_numpy(d), h_estimate, v_estimate, m_estimate])
+    save_estimate("horisontal_50", image.city, image.name, h_50_estimate)
+    save_estimate("vertical_50", image.city, image.name, v_50_estimate)
+    save_estimate("combined_50", image.city, image.name, c_50_estimate)
 
-    show(grid)
+    print(f"{image.city} : {image.name}")
+    # grid = make_grid([image.left(), image.classification_image(), image.disparity(), torch.from_numpy(d), h_estimate, v_estimate, c_estimate])
 
-    plt.show()
+    # show(grid)
+
+    # plt.show()

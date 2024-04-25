@@ -48,7 +48,9 @@ class ImageItem():
         -1: 1 , # 'license plate'
     }
 
-    def __init__(self, image, right_image, disparity_image, classification_image):
+    def __init__(self, name, city, image, right_image, disparity_image, classification_image):
+        self.name = name
+        self.city = city
         self._image: str = image
         self._image_r: str = right_image
         self._dipsarity:  str = disparity_image
@@ -155,6 +157,8 @@ class CityScapes():
                             raise Exception(f"Classification image path {c_i_p} not found")
 
                         image = ImageItem(
+                            l_image.replace("_leftImg8bit", ""),
+                            city,
                             l_i_p,
                             r_i_p,
                             d_i_p,
