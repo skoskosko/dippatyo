@@ -40,13 +40,18 @@ class CityScapesDataset(torch.utils.data.Dataset):
 
     def _image(self, path):
         return v2.Resize(size=256, interpolation=v2.InterpolationMode.NEAREST, antialias=False)(read_image(path, mode=ImageReadMode.GRAY))
-
     
+    
+    
+    def l_image(self, idx):
+            return self._image(os.path.join(self.l_image_root, self.items[idx]["city"], self.items[idx]["name"].replace(".png", "_leftImg8bit.png")))
+
+        
     def __getitem__(self, idx):
         if torch.is_tensor(idx):
             idx = idx.tolist()
         
-        l_image = self._image(os.path.join(self.l_image_root, self.items[idx]["city"], self.items[idx]["name"].replace(".png", "_leftImg8bit.png")))
+        l_image = self.l_image(idx)
         r_image = self._image(os.path.join(self.r_image_root, self.items[idx]["city"], self.items[idx]["name"].replace(".png", "_rightImg8bit.png")))
 
         _image = torch.zeros(size=(3, l_image.shape[1], l_image.shape[2]), dtype=torch.uint8)
