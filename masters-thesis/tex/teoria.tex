@@ -1,35 +1,63 @@
 \chapter{Teoria}%
 \label{ch:teoria}
 
-Tässä kappaleessa käsitellään eri käytettäviä teknologioita perus tasolla.
+\section{Stereo nalyysi}
 
-\section{Stereo Analyysi}
+\begin{figure}[h]
+\centering
+\pdftooltip{\includegraphics[width=\textwidth]{figures/stereo_depth.jpg}}{Stereo depth}
+\caption{Stereo depth}
+\label{fig:stereo}
+\end{figure}
 
-Stereo Analyysillä kuvan käsittelyssä tarkoitetaan kahdesta samasta kohteesta otetusta kuvasta olevien yhtenäisyyksillä syvyyden analysointia. Näiden tietojen avulla voidaan arvioida kuvassa olevien kohteiden etäisyyttä toisistaan sekä kamerasta. Tämä analyysi voidaan suorittaa mille tahansa kahdelle kuvalle eri kuvakulmasta samasta kohteesta. Yleisesti käytettävässä datassa kuitenkin kuvat ovat otettu sivuttais suunnassa vierekkäisistä asemista, ja oletamme että stereokuvamme ovat tällaisia. Tässä tapauksessa kuva datan analysointia helpottaa kuvassa olevien kohteiden asemointi toisiinsa verrattuna, koska niitä ei tarvitse etsiä eri puolilta kuvaa. Tarkan syvyyden laskemisessa onkin kameroiden kalibraation sekä sijainti toisiinsa nähden tarpeellista. Kuitenkin jo pelkästään kahdella kuvalla kohteesta voidaan jo arvioida kohteiden relatiivista etäisyyttä toisiinsa. 
+Stereo analyysillä kuvankäsittelyssä tarkoitetaan kahdesta samasta kohteesta otetusta kuvasta olevien yhtenäisyyksillä syvyyden analysointia.
+Vaikka näitä tekniikoita voi varioida mihin tahansa kuviin jotka ovat samasta kohteesta,
+tässä yhteydessä käytämme kuvia,
+jotka ovat otettu samasta perspektiivistä siten että kuvat ovat horisontaalisesti vierekkäin.
+Jos tiedetään kameroiden sijainti toisistaan tai jonkin pisteen etäisyys kamerasta voidaan myös kuvasta arvioida absoluuttinen etäisyys kameraan. 
 
-Kuvien pisteiden sijainnin muutosta toisiinsa nähden kutsutaan dispariteetiksi. On erilaisia tekniikoita joilla tämä dispariteetti voidaan arvioida, mutta sen tavoite on löytää sama piste eri kuvista, ja ilmoittaa sen dispariteetti. Jos molemmissa kuvissa tunnistetaan pikseli tai pikselijoukko samassa kohdassa, on sen pisteen dispariteetti nolla, jos ses on siirynyt annetaan sille jokin arvo siirtymäsuunnan mukaan. Kun kuvasta on laskettu haluttu resoluutio tälläisiä pisteitä voidaan siitä generoida 3d pistekartta.
+Kun stereoparia analysoidaan ja tunnistetaan korreloiva piste molemmista kuvista,
+voidaan laskea kuvien välinen dispariteetti \ref{fig:stereo}
+Tämä tarkoittaa käytännöstä muutosta pisteen sijainnissa kuvien välillä.
+Periaatteessa vastaavat pisteet voivat sijaita missä tahansa kuvassa.
+Kuitenkin tässä tapauksessa jossa kuvat ovat tietyssä suhteessa toisiinsa,
+voidaan olettaa stereoparin löytyvän x akselilta tai ainakin melko läheltä sitä.
+Jos näin ei olisi jouduttaisiin kuvan jokaista pistettä vertaamaan jokaiseen pisteeseen toisessa kuvassa.
+Tämä tapa tulee nopeasti hyvin kalliiksi.
+Jos verrattava alue on myös hyvin pieni todennäköisyys tunnistaa useita samankaltaisia alueita kasvaa.
+Jos alue on suuri tai vertailu suoritetaan liian tarkasti,
+kasvaa todennäköisyys että vaihtunut kuvakulma on niin erilainen että sitä ei tunnisteta.
+Tästä johtuen tämän ongelman ratkaisuun on kehitetty monia erilaisia tapoja.
+
+TODO: Tähän voisi hakea lähteitä. Ihan vaan joku geneerinen stereo analyysi artikkeli.
+
 
 \subsection{SGM Semi global matching}
 
-Jotta stereo analyysi on mahdollista tulee kuvasta tunnistaa samat kohteet. Yksi tapa tehdä tämä tunistanen on Semi-global matchinging avulla\cite{hirschmuller2005babel}. Tämä tekniikka ottaa huomioon pikselin ja sen ympäröpivien pikselien arvot etsiessään toisesta kuvasta vastaavaa arvoa. Tämä sovitus voidaan tehdä kaavalla.
+Jotta stereo analyysi on mahdollista,
+tulee kuvasta tunnistaa samat kohteet.
+Yksi tapa tehdä tämä on Hircmuller:in SGM tekniikan avulla\cite{hirschmuller2005babel}.
+Tämä tekniikka ottaa huomioon pikselin ja sen ympäröivien pikselien arvot etsiessään toisesta kuvasta vastaavaa arvoa. Tämä hakuoidaan tehdä kaavalla.
 
 \begin{equation}\label{yht:SGM}
     E(d) = \sum_{p} D(p, d_p) + \sum_{q \in \mathcal{N}} R(p, d_p, q, d_q)
 \end{equation}
 
-Tässä kaavassa siis lasketaan yhteen itse pikselin tai pikselialueen dispariteetti \(D(p, d_p)\), sekä valitun joukon sitä ympäröivien pikseleitä samankaltaisuus\(R(p, d_p, q, d_q)\). Näin saadaan arvioitua kustannustehokkaasti samankaltaisuus, koska saman asian ympäröivät pikselit tulisi olla melko samankaltaisia molemmissa kuvissa. 
+Kaavassa \(D(p, d_p)\) summa funktio käy läpi kaikki kuvan pikselit ja vertaa niitä vertailupikseliin.
+Tämä antaa perus arvon yksittäisen pikselin samankaltaisuudelle.
 
-Eli jos pikseli ja sen ympäriöivät pikselit ovat arvoiltaan saman kaltaisia, on mahdollisuus että ne ovat sama piste kuin verrokki kuvassa. Kun arvo on tarpeeksi suuri voidaan olettaa että kyseessä on sama piste. Näiden pisteiden avulla voidaan arvioida pisteen dispariteetti. Kun pisteen samankaltaisuutta arvioidaan, on usein järkevää käyttää filtereitä odottamattomuuksien ja artifaktien minimoimiseksi. Mutta itse vertailu voidaan tehä vain absoluuttisesti arvoja vertaamalla tai arvo joukon keskiarvoa verraten.
+Tämän jälkeen pikselin ympäröiviä pikseleitä verrataan toisiinsa \(R(p, d_p, q, d_q)\).
+koska saman asian ympäröivät pikselit tulisi olla melko samankaltaisia molemmissa kuvissa, 
+Vaikka se onkin kuvattu hieman eri asennosta, voidaan tämän avulla arvioida onko kyseessä sama piste.
 
-Tämä yhdistetään haluttuun määrään ympäröivien pikselien dispariteettiin. Joiden näin ollen pitäisi olla melko samankaltaisia molemmissa kuvissa. Ja niiden summasta saadaan tulos, josta voidaan yrittää päätellä onko kyseessä sama piste.
-
-Käytetyssä ohjelmakoodissa SGM function implementoinnin hoiti 
-
-"\url{https://docs.opencv.org/3.4/d2/d85/classcv_1_1StereoSGBM.html}"
-
-"\url{https://en.wikipedia.org/wiki/Semi-global_matching}"
+Tämän algoritmin implimentoi pythonin opencv kirjaston SGBM \cite{opencvsgbm},
+jota varioitu käymään läpi pikseli joukkoja, eikä yksittäisiä pikseleitä.
+Tämä nopeuttaa prosessointia huomattavasti.
+Se myöskin suorittaa joitain suodatuksia parempien tulosten saavuttamiseksi.
 
 \section{Neuroverkot}
+
+- TODO: Parantele selitystä
 
 Lopulliseen toteutukseen käytetään neuroverkkoa, neuroverkko on yleisesti kuva-analyysiin käytettävä tekniikka, jonka voi kouluttaa datalla niin kuvankäsittelyllisiä kuin muitakin ongelmia. Sen toiminta perustuu neuroneihin joita järjestetään verkkomaiseen rakenteeseen useisiin eri kerroksiin.
 
@@ -37,7 +65,11 @@ Lopulliseen toteutukseen käytetään neuroverkkoa, neuroverkko on yleisesti kuv
     a = \sigma\left(\sum_i w_i x_i + b\right)
 \end{equation}
 
-Tämä on neuronin matemaattinen kaava, se tuottaa ulostulonaan arvon \(a\)  saamiensa syötteiden perusteella. \(x_i\) on neuronin saama syöte. \(w_i\) on neuronille annettu painoarvo. \(b\) on neuronin bias arvo. \(\sigma\) on funktio joka muuttaa neuronin saavan armon välille 0,1.
+Tämä on neuronin matemaattinen kaava,
+se tuottaa ulostulonaan arvon \(a\) saamiensa syötteiden perusteella.
+\(x_i\) on neuronin saama syöte.
+\(w_i\) on neuronille annettu painoarvo.
+\(b\) on neuronin bias arvo. \(\sigma\) on funktio joka muuttaa neuronin saavan armon välille 0,1.
 
 Kun näitä neuroneita asetetaan eri kerroksiin siten että verkon sisääntulo on esimerkiksi valokuvan kokoinen, ja ulostulo on yhen neuronin ulostulo, voidaan verkolle syöttää kuvia esimerkiksi kissoista ja koirista. Kun näille kuville annetaan arvot 0 ja 1 kuvan aiheen mukaan, voidaan verkko kouluttaa tunnistamaan kissoja ja koiria. Koulutuksen aikana verkko muuttaa arvojaan \(w_i\) ja \(b\). Nämä arvot se saa yrittämällä erilaisia arvoja neuroneille. Kun verkkoa tämän jälkeen testataan on voidaan saaduista lopputuloksista valita paras. Tämän jälkeen tätä lopputulosta voidaan lähteä parantelemaan, testaamalla toimiiko suuremmat vai pienemmät arvot paremmin. Kun näitä kahta arvoa eri neuroneilla muutetaan saadaan paremmin toimiva neuroverkko.
 
@@ -47,9 +79,14 @@ Neuroverkko on siis vain kasa yksinkertaisia matemaattisia funktioita, joiden to
 
 \section{Semantic segmentation}
 
-Semantic segmentation eli kuvan segmentointi on yksi yleinen käyttökohde neuroverkoille. Sen avulla on helppo tehdä käytettäviä ja helposti hyödynnettäviä malleja. Esimerkkejä käytöstä on esimerkiksi automatisoidussa liikenteessä erilaisten asioiden erottelu \ref{fig:labels}. Tätä samaa teknologiaa voidaan käyttää useisiin eri applikaatioihin ja se on mahdollisesti yksi parhaita tapoja tarjota tietokoneelle mahdollisimman ihmismäinen tapa tunnistaa asioita kuvista. Näin voidaan yhdestä kuvasta tunnistaa erilaiset löytyvät asiat, esimerkiksi autot, ihmiset tiet puut jne. Samaan asiaan voisi käyttää myös object detection mallia, mutta tunnistustapa on hieman erilainen. Toisinkuin objektin tunnistus joka tunnistaa kuvan alueen missä on esimerkiksi ihminen, segmentointi malli tekee erottelun tarkemmin pikselitasolla.
+- TODO: Parantele selitystä
 
-\begin{figure}
+Semantic segmentation eli kuvan segmentointi on yksi yleinen käyttökohde neuroverkoille.
+Sen avulla on helppo tehdä käytettäviä ja helposti hyödynnettäviä malleja.
+Esimerkkejä käytöstä on esimerkiksi automatisoidussa liikenteessä erilaisten asioiden erottelu \ref{fig:labels}.
+Tätä samaa teknologiaa voidaan käyttää useisiin eri applikaatioihin ja se on mahdollisesti yksi parhaita tapoja tarjota tietokoneelle mahdollisimman ihmismäinen tapa tunnistaa asioita kuvista. Näin voidaan yhdestä kuvasta tunnistaa erilaiset löytyvät asiat, esimerkiksi autot, ihmiset tiet puut jne. Samaan asiaan voisi käyttää myös object detection mallia, mutta tunnistustapa on hieman erilainen. Toisinkuin objektin tunnistus joka tunnistaa kuvan alueen missä on esimerkiksi ihminen, segmentointi malli tekee erottelun tarkemmin pikselitasolla.
+
+\begin{figure}[h]
 \centering
 \pdftooltip{\includegraphics[width=\textwidth]{figures/stuttgart03.png}}{Cityscapes esimerkki kuva stuttgart03}
 \caption[Tämä on lyhyt kuvateksti.]{Cityscapes datestin esimerkki segmentointi dataa, jossa kaupunki näkymän erilaiset tunnistattavat kohteet on merkitty eri väreillä.}
@@ -64,10 +101,12 @@ Kun segmentointi mallin kanssa työskennellään se kuitenkin tuo hieman lisäha
 
 \section{3d pisteavaruus}
 
+- TODO: Parantele selitystä
+
 Lopullinen haluttu tuotos on 3d  pisteavaruus. 3d pisteavaruus voidaan ajatella esitetyistä pisteistä joilla on syvyys arvo. Tässä tapauksessa kun pisteavaruus on tehty valokuvien pohjalta, voi myös saadun pisteavaruuden esittää kuvana \ref{fig:depth}. Muissa tilanteissa 3d pisteitä voi kuitenkin sijaita kaksiulotteisesta perspektiivistä katsottuna toistensa takana. Ei siis tule olettaa että kaikki 3d pistekartat on häviöttömästi esitettävissä 2d muodossa. 
 
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \pdftooltip{\includegraphics[width=\textwidth]{figures/leverkusen_000024_000019_disparity.png}}{Cityscapes esimerkki kuva leverkusen_000024_000019_disparity}
 \caption[Tämä on lyhyt kuvateksti.]{Citysscapes datasetin syvyysdata esimerkki.}
