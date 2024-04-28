@@ -27,7 +27,7 @@ dataset = CityScapesDataset()
 source, truth = dataset[0]
 
 EPOCHES = 200
-BATCH_SIZE = 30
+BATCH_SIZE = 10
 DEVICE = 'cuda'
 
 indexes = list(range(len(dataset)))
@@ -39,24 +39,19 @@ train_ds = torch.utils.data.Subset(dataset, indexes[split_point:])
 valid_ds = torch.utils.data.Subset(dataset, indexes[0:split_point-1])
 
 loader = torch.utils.data.DataLoader(
-    train_ds, batch_size=BATCH_SIZE, shuffle=False, num_workers=25)
+    train_ds, batch_size=BATCH_SIZE, shuffle=False, num_workers=8)
 
 vloader = torch.utils.data.DataLoader(
-    valid_ds, batch_size=BATCH_SIZE, shuffle=False, num_workers=25)
+    valid_ds, batch_size=BATCH_SIZE, shuffle=False, num_workers=8)
 
-model = torchvision.models.segmentation.fcn_resnet50(weights=None, num_classes=1)
-model.load_state_dict(torch.load("best_model.pth"), strict=False)
+model = torchvision.models.segmentation.fcn_resnet50(weights=None, num_classes=128)
+# model.load_state_dict(torch.load("best_model.pth"), strict=False)
 
 optimizer = torch.optim.AdamW(model.parameters(),
                   lr=1e-4, weight_decay=1e-3)
 
-# loss_fn = torch.nn.CrossEntropyLoss()
+loss_fn = torch.nn.CrossEntropyLoss()
 
-# def my_loss(output, target):
-#     loss = torch.mean((output - target)**2)
-#     return loss
-
-loss_fn = torch.nn.MSELoss()
 
 @torch.no_grad()
 def validation(model, loader, loss_fn):
@@ -66,16 +61,6 @@ def validation(model, loader, loss_fn):
         image, target = image.to(DEVICE), target.float().to(DEVICE)
         output = model(image)['out']
         loss = loss_fn(output, target)
-        # to_pil_image(target[0]).show()
-        # to_pil_image(output[0]).show()
-        # _output = torch.zeros(size=(output.shape[0], output.shape[2], output.shape[3]), dtype=torch.float)
-        # for i in range(output.shape[0]):
-        #     _output[i, :, :] = output[i, 0, :, :]
-        # _target = torch.zeros(size=(target.shape[0], target.shape[2], target.shape[3]), dtype=torch.float)
-        # for i in range(target.shape[0]):
-        #     _target[i, :, :] = target[i, 0, :, :]
-        # loss = loss_fn(_output, _target)
-        # loss = loss_fn(target[0], output[0])
         losses.append(loss.item())
 
     return numpy.array(losses).mean()
@@ -100,18 +85,7 @@ for epoch in tqdm.tqdm(range(1, EPOCHES+1)):
         optimizer.zero_grad()
         output = model(image)['out']
 
-
-        # _output = torch.zeros(size=(output.shape[0], output.shape[2], output.shape[3]), dtype=torch.float)
-        # for i in range(output.shape[0]):
-        #     _output[i, :, :] = output[i, 0, :, :]
-        # _target = torch.zeros(size=(target.shape[0], target.shape[2], target.shape[3]), dtype=torch.float)
-        # for i in range(target.shape[0]):
-        #     _target[i, :, :] = target[i, 0, :, :]
-
-        # loss = loss_fn(target[0], output[0])
-        loss = loss_fn(target, output)
-        # print(loss)
-        # print(loss.item())
+        loss = loss_fn(output, target)
         loss.backward()
         optimizer.step()
         losses.append(loss.item())

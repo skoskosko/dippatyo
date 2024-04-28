@@ -30,7 +30,7 @@ BATCH_SIZE = 30
 DEVICE = 'cuda'
 
 
-model = torchvision.models.segmentation.fcn_resnet50(weights=None, num_classes=1)
+model = torchvision.models.segmentation.fcn_resnet50(weights=None, num_classes=128)
 model.load_state_dict(torch.load("model.pth"), strict=False)
 model.eval()
 model.to(DEVICE)
@@ -46,7 +46,21 @@ index = random.randint(0, len(dataset))
 print(index)
 image, target = dataset[index]
 to_pil_image(dataset.l_image(index)).show()
-to_pil_image(target).show()
+
+
+
+def to_img(image):
+    img = image.to("cpu")
+    _output = torch.zeros(size=(1, img.shape[1], img.shape[2]), dtype=torch.uint8)
+    for i in range(128):
+        Y, X = numpy.where(img[i] > 0.9)
+        print(len(Y))
+        _output[0,Y,X] = i*2
+    return _output
+
+
+
+to_pil_image(to_img(target)).show()
 
 _image = torch.zeros(size=(1, 3, image.shape[1], image.shape[2]), dtype=torch.uint8)
 
@@ -54,4 +68,4 @@ _image[0, :, :, : ] = image
 _image = _image.float().to(DEVICE)
 
 prediction = model(_image)["out"]
-to_pil_image(prediction[0]).show()
+to_pil_image(to_img(prediction[0])).show()

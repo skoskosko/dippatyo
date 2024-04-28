@@ -60,5 +60,10 @@ class CityScapesDataset(torch.utils.data.Dataset):
 
 
         _truth = self._image(os.path.join(self.truth_root, self.items[idx]["truth_type"], self.items[idx]["city"], self.items[idx]["name"]))
+        _splitted_truth = torch.zeros(size=(128, l_image.shape[1], l_image.shape[2]), dtype=torch.bool)
 
-        return _image.float(), _truth.float()
+        for i in range(128):
+            Y, X = numpy.where(numpy.logical_or(_truth[0] == i*2,_truth[0] == i*2+1))
+            _splitted_truth[i,Y,X] = 1
+
+        return _image.float(), _splitted_truth.float()
