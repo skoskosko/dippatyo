@@ -105,13 +105,11 @@ Tähän ei ole yhtä parasta ratkaisua, vaan eri verkkojen ja käyttökohteiden 
 
 \section{Semantic segmentation}
 
-- TODO: Parantele selitystä
-
-Semantic segmentation eli kuvan segmentointi on yksi yleinen käyttökohde neuroverkoille.
+Semantic segmentation eli kuvan segmentointi on yleinen käyttökohde neuroverkoille.
 Sen avulla on helppo tehdä käytettäviä ja helposti hyödynnettäviä malleja.
-Esimerkkejä käytöstä on esimerkiksi automatisoidussa liikenteessä erilaisten asioiden erottelu \ref{fig:labels}.
-Tätä samaa teknologiaa voidaan käyttää useisiin eri applikaatioihin ja se on mahdollisesti yksi parhaita tapoja tarjota tietokoneelle mahdollisimman ihmismäinen tapa tunnistaa asioita kuvista. Näin voidaan yhdestä kuvasta tunnistaa erilaiset löytyvät asiat, esimerkiksi autot, ihmiset tiet puut jne. Samaan asiaan voisi käyttää myös object detection mallia, mutta tunnistustapa on hieman erilainen. Toisinkuin objektin tunnistus joka tunnistaa kuvan alueen missä on esimerkiksi ihminen, segmentointi malli tekee erottelun tarkemmin pikselitasolla.
-
+Ja se on hyvä esimerkki ongelmasta jolle on helppo tehdä koulutusdataa, mutta hankala luoda ohjelmallista toteutusta saman lopputuloksen saamiseksi.
+Esimerkkejä käytöstä on esimerkiksi automatisoidussa liikenteessä,
+liikenteen esteiden tunnistamisessa \ref{fig:labels}.
 \begin{figure}[h]
 \centering
 \pdftooltip{\includegraphics[width=\textwidth]{figures/stuttgart03.png}}{Cityscapes esimerkki kuva stuttgart03}
@@ -119,13 +117,21 @@ Tätä samaa teknologiaa voidaan käyttää useisiin eri applikaatioihin ja se o
 \label{fig:labels}
 \end{figure}
 
-Kun segmentointi mallin kanssa työskennellään se kuitenkin tuo hieman lisähaastetta datasetin vaatimuksiin koska kuvien pitää olla käsitelty tarkemmin kuin vain varustettuna alueilla missä on asioita. Tämä möyskin hieman muutta tappiofunktion käsittelyä. Koska mallin ei ole tarkoitus palautta pistejoukkoja vaan alueita, ei voida vain verrata ovatko tunnistetut pisteet lähellä koulutuspisteitä, vaan tulee tehdä jonkinnäköistä pinta-alaan perustuvaa analyysiä. 
+Tätä teknologiaa voidaan käyttää useiden eri tunnistus ongelmien ratkaisuun.
+Koulutusdatasta riippuen kuvasta voidaan tunnistaa mitä tahansa. Samaa teknologiaa käytetään teollisissa applikaatioissa laadun valvonnassa, sekä lääketieteessä erilaisten skannausten analysoinnissa.
+Mallin voi kouluttaa tunnistamaan useita tai vain yhtä asiaa riippuen käyttökohteesta.
+Toisin kuin perinteinen object detection malli, joka tunnista yleensä vain mitä kuvassa on. Segmnetaatio malli antaa joka pikselille arvon jonka perusteella lopputuloksesta voidaan nähdä, mitä eri kohdissa kuvaa on.
+Jotta samanlainen lopputulos saataisiin object detection mallilla pitäisi kuvaa käydä läpi pienemmissä lohkoissa jotta rajat löytyisivät.
 
-"Kirjoita lisää"
+Segmentointi mallin kouluttaminen ja datasetin käsittely on kuitenkin hieman haastavampaa kuin object detection mallin. Jotta mallin voi kouluttaa tunnistamaan asiat pikselitasolla, on myös opetusdatan oltava pikselitasolla annotoitua. 
+Myöskin datan koulutuksessa käytettävä tappiofunktion määrittely hieman hankaloituu.
+Mallin koulutuksessa pitää käyttää jotain muuta tapaa tunnistaa sen onnistuminen, kuin vain ”onko kyseessä auto”.
 
-"\url{https://en.wikipedia.org/wiki/Image_segmentation}"
+Yksi koulutuksessa käytettävä tappion laskutapa, jota myös tässä työssä käytetään, on CrossEntropyLoss. Se on yleisesti käytössä semantic segmentation mallien koulutuksessa. 
 
-\section{3d pisteavaruus}
+TODO: Selitä tässä cross entrropy loss https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html
+
+\section{Syvyyskartta}
 
 - TODO: Parantele selitystä
 
