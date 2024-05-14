@@ -38,6 +38,7 @@
 
 !tex/
 !tex/*.tex
+!tex/*.bib
 
 !code/
 !code/*.c

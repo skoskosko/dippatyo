@@ -1,9 +1,13 @@
 \chapter{Metodologia}
 \label{ch:metodologia}
 
+- TODO: Poista tää älä laita tällästä
+
 Cityscapes datasetista löytyy segmentaatio sekä dispariteetti data. Tässä tapauksessa haluamaamme syvyysdatan ilman liikkuvia tai siirreltäviä asioita. Näin ollen pitää saatavilla olevaa dataa käsitellä ennen mallin kouluttamista.
 
 \subsection{Stereo analyysi}
+
+- TODO: Kirjoita siistimmin teoreettisemmin. Linkkaa vaikka koodiin kunhan siivoat repon.
 
 Syvyysdatan ja dispariteetin analysointi voidaan tehdä ilman neuroverkkoja. Tässä tapauksessa se tehdään Hirschmullerin SGM algoritmillä \cite{hirschmuller2005babel}. Käytettävä variaatio tästä algoritmistä on OpenCV ssä toteutuettu StereoSGBM \cite{opencvsgbm}. Seuraava esimerkki on luotu function parametreillä, numDisparities=128, blockSize=20, mode=cv2.StereoSGBM\_MODE\_HH sekä lisäämällä stereo kuviin gaussian blur laskennan helpottamiseksi \ref{fig:disparity1}.
 
@@ -18,7 +22,7 @@ Tästä näemme, että stereokuvasta syvyysdatan kerääminen on mahdollista val
 
 Tuloksestamme huomaamme häiriötä jota totuudessa ei ole. Tämä johtuu todennäköisesti kohdista kuvista joista hismillerin algoritmi ei pysty tunnistamaan vastaavaa kohtaa toisessa kuvassa. Tämä voi tapahtua esimerkiksi asvaltin pinnassa jossa on hyvin samankaltaista tai varjoisilla alueilla. Näistä alueista ei ole niin helppoa löytää uniikkia vertailukohtaa. 
 
-"Tätä pitää vielä parannella, näyttää aika ikävältä"
+- TODO: "Tätä pitää vielä parannella, näyttää aika ikävältä"
 
 \subsection{Semantic segmentation}
 
@@ -36,15 +40,25 @@ Aineistossa on jo totuus segmentaatio datasta. Käytämme tätä valmiina saatav
 
 \section{Datasetin muodostus}
 
+- TODO: Kerro eri mahdollisista tavoista datasetin muodostamiseen.
+
+- Vertical ja horistonal swipe. 
+
+- Mahdollisia parempia tapoja jotka vaativat manuaalisempia lähestymistapoja
+
+
+
 Kun meillä on syvyysdata ja segmentointi data voimme muodostaa koulutkseen käytettävän mallin. Poistamalla syvyysmuutokset disparity alueilta joissa on liikkuvia asioita, ja olettamalla että niiden takana syvyys muuttuu niinkuin niiden ympärillä voimme muodostaa koulutusdatan jonka avulla voimme yhdestä kuvasta generoida pisteavaruuden ilman liikkuvia asioita.
 
 Tälläinen muodostustapa ei ole täydellinen ja sen tuottamat tulokset pitääkin suureksi osaksi manuaalisesti validoida. Mutta koska validointi voidaan suorittaa hyväksy hyökää tasolla on suuren kuvamäärän läpikäynti hyvin nopeaa.
 
 \section{miten data validoitiin}
 
-"Selitys miten käsin sen käyn läpi kun jaksan koodata siihen skriptin"
+- TODO: "Selitys miten käsin sen käyn läpi kun jaksan koodata siihen skriptin"
 
 \section{Lopullinen malli}
 
-"Esitellään pari kuvaa mimmosta dataa tuli, kerrotaan mitä mallia käytettiin. Tod näk samaa kuin segmentationissa. Tehdään malli ja ajetaan pari esimerkki kuvaa. Koulutuksen onistuneisuus. Mikä on paras loss functio jne jne."
+- TODO: "Esitellään pari kuvaa mimmosta dataa tuli, kerrotaan mitä mallia käytettiin. Tod näk samaa kuin segmentationissa. Tehdään malli ja ajetaan pari esimerkki kuvaa. Koulutuksen onistuneisuus. Mikä on paras loss functio jne jne."
+
+
 

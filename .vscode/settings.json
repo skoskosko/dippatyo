@@ -20,5 +20,6 @@
         "masters-thesis/*.upb": true,
         "masters-thesis/*.xmpdata": true,
         "masters-thesis/*.xmpi": true,
-    }
+    },
+    "cSpell.language": "en"
 }

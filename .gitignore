@@ -2,3 +2,5 @@ dataset
 *.run
 salaa
 citations
+output
+__pycache__

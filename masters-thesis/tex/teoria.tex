@@ -133,9 +133,11 @@ TODO: Selitä tässä cross entrropy loss https://pytorch.org/docs/stable/genera
 
 \section{Syvyyskartta}
 
-- TODO: Parantele selitystä
-
-Lopullinen haluttu tuotos on 3d  pisteavaruus. 3d pisteavaruus voidaan ajatella esitetyistä pisteistä joilla on syvyys arvo. Tässä tapauksessa kun pisteavaruus on tehty valokuvien pohjalta, voi myös saadun pisteavaruuden esittää kuvana \ref{fig:depth}. Muissa tilanteissa 3d pisteitä voi kuitenkin sijaita kaksiulotteisesta perspektiivistä katsottuna toistensa takana. Ei siis tule olettaa että kaikki 3d pistekartat on häviöttömästi esitettävissä 2d muodossa. 
+Tämän työn haluttu lopputulos on syvyyskartta.
+Syvyyskartta on yksinkertainen kuvan kaltainen esitystapa, jossa eri syvyyksillä on eri numeerinen arvo.
+Se voidaan näyttää esimerkiksi siten että kauempana kamerasta oleva kohde on tummemmalla värillä \ref{fig:depth}.
+Tärkeä ero 3d malliin sekä syvyyskartan välillä on datan perspektiivi.
+Syvyyskartassa ei ole tietoa kohteiden takana olevasta tilasta, joten sitä voi tarkastella vain sen kuvaus perspektiivistä.
 
 
 \begin{figure}[h]
@@ -144,9 +146,3 @@ Lopullinen haluttu tuotos on 3d  pisteavaruus. 3d pisteavaruus voidaan ajatella 
 \caption[Tämä on lyhyt kuvateksti.]{Citysscapes datasetin syvyysdata esimerkki.}
 \label{fig:depth}
 \end{figure}
-
-3d pistekartat ovat hyvin perusmuotoinen ja epäoptimoitu tapa käsitellä 3d dataa. Jos sitä haluttaisiin optimoida 3d mallin kannattaisi muuttaa kolmioiksi tai muiksi monikulmioiksi joiden perusteella tämä data käsiteltäisiin. Mutta koska edellämainitusti oma datamme voidaan esittää 2d syvyydellisenä kuvana, meillä ei ole tähän tarvetta.
-
-    
-"\url{https://en.wikipedia.org/wiki/Point_cloud}"
-

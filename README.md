@@ -39,10 +39,18 @@ https://trepo.tuni.fi/handle/10024/149199   !!!!!!!!!!!!!!!!!!!!!!!!! 3d depth
 ## Tee 3d point cloud koska sitä yritetään
 
 ## Korjaa koodisi
-Treenaa sematic segmentation
-Treenaa disparity
-Koita yhdistää ne. 
-Kirjoita disparityn siistimis algoritmi
+
+
+- tee skripti joka ottaa syvyys kartasta semantic segmentation mallin mukaan asioita pois
+    - Tähän ok cancel, ja kopsaa "uusi totuus"
+
 
 
 ## KIRJOITA LISÄÄ TÄSTÄ
+
+
+
+https://andor.tuni.fi/discovery/search?query=any,contains,Stereo%20Matching&tab=Everything&search_scope=My_inst_and_CI_extended_search&sortby=date_a&vid=358FIN_TAMPO:VU1&facet=searchcreationdate,include,1801%7C,%7C2005&mfacet=rtype,include,articles,1&lang=fi&offset=0
+
+https://www.tsv.fi/julkaisufoorumi/haku.php?nimeke=&konferenssilyh=&issn=0005-8580&tyyppi=kaikki&kieli=&maa=&wos=&scopus=&nappi=Hae
+
