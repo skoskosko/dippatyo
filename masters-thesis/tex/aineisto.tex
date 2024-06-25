@@ -1,15 +1,11 @@
 \chapter{Aineisto}%
 \label{ch:aineisto}
 
-- TODO: Kirjotia passiivisemmin
-
 Datasettinä Käytetään cityscapes datasettiä \cite{Cordts2016Cityscapes}.
 
 
-datasettiä. Kyseinen data pitää sisällään 3d sekä segmentation datan. Näitä datoja käsitelemällä voidaan saada aikaan haluttu lopputulos. Datasta oli tarjolla myös stereo kuva, jonka avulla voidaan tehdä oma sysvyyskartta, jos mukaan tarjotun kartan tarkkuus ei ole riittävä. SItä voi myös hydyntää oman toteutuksen toimivuuden vertailussa.
-
-Aineisto on itseajaviin autojen toimintaan suunniteltu, joka tarkoittaa että lopullinen malli ei ole yleiskäyttöinen. Kuitenkin sin prosessointiin käytettäviä tekniikoita voidaan käyttää möys yleisen tai esimerkiksi sisätilojen skannaamiseen tarkoitetut mallin tekemiseen.
-
-Aineistossa ei myöskään ole mallinnettu objektien takana olevaa syvyyttä, eikä sitä aineistosta voikkaan saada irti. Tästä johtuen ainestoa tulee hieman soveltaa koulutusdatan rakentamista varten.
-
-- TODO: Kuvaile datasetistä löytyvää dataa
+Datasetti pitää sisällään dispariteetti datan, sekä segmentaatio datan. Data on autosta stereokameralla kuvattua. Malli on suunnattu automatisoituun liikenteeseen, ja siinä on paljon erilaisia kaupunkikuvia teiden varsilta.
+Tämä tuottaa hankaluuksia lopputuloksen kanssa, sillä malli toimii reaalimaailmassa vain kaupunki kuvissa. Kuitenkaan yleisempää disparteetti sekä segmentaatio mallia ei järkevästi löytynyt. 
+Tämän ongelman olisi voinut kiertää käyttämällä erillisiä malleja segmentointiin sekä dispariteettiin. 
+Kahden erialisen mallin yhdistäminen tuo kuitenkin enemmän riskejä.
+Kahden mallin tapauksessa, jouduttaisiin joko luottamaan segmentaatiomalliin datan valmistelussa, tai kaikki data joduttaisiin käymään manuaalisesti läpi.

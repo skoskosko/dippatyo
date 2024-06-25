@@ -3,20 +3,41 @@
 
 \section{Tulokset}
 
-"Korjoitan kun on tuloksia"
+Koulutettu malli vaikuttaa melko käyttökelpoiselta. Tärkeimpänä tuotoksena kuitenkin on datasetin prosessointiin toteutetut työkalut. Vaikka täydellistä tapaa datan käsittelyyn ei löydettykään, on lopputuloksesta silti nähtävissä, että yritetty datan käsittely on mahdollista.
+Käytetyt tavat segmentoitujen alueiden poistamiseen näyttivät toimivan melko hyvin.
+Erityisesti vertikaalinen pyyhkäisy alueen ollessa kuvan keskellä tuotti hyviä tuloksia. 
+Ongelmia kuitenkin tuotti datan epätarkkuus.
+Etenkin syvyysdata oli usein epätarkkaa segmentaatioon verratuuna. Tämä johti tilanteisiin, joissa pyyhkäisyn alku lähti virheellisestä syvyydestä ja koko lopullinen data oli pilalla. Yleinen ongelma oli myös pyyhkäisyn alkaminen kuvan ulkopuolelta.
+Näissäkin tilanteissa pyyhkäisyn alku saattoi alkaa väärästä syvyydestä.
 
 \section{Käyttökohteet}
 
 Nykyisellään ainoa realistinen käyttökohde on itseajavien autojen ajoreittien suunnittelussa. Kuitenkin jos saataisiin segmentointi ja syvyysdataa esimerkiksi dronekuvista tai sisätiloista, voisi tätä mallia käyttää myös niiden skannaamiseen.
 
-Mallin käyttäminen näihin tarkoituksiin ei pitäisi olla mikään ongelma, todennäköisesti ongelma olisi sama kuin nykyiselläänkin, eli datan muokkaus. Kuitenkin käytetyt tekniikat ja luodut skriptit pitäsi olla täysin käytettävissä minkä tahansa stereo datan kanssa. ja segmentointidatan ei tarvitse olla samasta lähteestä. Sisätilojen ilmamkuvasta kuvattujen asioiden ja muiden tälläisten segmentointidatan löytämisen ei pitäisi nykypäivänä olla hankalaa.
+Mallin käyttäminen näihin tarkoituksiin ei pitäisi olla mikään ongelma, todennäköisesti ongelma olisi sama kuin nykyiselläänkin, eli datan muokkaus.
+Kuitenkin käytetyt tekniikat ja luodut skriptit pitäsi olla täysin käytettävissä minkä tahansa stereo datan kanssa.
+Segmentointidatan ei tarvitse olla samasta lähteestä, jos löydetään luotettava malli tai ollaan valmiita manuaaliseen läpikäyntiin.
+Kuvattavasta kohteesta riippuen, nykypäivänä saatavilla olevat segmentaatio mallit voisi nähdä tarpeeksi luotettavaksi automaattiseen generointiin.
 
 \section{Kehitysehdotukset}
 
-Jos mallia optimoisi jollekkin pienemmälle verkolle sitä voisi ajaa suoraan esimerkiksi dronessa. Tämä mahdollistaisi esimerkiksi maaston skannaamisen ja datan välittömän käyttämisen laitteiden reitityksen suunnitteluun. Mallia voisi ehkä myös parantaa jos ajateltaisiin lähtökohtana olevan stereokuva. Näin syvyysdata voisi olla luotettavampaa, koska lähdedatalla olisi varma laskettava totuus. 
 
-Tämä ei ole täysin suoraan semantic segmentationia tai muuta yleistä koneoppimista. Tästä johtuen voisi miettiä olisiko jokin muu malli kuin sematic segmentationiin suunniteltu parempi. Tämä kuitenkin olisi loputon suo ja vaatisi hyvin paljon töitä. Se kuitenkin voisi olla tarpeellista jos malli halutaan ajaa edge laitteella niinkuin dronella. 
+Jos mallia optimoisi jollekkin pienemmälle verkolle sitä voisi ajaa suoraan esimerkiksi dronessa. Tämä mahdollistaisi esimerkiksi maaston skannaamisen ja datan välittömän käyttämisen laitteiden reitityksen suunnitteluun. Mallia voisi ehkä myös parantaa jos ajateltaisiin lähtökohtana olevan lidar skannaus. Näin syvyysdata voisi olla luotettavampaa, koska lähdedatalla olisi varma totuus. 
 
-Ehkä hyödyllisin jatkokehitys voisi olla loppudatan lisäanalyysi. Jos kuvien tuottamat 3d pisteavaruudet saataisiin yhdistettyä, voitaisiin muodostaa tilojen 3d skannauksia. Tämä olisi asia mikä tekisi tästä mallista oikeasti hyödyllisen ja tuotteistettavan. Nykyisellään sen käytännön hyöty ei ole kovin suuri muuhun kuin järjestelmille jotka erikseen tätä tarvitsevat. Mutta erilaisten tilojen 3d skannaus ilman esteitä olisi hyödyllistä monilla aloilla. Maan mittauksessa, sisustuksessa kaupunki suunnittelussa ja monessa muussa.
+Tämä ei ole täysin suoraan semanttista segmentationia tai muuta yleistä koneoppimista.
+Tästä johtuen voisi miettiä olisiko jokin muu malli kuin semanttinen segmentationiin suunniteltu parempi. Tämä kuitenkin olisi loputon suo ja vaatisi hyvin paljon töitä. Se kuitenkin voisi olla tarpeellista jos malli halutaan ajaa edge laitteella niin kuin dronella. 
+Tämä voisi tehostaa toimintaa huomattavasti, koska outputin kokoa voitaisiin todennäköisesti pienentää melko paljon, kun jokaiselle syvyydelle ei tarvittaisi omaa segmentaatio luokkaa.
 
+Ehkä hyödyllisin jatkokehitys voisi olla loppudatan lisäanalyysi. Jos kuvien tuottamat 3d pisteavaruudet saataisiin yhdistettyä, voitaisiin muodostaa tilojen 3d skannauksia.
+Tämä olisi asia mikä tekisi tästä mallista oikeasti hyödyllisen ja tuotteistettavan. Nykyisellään sen käytännön hyöty ei ole kovin suuri muuhun kuin järjestelmille jotka erikseen tätä tarvitsevat. Mutta erilaisten tilojen 3d skannaus ilman esteitä olisi hyödyllistä monilla aloilla; maanmittauksessa, sisustuksessa. kaupunki suunnittelussa ja monessa muussa.
 
+Suurimpia ongelmia on kuitenkin koulutusdatan löytäminen.
+Yksi kehitysidea on rakentaa data kahden mallin avulla.
+Silloin voitaisiin käyttää mitä tahansa stereodataa, josta segmentoitaisiin objektit pois.
+Tämä kuitenkin muuttuvalla taustalla hankaloittaisi suuresti datan validointia.
+Jotta luotettavaa dataa saataisiin tulisi tilasta ottaa stereokuvia ja kaikki liikkuvat kohteet poistaa.
+Tämä olisi kuitenkin vielä työläämpää kuin kuvien manuaalinen tekeminen tai valvonta.
+
+Toinen vaihtoehto olisi generoida data tietokoneella graafisesti, mutta se toisi omat tekniset ongelmansa, ja sen hyödyntäminen oikeassa maailmassa voisi olla melko rajallista.
+Tämä vaihtoehto vaatisi paljon testaamista.
+Datan generointi itsessään olisi melko helppoa, ja ehkä joillain filttereillä varustettu kuva voisi olla tarpeeksi samankaltainen generoitujen kuvien kanssa.

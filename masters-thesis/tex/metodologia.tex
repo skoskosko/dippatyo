@@ -144,6 +144,20 @@ voitaisiin sen ja segmentaatio mallin avulla luoda huomattavasti parempaa koulut
 
 \section{Lopullinen malli}
 
-- TODO: "Esitellään pari kuvaa mimmosta dataa tuli, kerrotaan mitä mallia käytettiin. Tod näk samaa kuin segmentationissa. Tehdään malli ja ajetaan pari esimerkki kuvaa. Koulutuksen onistuneisuus. Mikä on paras loss functio jne jne."
- 
+Datasta koulutettiin malli samalla pytorchin tarjoamalla fcn resnet50 verkolla, kuin segmentaatio vaiheessa.
+Ulostulon muoto jaettiin 128 luokkaan, jotka vastaavat eri syvyyttä.
+Sisääntulona annettiin 2 harmaata kuvaa 3 ulotteisen kuvan eri kerroksissa.
+Näin voitiin käyttää valmista segmentaatio mallia värikuva sisääntulolla, stereo mustavalkokuvan analysointiin, ja syvyyden arviointiin. 
 
+\begin{figure}[h]
+\centering
+\pdftooltip{\includegraphics[width=\textwidth]{figures/model.png}}{Model}
+\caption{Kuvassa vasemmalta oikealle; alkuperäinen kuva, rakennettu totuus, koulutetun mallin lopputulos.}
+\label{fig:model}
+\end{figure}
+
+\ref{fig:model} 
+
+Kuvasta nähdään että, koulutus itsessään pystyy tuottamaan hyvin samankaltaisia kuvia kuin laskettu malli. Koulutettu malli kuitenkin oletetusti perii koulutusdatan heikkoudet. Koska käytetty automatisoitu tapa ei tuota täydellistä dataa, ei myöskään koulutettu malli ole täydellinen. 
+
+Kuitenkin tässä tilanteessa, jossa ei ole tarvetta niin tarkalle lopputulokselle, tuottaa koulutettu malli vähemmän häiriötä kuin koneellisesti tuotettu malli. 
