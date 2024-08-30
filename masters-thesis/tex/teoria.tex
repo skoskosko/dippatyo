@@ -1,62 +1,60 @@
 \chapter{Teoria}%
 \label{ch:teoria}
 
-\section{Stereo nalyysi}
+\section{Stereoanalyysi}
+
+Stereoanalyyso kuvankäsittelyssä tarkoitetta kahdesta samasta kohteesta otetusta kuvasta olevien yhtenäisyyksillä syvyyden analysointia.
+Vaikka näitä tekniikoita voi soveltaa mihin tahansa kuviin jotka ovat samasta kohteesta \cite{SumiYasushi20023ORi},
+tässä yhteydessä käytämme kuvia,
+jotka ovat otettu samasta perspektiivistä siten että kuvat ovat horisontaalisesti vierekkäin.
+Jos tiedetään kameroiden suhteelliset sijainnit tai jonkin pisteen etäisyys kamerasta voidaan myös kuvasta arvioida absoluuttinen etäisyys kameraan. 
 
 \begin{figure}[h]
 \centering
 \pdftooltip{\includegraphics[width=\textwidth]{figures/stereo_depth.jpg}}{Stereo depth}
-\caption{Stereo depth}
+\caption{Stereo syvyyden arviointi}
 \label{fig:stereo}
 \end{figure}
-
-Stereo analyysillä kuvankäsittelyssä tarkoitetaan kahdesta samasta kohteesta otetusta kuvasta olevien yhtenäisyyksillä syvyyden analysointia.
-Vaikka näitä tekniikoita voi varioida mihin tahansa kuviin jotka ovat samasta kohteesta,
-tässä yhteydessä käytämme kuvia,
-jotka ovat otettu samasta perspektiivistä siten että kuvat ovat horisontaalisesti vierekkäin.
-Jos tiedetään kameroiden sijainti toisistaan tai jonkin pisteen etäisyys kamerasta voidaan myös kuvasta arvioida absoluuttinen etäisyys kameraan. 
-
+    
 Kun stereoparia analysoidaan ja tunnistetaan korreloiva piste molemmista kuvista,
-voidaan laskea kuvien välinen dispariteetti \ref{fig:stereo}
+voidaan laskea kuvien välinen dispariteetti Kuva\ref{fig:stereo}
 Tämä tarkoittaa käytännöstä muutosta pisteen sijainnissa kuvien välillä.
 Periaatteessa vastaavat pisteet voivat sijaita missä tahansa kuvassa.
 Kuitenkin tässä tapauksessa jossa kuvat ovat tietyssä suhteessa toisiinsa,
-voidaan olettaa stereoparin löytyvän x akselilta tai ainakin melko läheltä sitä.
+voidaan olettaa stereoparin löytyvän x-akselilta tai ainakin melko läheltä sitä.
 Jos näin ei olisi jouduttaisiin kuvan jokaista pistettä vertaamaan jokaiseen pisteeseen toisessa kuvassa.
-Tämä tapa tulee nopeasti hyvin kalliiksi.
+Tämä tapa tulee nopeasti laskennallisesti hyvin kalliiksi.
 Jos verrattava alue on myös hyvin pieni todennäköisyys tunnistaa useita samankaltaisia alueita kasvaa.
 Jos alue on suuri tai vertailu suoritetaan liian tarkasti,
 kasvaa todennäköisyys että vaihtunut kuvakulma on niin erilainen että sitä ei tunnisteta.
 Tästä johtuen tämän ongelman ratkaisuun on kehitetty monia erilaisia tapoja.
 
-TODO: Tähän voisi hakea lähteitä. Ihan vaan joku geneerinen stereo analyysi artikkeli.
 
+\subsection{SGM}
 
-\subsection{SGM Semi global matching}
-
-Jotta stereo analyysi on mahdollista,
+Jotta stereoanalyysi on mahdollista,
 tulee kuvasta tunnistaa samat kohteet.
-Yksi tapa tehdä tämä on Hircmuller:in SGM tekniikan avulla\cite{hirschmuller2005babel}.
-Tämä tekniikka ottaa huomioon pikselin ja sen ympäröivien pikselien arvot etsiessään toisesta kuvasta vastaavaa arvoa. Tämä hakuoidaan tehdä kaavalla.
+Yksi tapa tehdä tämä on Hircmullerin SGM tekniikan avulla\cite{hirschmuller2005babel}.
+Tämä tekniikka ottaa huomioon pikselin ja sen ympäröivien pikselien arvot etsiessään toisesta kuvasta vastaavaa arvoa. Tämä haku voidaan tehdä kaavalla.
 
 \begin{equation}\label{yht:SGM}
     E(d) = \sum_{p} D(p, d_p) + \sum_{q \in \mathcal{N}} R(p, d_p, q, d_q)
 \end{equation}
 
-Kaavassa \(D(p, d_p)\) summa funktio käy läpi kaikki kuvan pikselit ja vertaa niitä vertailupikseliin.
-Tämä antaa perus arvon yksittäisen pikselin samankaltaisuudelle.
+Kaavassa \(D(p, d_p)\) summafunktio käy läpi kaikki kuvan pikselit ja vertaa niitä vertailupikseliin.
+Tämä antaa perusarvon yksittäisen pikselin samankaltaisuudelle.
 
 Tämän jälkeen pikselin ympäröiviä pikseleitä verrataan toisiinsa \(R(p, d_p, q, d_q)\).
 koska saman asian ympäröivät pikselit tulisi olla melko samankaltaisia molemmissa kuvissa, 
 Vaikka se onkin kuvattu hieman eri asennosta, voidaan tämän avulla arvioida onko kyseessä sama piste.
 
-Tämän algoritmin implimentoi pythonin opencv kirjaston SGBM \cite{opencvsgbm},
-jota varioitu alkuperäiseen implimentaatioon verrattuna, käymään läpi pikseli joukkoja, eikä yksittäisiä pikseleitä.
-Tämä nopeuttaa prosessointia huomattavasti.
+Tämän algoritmin toteuttaa pythonin opencv kirjaston SGBM \cite{opencvsgbm},
+jota muokattu alkuperäiseen implimentaatioon verrattuna käymään läpi pikseli joukkoja, eikä yksittäisiä pikseleitä.
+Tämä nopeuttaa prosessointia huomattavasti \cite{MemoryEfficientSGM}.
+
 Se myöskin suorittaa joitain suodatuksia parempien tulosten saavuttamiseksi.
 
-\section{Neuroverkot}
-
+\section{Neuroverkot} 
 
 
 Tämän työn lopputulos on neuroverkko.

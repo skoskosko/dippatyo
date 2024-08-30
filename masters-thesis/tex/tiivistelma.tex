@@ -1,4 +1,11 @@
 
-Koneoppimis sovellutuksissa datan hankinta on usein yksi suurimpia haasteita. Tämä työ käsittelee, miten kahdella yleisemmin saatavilla olevasta datamallista, syvyysdata sekä segmentointi data voitaisiin hyödyntää rakentamaan mallia, joka pystyisi kuvasta tunnistamaan taustalla olevan ympäristön syvyyden, jättäen irtonaiset objektit huomiotta.
+Koneoppimis sovellutuksissa datan hankinta on usein yksi suurimpia haasteita. 
+Tämä työ käsittelee, miten kahdella yleisemmin saatavilla olevasta datamallista voitaisiin yhdistää malli jolla pystyisi tunnistmaan todellisen ympäristön syvyyden, jättäen irtonaiset objektit huomiotta.
 
-Datan käsittelyyn käytetään semanttista segmentointia, stereo kuvista haettua syvyyttä, sekä algoritmisesti syvyysdatasta objektien poistoa ja niiden takana olevien syvyyden arvioimista. Tästä johtuen lopputulos ei ole todennäköisesti kovin luotettava, mutta lopputuloksen pitäisi silti olla riittävä joihinkin ei kriittisiin applikaatioihin.
+Tämä tehdään käyttäen segmentointi- sekä stereo-datan avulla.
+
+Datan käsittelyyn käytetään semanttista segmentointia, stereokuvista haettua syvyyttä,
+sekä yksinkertaista algoritmiä syvyyden arviointiin tunnistettujen kohteiden takana.
+
+Tästä johtuen lopputulos ei ole todennäköisesti kovin luotettava,
+mutta lopputuloksen pitäisi silti olla riittävä joihinkin ei kriittisiin sovellutuksiin.

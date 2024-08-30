@@ -54,3 +54,4 @@ https://andor.tuni.fi/discovery/search?query=any,contains,Stereo%20Matching&tab=
 
 https://www.tsv.fi/julkaisufoorumi/haku.php?nimeke=&konferenssilyh=&issn=0005-8580&tyyppi=kaikki&kieli=&maa=&wos=&scopus=&nappi=Hae
 
+https://jfp.csc.fi/jufoportaali
