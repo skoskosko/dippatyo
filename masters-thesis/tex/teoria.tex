@@ -49,19 +49,15 @@ koska saman asian ympäröivät pikselit tulisi olla melko samankaltaisia molemm
 Vaikka se onkin kuvattu hieman eri asennosta, voidaan tämän avulla arvioida onko kyseessä sama piste.
 
 Tämän algoritmin toteuttaa pythonin opencv kirjaston SGBM \cite{opencvsgbm},
-jota muokattu alkuperäiseen implimentaatioon verrattuna käymään läpi pikseli joukkoja, eikä yksittäisiä pikseleitä.
+jota muokattu alkuperäiseen toteuytukseen verrattuna käymään läpi pikselijoukkoja, eikä yksittäisiä pikseleitä.
 Tämä nopeuttaa prosessointia huomattavasti \cite{MemoryEfficientSGM}.
 
-Se myöskin suorittaa joitain suodatuksia parempien tulosten saavuttamiseksi.
-
 \section{Neuroverkot} 
-
 
 Tämän työn lopputulos on neuroverkko.
 neuroverkko on yleisesti kuva-analyysiin sekä muuhun koneoppimiseen käytettävä tekniikka.
 Sen toiminta perustuu neuroneihin joita järjestetään verkkomaiseen rakenteeseen useisiin eri kerroksiin.
-
-Neuroverkko on laskennallinen malli, joka on saanut inss
+Sen lähtökohta on ihmisaivojen toiminnan matkiminen joka on nykyisen koneoppimistekniikan perusta \cite{PhamTrungQuang2023EotH}.
 
 
 \begin{equation}\label{yht:neuroni}
@@ -74,67 +70,77 @@ se tuottaa ulostulonaan arvon \(a\) saamiensa syötteiden perusteella.
 \(w_i\) on neuronille annettu painoarvo.
 \(b\) on neuronin bias arvo. \(\sigma\) on funktio joka muuttaa neuronin saavan armon välille 0,1.
 
-Kun näitä neuroneita asetetaan eri kerroksiin siten että verkon sisääntulo on esimerkiksi valokuvan kokoinen,
-ja ulostulo on liukuluku,
-voidaan verkolle syöttää kuvia autoista ja asioista jotka eivät ole autoja.
-Kun nämä kuvat on oikein luokiteltu, voidaan niillä kouluttaa verkko tunnistamaan autoja.
+
+Neuroverkko on siis vain joukko yksinkertaisia matemaattisia funktioita,
+joiden toimintaa muokkaamalla satunnaisesti tai kaavan mukaan pyritään saamaan haluttu lopputulos.
+Jotta lopputulos on koskaan haluttu pitää tätä koulutusprosessia kuitenkin valvoa.
+
+
+Kun näitä neuroneita asetetaan eri kerroksiin siten että verkon sisääntulo on esimerkiksi valokuvan kokoinen, 
+ja ulostulo on yhen neuronin ulostulo, 
+voidaan verkolle syöttää kuvia esimerkiksi kissoista ja koirista.
+Kun näille kuville annetaan arvot 0 ja 1 kuvan aiheen mukaan, voidaan verkko kouluttaa tunnistamaan kissoja ja koiria.
 Koulutuksen aikana verkko muuttaa arvojaan \(w_i\) ja \(b\).
 Nämä arvot se saa yrittämällä erilaisia arvoja neuroneille.
-Kun verkkoa tämän jälkeen testataan, voidaan saaduista lopputuloksista valita paras.
-Tämän jälkeen tätä lopputulosta voidaan lähteä parantelemaan,
-testaamalla toimiiko suuremmat vai pienemmät arvot paremmin.
-Kun näitä kahta arvoa eri neuroneilla muutetaan,
-saadaan joka kierroksella hieman paremmin toimiva verkko.
+Kun verkkoa tämän jälkeen testataan on voidaan saaduista lopputuloksista valita paras.
+Tämän jälkeen tätä lopputulosta voidaan lähteä parantelemaan, testaamalla toimiiko suuremmat vai pienemmät arvot paremmin.
+Kun näitä kahta arvoa eri neuroneilla muutetaan voidaansaada paremmin toimiva neuroverkko.
+Tarpeeksi monen yrityksenjälkeen, saadaan siis todennäköisesti verkko joka tunnistaa onko kuvassa todennäköisemmin kissa vai koira
 
-Neuroverkko on siis vain kasa yksinkertaisia matemaattisia funktioita,
-joiden toimintaa muokkaamalla pyritään saamaan haluttu lopputulos.
-Jotta lopputulos on koskaan haluttu pitää tätä koulutusprosessia kuitenkin valvoa.
-Tämä tapahtuu tappiofunktion (loss function) sekä takaisinvirtausalgoritmin (backpopagation algoKun näitä neuroneita asetetaan eri kerroksiin siten että verkon sisääntulo on esimerkiksi valokuvan kokoinen, ja ulostulo on yhen neuronin ulostulo, voidaan verkolle syöttää kuvia esimerkiksi kissoista ja koirista. Kun näille kuville annetaan arvot 0 ja 1 kuvan aiheen mukaan, voidaan verkko kouluttaa tunnistamaan kissoja ja koiria. Koulutuksen aikana verkko muuttaa arvojaan \(w_i\) ja \(b\). Nämä arvot se saa yrittämällä erilaisia arvoja neuroneille. Kun verkkoa tämän jälkeen testataan on voidaan saaduista lopputuloksista valita paras. Tämän jälkeen tätä lopputulosta voidaan lähteä parantelemaan, testaamalla toimiiko suuremmat vai pienemmät arvot paremmin. Kun näitä kahta arvoa eri neuroneilla muutetaan saadaan paremmin toimiva neuroverkko.
+Tätä satunnaisuutta pyritään siis parantamaan ohjaamalla verkon koulutusta.
+Tämä tapahtuu tappiofunktion (loss function) sekä takaisinvirtausalgoritmin (backpopagation algorithm) avulla.
 
-Neuroverkko on siis vain kasa yksinkertaisia matemaattisia funktioita, joiden toimintaa vain tuurilla arvoidaan jotta saadaan haluttu lopputulos. Tätä tuuria pyritään parantamaan ohjaamalla verkon koulutusta. Tämä tapahtuu tappiofunktion (loss function) sekä takaisinvirtausalgoritmin (backpopagation algorithm) avulla. Loss functionin tehtävä on kertoa kuinka paljon saatu tulos eroaa halutusta. Esimerkki tapauksessamme tämä käytännössä katsoisi onko kissa kuvan arvo mikä sen pitäisi olla. Tämän työn lopputulos on verkko joka yrittää luoda kuvasta 3d pistekartan. Siinä tapauksessa siis neliösumma tai jokin muu tapa virheen tunnistamiseen olisi parempi. Kun virhe on tunnistettu verkkoa muokataan takaisinvirtaus algoritmin perusteella. Tähän ei ole yhtä parasta ratkaisua, vaan eri verkkojen ja käyttökohteiden tapauksessa eri algoritmit voivat tuoda huomattavasti parempia tuloksia.
-rithm) avulla.
 Tappiofunktion tehtävä on kertoa kuinka paljon saatu tulos eroaa halutusta.
-Esimerkkitapauksessamme tämä käytännössä testaa, verkon lopputuloksen ja palauttaa kuinka monta arvausta verkko sai oikein.
-Virheen tunnistus ei kuitenkaan ole aina yhtä yksinkertaista. 
-Jos lopputulos on esimerkiksi kuva, hankaloituu kouluttaminen huomattavasti.
-Mitä yksinkertaisempi lopputulos sitä helpompi verkko on kouluttaa.
-Kun virhe on tunnistettu, verkkoa muokataan takaisin virtaus algoritmin perusteella.
-Tähän ei ole yhtä parasta ratkaisua, vaan eri verkkojen ja käyttökohteiden tapauksessa eri algoritmit voivat tuoda huomattavasti parempia tuloksia.
+Esimerkkitapauksessamme tämä käytännössä testaa, verkon lopputuloksen ja palauttaa kuinka monta arvausta verkko sai oikein,
+tämä käytännössä katsoisi onko verkolle annetun kissa kuvan ulostulon arvo mikä sen pitäisi olla.
+Virheen tunnistus ei kuitenkaan ole aina yhtä yksinkertaista, tämän työn lopputulos on verkko joka yrittää luoda kuvasta 3d pistekartan.
+Siinä tapauksessa siis neliösumma tai jokin muu tapa virheen tunnistamiseen olisi parempi.
+Kun virhe on tunnistettu verkkoa muokataan takaisinvirtaus algoritmin perusteella.
+Näihin algoritmeihin ei ole yhtä parasta ratkaisua, vaan eri verkkojen ja käyttökohteiden tapauksessa eri algoritmit voivat tuoda hyvin erilaisia tuloksia.
 
 \section{Semantic segmentation}
 
 Semantic segmentation eli kuvan segmentointi on yleinen käyttökohde neuroverkoille.
 Sen avulla on helppo tehdä käytettäviä ja helposti hyödynnettäviä malleja.
 Ja se on hyvä esimerkki ongelmasta jolle on helppo tehdä koulutusdataa, mutta hankala luoda ohjelmallista toteutusta saman lopputuloksen saamiseksi.
-Esimerkkejä käytöstä on esimerkiksi automatisoidussa liikenteessä,
-liikenteen esteiden tunnistamisessa \ref{fig:labels}.
+Esimerkkejä käytöstä on esimerkiksi automatisoidussa liikenteessä esteiden tunnistuksessa Kuva \ref{fig:labels}.
+
 \begin{figure}[h]
 \centering
 \pdftooltip{\includegraphics[width=\textwidth]{figures/stuttgart03.png}}{Cityscapes esimerkki kuva stuttgart03}
-\caption[Tämä on lyhyt kuvateksti.]{Cityscapes datestin esimerkki segmentointi dataa, jossa kaupunki näkymän erilaiset tunnistattavat kohteet on merkitty eri väreillä.}
+\caption[Tämä on lyhyt kuvateksti.]{Cityscapes datestin esimerkki segmentointi dataa, jossa kaupunkinäkymän erilaiset tunnistattavat kohteet on merkitty eri väreillä.}
 \label{fig:labels}
 \end{figure}
 
-Tätä teknologiaa voidaan käyttää useiden eri tunnistus ongelmien ratkaisuun.
-Koulutusdatasta riippuen kuvasta voidaan tunnistaa mitä tahansa. Samaa teknologiaa käytetään teollisissa applikaatioissa laadun valvonnassa, sekä lääketieteessä erilaisten skannausten analysoinnissa.
+Tätä teknologiaa voidaan soveltaa useiden eri tunnistusongelmien ratkaisuun.
+Koulutusdatasta riippuen kuvasta voidaan tunnistaa mitä tahansa.
+Samaa teknologiaa käytetään teollisissa sovellutuksissa laadunvalvonnassa,
+sekä lääketieteessä erilaisten skannausten analysoinnissa \cite{NagalakshmiT2022BCSS}.
 Mallin voi kouluttaa tunnistamaan useita tai vain yhtä asiaa riippuen käyttökohteesta.
-Toisin kuin perinteinen object detection malli, joka tunnista yleensä vain mitä kuvassa on. Segmnetaatio malli antaa joka pikselille arvon jonka perusteella lopputuloksesta voidaan nähdä, mitä eri kohdissa kuvaa on.
-Jotta samanlainen lopputulos saataisiin object detection mallilla pitäisi kuvaa käydä läpi pienemmissä lohkoissa jotta rajat löytyisivät.
+Toisin kuin perinteinen tunnistusmalli, joka tunnista yleensä vain mitä kuvassa on,
+segmnetaatio malli antaa joka pikselille arvon jonka perusteella lopputuloksesta voidaan nähdä, mitä eri kohdissa kuvaa on.
+Jotta samanlainen lopputulos saataisiin kohteentunnistus mallilla pitäisi kuvaa käydä läpi pienemmissä lohkoissa jotta rajat löytyisivät.
+Kohteen tunnistusta voisi myös hyödyntää eri kohteiden etäisyyden arviointiin, jota voisi hyödyntää niiden takana olevan syvyyden arvioimiseen \cite{ShiZhou2023VRBo}.
 
-Segmentointi mallin kouluttaminen ja datasetin käsittely on kuitenkin hieman haastavampaa kuin object detection mallin. Jotta mallin voi kouluttaa tunnistamaan asiat pikselitasolla, on myös opetusdatan oltava pikselitasolla annotoitua. 
+Segmentointi mallin kouluttaminen ja datasetin käsittely on hieman haastavampaa kuin kohteentunnistusmallin.
+Jotta mallin voi kouluttaa tunnistamaan asiat pikselitasolla, on myös opetusdatan oltava pikselitasolla määriteltyä. 
 Myöskin datan koulutuksessa käytettävä tappiofunktion määrittely hieman hankaloituu.
 Mallin koulutuksessa pitää käyttää jotain muuta tapaa tunnistaa sen onnistuminen, kuin vain ”onko kyseessä auto”.
 
-Yksi koulutuksessa käytettävä tappion laskutapa, jota myös tässä työssä käytetään, on CrossEntropyLoss. Se on yleisesti käytössä semantic segmentation mallien koulutuksessa. 
+Yksi segmentointimallin koulutuksessa käytettävä tappion laskutapa, 
+jota myös tässä työssä käytetään, on ristientropian virhefunktio (Cross Entropy Loss) \cite{CrossEntropyLoss}. 
 
-TODO: Selitä tässä cross entrropy loss https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html
+Ristentoripa virhefunktio vertaa mallin tuottamia toednnäköisyyksiä oikeaan malliin. 
+Sille lasketaan virhe ottamalla negatiivinen logaritmi oikeaan luokkaan liittyvästä todennäköisyydestä ja lisäämällä sen arvo kaikkien havaintojen yli.
+Tämä siis tarkoittee, että mallin ennustaman todennäköisyyden ja todellisen luokan välille lasketaan epävarmuus jonka avulla mallia voidaan ohjata oikeaan suuntaan.
+Mitä enemmän alueet osuvat oikeaan, sitä pienemmäksi mallin virhe laskee.
 
 \section{Syvyyskartta}
 
-Tämän työn haluttu lopputulos on syvyyskartta.
+Tämän työn haluttu lopputulos on syvyyskartta \cite{IkeuchiKatsushi1987DaDM}.
 Syvyyskartta on yksinkertainen kuvan kaltainen esitystapa, jossa eri syvyyksillä on eri numeerinen arvo.
 Se voidaan näyttää esimerkiksi siten että kauempana kamerasta oleva kohde on tummemmalla värillä \ref{fig:depth}.
-Tärkeä ero 3d malliin sekä syvyyskartan välillä on datan perspektiivi.
+Tärkeä ero 3d-malliin sekä syvyyskartan välillä on datan perspektiivi.
 Syvyyskartassa ei ole tietoa kohteiden takana olevasta tilasta, joten sitä voi tarkastella vain sen kuvaus perspektiivistä.
 
 

@@ -1,11 +1,15 @@
 \chapter{Aineisto}%
 \label{ch:aineisto}
 
-Datasettinä Käytetään cityscapes datasettiä \cite{Cordts2016Cityscapes}.
+Työn toteuttamiseen käytettiin Käytetään cityscapes datasettiä \cite{Cordts2016Cityscapes}.
 
 
-Datasetti pitää sisällään dispariteetti datan, sekä segmentaatio datan. Data on autosta stereokameralla kuvattua. Malli on suunnattu automatisoituun liikenteeseen, ja siinä on paljon erilaisia kaupunkikuvia teiden varsilta.
-Tämä tuottaa hankaluuksia lopputuloksen kanssa, sillä malli toimii reaalimaailmassa vain kaupunki kuvissa. Kuitenkaan yleisempää disparteetti sekä segmentaatio mallia ei järkevästi löytynyt. 
+Datasetti pitää sisällään dispariteettidatan, sekä segmentaatiodatan.
+Data on autosta stereokameralla kuvattua.
+Malli on suunnattu automatisoituun liikenteeseen, ja siinä on paljon erilaisia kaupunkikuvia teiden varsilta.
+Tämä tuottaa hankaluuksia lopputuloksen kanssa, sillä malli toimii reaalimaailmassa vain kaupunkikuvissa.
+Kuitenkaan yleisempää disparteetti sekä segmentaatio mallia ei järkevästi löytynyt. 
 Tämän ongelman olisi voinut kiertää käyttämällä erillisiä malleja segmentointiin sekä dispariteettiin. 
 Kahden erialisen mallin yhdistäminen tuo kuitenkin enemmän riskejä.
-Kahden mallin tapauksessa, jouduttaisiin joko luottamaan segmentaatiomalliin datan valmistelussa, tai kaikki data joduttaisiin käymään manuaalisesti läpi.
+Kahden mallin tapauksessa, jouduttaisiin joko luottamaan segmentaatiomalliin datan valmistelussa, 
+tai kaikki data joduttaisiin käymään manuaalisesti läpi.

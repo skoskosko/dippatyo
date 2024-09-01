@@ -3,18 +3,16 @@
 
 Tavoiteltu lopputulos on malli joka palauttaa stereokuvasta syvyysdatan, ilman liikkuvia kohteita.
 Manuaalisesti tämän voisi toteuttaa laskemalle kuvista dispariteetti, ja poistamalla tästä dispariteetti kuvasta halutut kohteet.
-Jos lähtökohtana on kuvapari, on manuaalinenkin arviointi hyvin likimääräistä. Kuitenkin voidaan ajatella että perus periaatteeltaan asioiden takana oleva syvyys jatkuu samanlaisena kuin asian ympärillä.
+Jos lähtökohtana on kuvapari, on manuaalinenkin arviointi hyvin likimääräistä. Kuitenkin voidaan ajatella että perusperiaatteeltaan asioiden takana oleva syvyys jatkuu samanlaisena kuin asian ympärillä.
 Vaikka tämä ei aina päde, pyritään mallilla testaamaan, onko kappaleen täyttö sitä ympäröivillä syvyyksillä riittävä tekniikka.
 
-\subsection{Stereo analyysi}
+\subsection{Stereoanalyysi}
 
-- TODO: Kirjoita siistimmin teoreettisemmin. Linkkaa vaikka koodiin kunhan siivoat repon.
-
-Syvyysdatan ja dispariteetin analysointi voidaan tehdä ilman neuroverkkoja.
-Tässä tapauksessa se tehdään Hirschmullerin SGM algoritmillä \cite{hirschmuller2005babel}.
+Syvyysdatan ja dispariteetin analysointi tehdään ilman neuroverkkoja.
+Tässä tapauksessa se tehdään Hirschmullerin SGM-algoritmillä \cite{hirschmuller2005babel}.
 Käytettävä variaatio tästä algoritmistä on OpenCV ssä toteutuettu StereoSGBM \cite{opencvsgbm}.
-Seuraava esimerkki on luotu function parametreillä, numDisparities=128, blockSize=20, mode=cv2.StereoSGBM\_MODE\_HH
-sekä lisäämällä stereo kuviin gaussian blur laskennan helpottamiseksi \ref{fig:disparity1}.
+Seuraava esimerkki Kuva  \ref{fig:disparity1} on luotu function parametreillä, numDisparities=128, blockSize=20, mode=cv2.StereoSGBM\_MODE\_HH
+sekä lisäämällä stereo kuviin gaussisen sumennoksen laskennan helpottamiseksi \cite{AnShiyong2021Asvs}.
 
 \begin{figure}[h]
 \centering
@@ -24,26 +22,27 @@ sekä lisäämällä stereo kuviin gaussian blur laskennan helpottamiseksi \ref{
 \end{figure}
     
 Syvyysdatan kerääminen stereokuvista on mahdollista opencv2 kirjaston avulla.
-Blur lisättiin jotta mahdolliset kameran aiheuttamat häiriöt saadaan minimoitua.
+Sumennus lisättiin jotta mahdolliset kameran aiheuttamat häiriöt saadaan minimoitua.
 Käytetyt parametrit tarkoittavat että mahdollisia disparity tasoja on 128 ja alue jolta samankaltaisuutta verrataan on 20 pikselin kokoinen.
-Functiota ajettin HH modessa, joka tarkoittaa että se suoritetaan algoritmin alkuperäisellä suoritustavalla, eikä kevennetyllä jota käytetään muistin säästämiseksi.
+Funktiota ajettin HH modessa, joka tarkoittaa että se suoritetaan algoritmin alkuperäisellä suoritustavalla, 
+eikä kevennetyllä jota käytetään muistin säästämiseksi.
 
 Tuloksestamme huomaamme häiriötä jota totuudessa ei ole.
-Tämä johtuu todennäköisesti kohdista kuvista joista Hirschmullerin algoritmi ei pysty tunnistamaan vastaavaa kohtaa toisessa kuvassa.
+Tämä johtuu todennäköisesti kohdista kuvista joista Hirschmullerin-algoritmi ei pysty tunnistamaan vastaavaa kohtaa toisessa kuvassa.
 Tämä voi tapahtua esimerkiksi asfaltin pinnassa jossa on hyvin samankaltaista tai varjoisilla alueilla. 
 
 Tässä tilanteessa voisimme myös kouluttaa verkon jonka avulla saisimme hankittua syvyysdata,
 mutta koska syvyysdata ei ole yleisesti saatavilla olevaa koulutusdataa,
-ei voida olettaa että se olisi saatavilla tulevissa implementaatioissa. 
+ei voida olettaa että se olisi saatavilla tulevissa toteutuksissa. 
 
-\subsection{Semantic segmentation}
+\subsection{Semanttinen Segmentointi}
 
 Aineistossa on jo olemassa totuus segmentaatiodatasta.
 Käytämme tätä valmista dataa, mutta koulutamme silti sitä varten myös uuden verkon.
-Koulutettu verkko on hyvin yksinkertainen ja käyttää valmiita pytorch komponenttejä.
+Koulutettu verkko on hyvin yksinkertainen ja käyttää valmiita pytorch komponentteja.
 Data on koulutettu\ fcn\_resnet50 avulla \cite{pytorchfcnresnet50}, ilman esikoulutettuja painoja. Optimointiin on käytetty Adam-algoritmia ja häviöfunktioksi on valittu CrossEntropyLoss-funktio.
 Datasetin mallia on yksinkertaistettu tarpeen mukaan: kaikki liikkuvat kohteet, kuten autot ja ihmiset, on yhdistetty yhdeksi luokaksi ja kaikki muu toiseksi luokaksi.
-Näin saadaan yksinkertaisempi malli, jonka avulla voidaan kuvasta tunnistaa kaikki liikkuvat osat \ref{fig:segmentation1}.
+Näin saadaan yksinkertaisempi malli, jonka avulla voidaan kuvasta tunnistaa kaikki liikkuvat kohteet Kuva \ref{fig:segmentation1}.
 
 \begin{figure}[h]
 \centering
@@ -57,11 +56,11 @@ Tällä tavalla tehty malli antaa meille riittäviä tuloksia alkuperäiseen tot
 Ja sen kouluttaminen on myös melko yksinkertaista.
 Tätä mallia ei kuitenkaan tarvita kuin lopullisen mallin luomiseen mahdollisissa muissa käyttökohteissa, joissa dataa ei ole saatavilla.
 Voi kuitenkin olla helpompaa segmentoinnin sijaan, arvioida suoraan asioiden alla oleva syvyys.
-Kuitenkin jos data generoidaan esimerkiksi useilla kuvilla samoista kohdista joissa kohteet liikkuvat,
+Kuitenkin jos data tuotetaan esimerkiksi useilla kuvilla samoista kohdista joissa kohteet liikkuvat,
 on segmentaatio mallista enemmän hyötyä.
-Koska sitä voisi tälläisissä tapauksissa käyttää pelkästään taustasyvyys arvioinnin generointiin,ilman syvyyksien arvaamista.
+Koska sitä voisi tälläisissä tapauksissa käyttää pelkästään taustasyvyys arvioinnin tuottamiseen, ilman syvyyksien arvaamista.
 
-\section{Datasetin muodostus}
+\section{Datan muodostus}
 
 Niin kuin aikaisemmin jo mainittu, tavoite on jalostaa data muotoon, jossa kaikki liikkuvat kohteet on hävitetty syvyysdatasta.
 Koska käytetty data on kaupunkidataa, tämä tarkoittaa autojen sekä ihmisten poistamista kuvista.
@@ -71,13 +70,13 @@ Kun liikkuvien objektien alue on poistettu, pitää niiden alla oleva alue gener
 Kyseisten alueiden alla voi olla miltei mitä tahansa, 
 ja ei ole selkeää ja helppoa keinoa sitä tietää. 
 Alueen alle voi jäädä taloja joissa on erikoisia kulmia, puita, pensaita postilaatikoita tolppia ja mitä tahansa muuta. 
-Näin ollen jo lähtökohtaisesti siis tämän mallin luominen vaikuttaa epätoivoiselta.
-Näin ollen ei voida olettaa, että kyseinen malli olisi erityisen tarkka.
+Tästä johtuen ei voida olettaa, että kyseinen malli olisi erityisen tarkka.
 Kuitenkin alueen karkeaan arviointiin tuotetun datasetin pitäisi olla riittävä.
 On tärkeä muistaa, että huonosti toteutettu dataset tuottaa myös huonoja tuloksia tuottavan mallin.
 
 Tässä työssä mallin käsittelyä yritettiin vertikaalisella ja horisontaalisella pyyhkäisyllä, sekä niiden yhteistuloksella.
-Tämä tarkoittaa että jokainen yhtenäinen alue etsittiin ja niiden syvyys arvot otettiin niiden reunoilta, ja pyyhkäistiin läpi täsmäämään vastakkaisen reunan arvoon.
+Tämä tarkoittaa että jokainen yhtenäinen alue etsittiin ja niiden syvyysarvot otettiin niiden reunoilta,
+ja pyyhkäistiin läpi täsmäämään vastakkaisen reunan arvoon.
 Tämä tarkoittaa, että jos kohteen takana on esimerkiksi puu vertikaalinen pyyhkäisy osaisi ottaa sen huomioon.
 Jos kohteen takana sen sijaan on aita vertikaalien pyyhkäisy osaisi ottaa sen huomioon.
 Ja yhdistetyssä tavassa nämä arvot on summattu, joten sen pitäisi olla keskiarvoltaan hyvä. 
@@ -85,15 +84,18 @@ Ja yhdistetyssä tavassa nämä arvot on summattu, joten sen pitäisi olla keski
 \begin{figure}[h]
 \centering
 \pdftooltip{\includegraphics[width=\textwidth]{figures/swipe.png}}{Swipe}
-\caption{Swipe}
+\caption{Eri tyypin pyyhkäisyt syvyyden arviointiin}
 \label{fig:swipe}
 \end{figure}
 
 
-Tässä kuvassa \ref{fig:swipe} on esitelty tavat vertikaali horisontaali sekä niiden yhdistetty arvo. 
-Siitä huomataan että mikään tavoista ei ole täydellinen. Tästä johtuen jotta datasta saadaan edes jollain tavalla käytettävää, tulee se käydä ensin läpi. 
+Tässä kuvassa Kuva \ref{fig:swipe} on esitelty tavat vertikaali horisontaali sekä niiden yhdistetty arvo. 
+Siitä huomataan että mikään tavoista ei ole täydellinen.
+Tästä johtuen jotta datasta saadaan edes jollain tavalla käytettävää, tulee se käydä ensin läpi. 
 
-Läpi käynnissä vertailin yllä mainittujen kuvien lisäksi 50 pikselin reuna bufferilla otettuja pyyhkäisyjä. Datan läpikäynnin jälkeen valituksi tuli seuraavanlaisia kuvia.
+Kuvien manuaalisessa valinnassa vertailtiin yllä mainittujen kuvien lisäksi pyyhkäisyjä,
+jotka ylittävät tunnistetun reunan 50:llä pikselillä.
+Datan läpikäynnin jälkeen valituksi tuli seuraavanlaisia kuvia.
 
 \begin{figure}[h]
 \centering
@@ -102,27 +104,33 @@ Läpi käynnissä vertailin yllä mainittujen kuvien lisäksi 50 pikselin reuna 
 \label{fig:selected}
 \end{figure}
 
-\ref{fig:selected} 
-Tästä huomaamme että vertikaalinen valinta oli yleisin.
-Ja yleensä jos horisontaalista dataa tarvittiin, se yleensä kannatti yhdistää vertikaalidataan.
+Tästä huomaamme että vertikaalinen valinta oli yleisin Kuva \ref{fig:selected} .
+Yleensä jos horisontaalista dataa tarvittiin, se yleensä kannatti yhdistää vertikaalidataan.
 Tämä johtuu todennäköisesti datan luonteesta. Suuri osa kohteista on melko lähellä kameraa ja reunassa.
-Tämä johtaa tilanteeseen jossa analysoitavan alueen oikealla tai vasemmalla puolella ei ole referenssiä jota käyttää datan generoimiseen.
-Vertikaalien data on myös todennäköisemmin oikein, koska suurin osa datasta on tieltä joka jatkuu eteenpäin.
+Tämä johtaa tilanteeseen jossa analysoitavan alueen oikealla tai vasemmalla puolella ei ole tarpeeksi syvyysdataa jota voisi käyttää syvyyden generoimiseen.
+Vertikaalipyyhkäistyjen kuvien data on myös todennäköisemmin oikein, koska suurin osa datasta on tieltä joka jatkuu eteenpäin.
 Näin ollen ylempänä kuvassa kauempana oleva tasainen pyyhkäisy on todennäköisemmin oikein, kuin vasemmalta oikealle tuleva, joka tuo tulokseen enemmän satunnaisuutta.
 Näin ollen koska kuvat on käsin silmämääräisesti valittuja, luonnollisimman näköiset kuvat ovat todennäköisesti valittuja.
 Yhden kuvan valitsemiseen ei kuitenkaan ole käytetty paljoa aikaa vaan se on hyvin ”fiilis pohjaista”.
 
 Yleisimmät asiat mitkä toivat ongelmia, olivat segmentoitujen alueiden vieressä olevat epäselvyydet.
-Sekä alueet jotka olivat niin reunassa että niiden takaa automaattinen referenssin saanti ei ollut mahdollista.
+Sekä alueet jotka olivat niin reunassa että niiden vierest käytettävän syvyyden saanti ei ollut mahdollista.
 Jatkokehityksessä näitä ongelmia voisi yrittää parantaa muutamilla tavoilla. 
-Segmentaatio alueita voisi laajentaa.
+
+Tunnistettuja alueita laajentamalla voisimme onnistua piilottamaan joitan tunnistettujen alueiden reunoilla esiintyviä syvyysdatan häiriöitä.
 Koska emme ole kiinnostuneita tunnistamaan asioita vaan piilottamaan ne, ei kovin suuri tarkkuus ole tarpeellista.
-Jälkianalysoinnin kannalta myöskin liian suuri alue on huomattavasti pienempi harmi kuin liian pieni alue. 
-Tämän lisäksi tulosta voisi parantaa siistimällä disparitaatio datasta kohina pois.
-Tämä todennäköisesti poistaisi jotain tärkeää dataa, mutta jälleen kerran tavoiteltu tarkkuus ei ole niin suuri että tästä pitäisi johtua suuresti haittaa.
-Koska yleinen ongelma on, että dataa ei ole saatavilla kuvan ulkopuolelta. Voisi koulutus datalle luoda syvyys kehys.
-Tämä varmistaisi että syvyys on aina saatavilla, ja tällaisen kehyksen generointi pitäisi olla mahdollista datan samankaltaisuudesta johtuen.
-Yksi ratkaistava ongelma on ihmisten poistaminen.
+Jälkianalysoinnin kannalta myöskin liian suuri alue on huomattavasti pienempi harmi kuin liian pieni alue.
+
+Tulosta voisi myös parantaa siistimällä disparitaatiodatasta kohinaa suodattamalla.
+Tämä todennäköisesti poistaisi jotain tärkeää dataa,
+mutta jälleen kerran tavoiteltu tarkkuus ei ole niin suuri että tästä pitäisi koitua suuresti haittaa,
+koska yleinen ongelma on, että dataa ei ole saatavilla kuvan ulkopuolelta.
+
+Koulutsdatan kuville voitaisiin luoda syvyyttä arvioiva kehys.
+Tämä varmistaisi että syvyys on aina saatavilla, 
+ja tällaisen kehyksen generointi pitäisi olla mahdollista datan samankaltaisuudesta johtuen.
+
+Yksi yleisesti ongelmia tuottava tunnistettu kohde ovat ihmiset.
 Ihmiset ovat monimutkaisempia muotoja kuin autot.
 Näin ollen myös mallissa, ihmisen erottelu on tarkempaa.
 Kuitenkin joissain kuvissa,
@@ -140,14 +148,14 @@ Manuaalisesta työstä ei kuitenkaan koskaan pääse datan validoinnissa pois,
 jos käytössä ei ole parempaa lähtödataa.
 Jos datasetti muodostettaisiin ottamalla samasta kohdasta useita kuvia,
 niin kauan että kaikki liikkuvat kohteet olisivat poistuneet,
-voitaisiin sen ja segmentaatio mallin avulla luoda huomattavasti parempaa koulutusdataa. 
+voitaisiin sen ja segmentaatiomallin avulla luoda huomattavasti parempaa koulutusdataa. 
 
 \section{Lopullinen malli}
 
-Datasta koulutettiin malli samalla pytorchin tarjoamalla fcn resnet50 verkolla, kuin segmentaatio vaiheessa.
+Datasta koulutettiin malli samalla pytorchin tarjoamalla "fcn\_resnet50" \cite{pytorchfcnresnet50} neuroverkolla kuin segmentaatiovaiheessa.
 Ulostulon muoto jaettiin 128 luokkaan, jotka vastaavat eri syvyyttä.
-Sisääntulona annettiin 2 harmaata kuvaa 3 ulotteisen kuvan eri kerroksissa.
-Näin voitiin käyttää valmista segmentaatio mallia värikuva sisääntulolla, stereo mustavalkokuvan analysointiin, ja syvyyden arviointiin. 
+Sisääntulona annettiin 2 harmaata kuvaa 3-ulotteisen matriisin eri kerroksissa.
+Näin voitiin käyttää valmista segmentaatio mallia värikuva sisääntulolla, kahden stereo-mustavalkokuvan analysointiin ja tuottaa sillä syvyyskartta.
 
 \begin{figure}[h]
 \centering
@@ -156,8 +164,8 @@ Näin voitiin käyttää valmista segmentaatio mallia värikuva sisääntulolla,
 \label{fig:model}
 \end{figure}
 
-\ref{fig:model} 
 
-Kuvasta nähdään että, koulutus itsessään pystyy tuottamaan hyvin samankaltaisia kuvia kuin laskettu malli. Koulutettu malli kuitenkin oletetusti perii koulutusdatan heikkoudet. Koska käytetty automatisoitu tapa ei tuota täydellistä dataa, ei myöskään koulutettu malli ole täydellinen. 
+
+Kuvasta Kuva \ref{fig:model}  nähdään että, koulutus itsessään pystyy tuottamaan hyvin samankaltaisia kuvia kuin laskettu malli. Koulutettu malli kuitenkin oletetusti perii koulutusdatan heikkoudet. Koska käytetty automatisoitu tapa ei tuota täydellistä dataa, ei myöskään koulutettu malli ole täydellinen. 
 
 Kuitenkin tässä tilanteessa, jossa ei ole tarvetta niin tarkalle lopputulokselle, tuottaa koulutettu malli vähemmän häiriötä kuin koneellisesti tuotettu malli. 
