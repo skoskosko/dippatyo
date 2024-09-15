@@ -80,7 +80,7 @@ class VerticalEstimator(EstimatorBase):
 class FocalEstimator(EstimatorBase):
     pass
 
-    def get_line_points(self, x1, y1, x2, y2, start_radius=1, end_radius=1, x_l = 1024, y_l = 512):
+    def get_line_points(self, x1, y1, x2, y2, x_limit = (0, 1024), y_limit = (0, 512)):
         points_x = [x1]
         points_y = [y1]
 
@@ -97,42 +97,29 @@ class FocalEstimator(EstimatorBase):
             x += x_s
             y += y_s
 
+            if x_s > 0:
+                if int(x) >= x_limit[1]:
+                    break
+            elif x_s < 0:
+                if int(x) <= x_limit[0]:
+                    break
+            
+            if y_s > 0:
+                if int(y) >= y_limit[1]:
+                    break
+            elif y_s < 0:
+                if int(y) <= y_limit[0]:
+                    break
+            
             points_x.append(int(x))
             points_y.append(int(y))
-                
-        points_x.append(x2)
-        points_y.append(y2)
 
-        if start_radius == end_radius == 1:
-            return numpy.array(points_x), numpy.array(points_y)
+        assert max(points_x) < x_limit[1], f"{max(points_x)} < {x_limit[1]}"
+        assert max(points_y) < y_limit[1], f"{max(points_y)} < {y_limit[1]}"
 
-        thick_points_x = []
-        thick_points_y = []
+        return numpy.array(points_x), numpy.array(points_y)
 
-
-        for i, (x, y) in enumerate(zip(points_x, points_y)):
-            # Calculate how far along the line we are (from 0 at the start to 1 at the end)
-            t = i / steps  # Normalized position along the line
-
-            # Linearly interpolate radius between start_radius and end_radius
-            current_radius = start_radius * (1 - t) + end_radius * t
-
-            # Round and convert radius to an integer
-            current_radius = int(current_radius)
-
-            # Generate points around the line point based on the current radius
-            for dx in range(-current_radius, current_radius + 1):
-                for dy in range(-current_radius, current_radius + 1):
-                    # Only keep the points within the current radius (circle shape)
-                    if dx**2 + dy**2 <= current_radius**2:
-                        new_x = x + dx
-                        new_y = y + dy
-                        # Ensure the points are within the bounds (optional)
-                        if 0 <= new_x < x_l and 0 <= new_y < y_l:
-                            thick_points_x.append(new_x)
-                            thick_points_y.append(new_y)
-        return numpy.array(thick_points_x), numpy.array(thick_points_y)
-
+        
     # def sort_by_distance(self, coords, point):
     #     # Calculate Euclidean distance for each coordinate from the given point
     #     distances = numpy.sqrt((coords[:, 0] - point[0])**2 + (coords[:, 1] - point[1])**2)
@@ -164,14 +151,13 @@ class FocalEstimator(EstimatorBase):
     def estimate(self, groups: List[numpy.ndarray], disparity: torch.Tensor) -> torch.Tensor:
         
         # Set focal pojnt
-        x = int(disparity.shape[1]/2.5)
-        y = int(disparity.shape[2]/2)
+        y = int(disparity.shape[1]/2.5)
+        x = int(disparity.shape[2]/2)
 
-        
-        
-        color = numpy.array([255, 0, 0])[:, None]
 
         output = numpy.copy(torch.Tensor.numpy(disparity))
+
+        output[:, y-5:y+5, x-5:x+5] = numpy.array([255, 0, 255])[:, None, None]
         
         # vertical sides
         # radius = 25
@@ -207,40 +193,36 @@ class FocalEstimator(EstimatorBase):
         for group in groups:
             # Get furthest points
             Y, X = numpy.where(group==1)
-            
-            print(min(Y))
-            print(max(Y))
+            rnd_color = list(numpy.random.choice(range(256), size=3))
+            color = numpy.array(rnd_color)[:, None]
+        
+            # print(min(Y))
+            # print(max(Y))
 
             # if Y min is lower than y we just blend it in
             # if higher we continue with focal
 
-            if min(Y) < y: # under focal line
+            if min(Y) > y/2: # under focal line
                 # Fit between thingys
                 if max(X) < x and min(X) < x: # completely left side of focal
-                    print("WESTSIDEIID")
+                    for _y in range(min(Y), max(Y)):
+                        line_points = self.get_line_points(min(X), _y, x, y, x_limit=(0, max(X)+ 10))
+                        color_repeated = numpy.repeat(color, line_points[0].shape[0], axis=1)
+                        output[:, line_points[1],line_points[0]] = color_repeated
 
 
-                    line_points = self.get_line_points(min(X), min(Y), y, x)
-                    color_repeated = numpy.repeat(color, line_points[0].shape[0], axis=1)
-                    output[:, line_points[1],line_points[0]] = color_repeated
-
-
-                    line_points = self.get_line_points(min(X), max(Y), y, x)
-                    color_repeated = numpy.repeat(color, line_points[0].shape[0], axis=1)
-                    output[:, line_points[1],line_points[0]] = color_repeated
-
-
-
-                elif max(X) > X and min(X) > x: # completely left side
-                    print("EASTSIDEIID")
+                elif max(X) > x and min(X) > x: # completely rigth side
+                    for _y in range(min(Y), max(Y)):
+                        line_points = self.get_line_points(max(X), _y, x, y, x_limit=(min(X) - 10, 1024))
+                        color_repeated = numpy.repeat(color, line_points[0].shape[0], axis=1)
+                        output[:, line_points[1],line_points[0]] = color_repeated
 
                 else:
-                    print("KESKUSTA ON MAHTAVA")
-            
+                    raise NotImplementedError("AT CENTER")
+            else:
+                raise NotImplementedError("TOO HIGH")
             # print(min(X))
 
-
-            break
 
         return torch.from_numpy(output)
     
