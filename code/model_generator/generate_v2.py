@@ -16,7 +16,7 @@ import os
 
 from PIL import Image
 import torch
-from estimator import HorisontalEstimator, VerticalEstimator, EstimatorBase
+from estimator import HorisontalEstimator, VerticalEstimator, EstimatorBase, FocalEstimator
 
 
 import numpy
@@ -141,15 +141,7 @@ for image in dataset.images:
 
     # Estimate new disparity
     
-    # h_estimate = HorisontalEstimator().estimate(groups, disparity)
-    # v_estimate = VerticalEstimator().estimate(groups, disparity)
-    # c_estimate = EstimatorBase().combine_estimators(groups, h_estimate, v_estimate)
-
-    # h_50_estimate = HorisontalEstimator().estimate(groups, disparity, b=50)
-    # v_50_estimate = VerticalEstimator().estimate(groups, disparity, b=50)
-    # c_50_estimate = EstimatorBase().combine_estimators(groups, h_50_estimate, v_50_estimate)
-
-    
+    focal_estimate = FocalEstimator().estimate(groups, image.disparity())
 
     # def save_estimate(type, city, name, image):
     #     path = "/home/esko/Documents/Dippatyo/output2"
@@ -162,13 +154,7 @@ for image in dataset.images:
     #     img.save(os.path.join(path, type, city, name))
 
 
-    # save_estimate("horisontal", image.city, image.name, h_estimate)
-    # save_estimate("vertical", image.city, image.name, v_estimate)
-    # save_estimate("combined", image.city, image.name, c_estimate)
-
-    # save_estimate("horisontal_50", image.city, image.name, h_50_estimate)
-    # save_estimate("vertical_50", image.city, image.name, v_50_estimate)
-    # save_estimate("combined_50", image.city, image.name, c_50_estimate)
+    # save_estimate("focal", image.city, image.name, focal_estimate)
 
     print(f"{image.city} : {image.name}")
     print(depth_reference.shape)
@@ -218,10 +204,7 @@ for image in dataset.images:
         depth_reference[:, line_points[1],line_points[0]] = color_repeated
 
 
-
-
-
-    grid = make_grid([image.left(), torch.from_numpy(d), torch.from_numpy(depth_reference)])
+    grid = make_grid([torch.from_numpy(d), torch.from_numpy(depth_reference), focal_estimate])
 
     show(grid)
 
