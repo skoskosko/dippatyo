@@ -121,7 +121,18 @@ dataset: "CityScapes" = CityScapes("/home/esko/Documents/Dippatyo/dataset")
     # assume area same as around it
     # Ask image to be approved
     # save if approved
-for image in dataset.images:
+for index, image in enumerate(dataset.images):
+
+    print(f"{image.city} : {image.name}")
+    print(f"{index+1}/{len(dataset.images)}")
+
+
+    def check_estimate(type, city, name):
+        path = "/home/esko/Documents/Dippatyo/output"
+        return os.path.exists(os.path.join(path, type,city, name))
+    
+    if check_estimate("focal", image.city, image.name): continue
+
 
     classification: torch.Tensor = image.classification_image()
     disparity: torch.Tensor = image.disparity()
@@ -129,9 +140,7 @@ for image in dataset.images:
     c: torch.Tensor = image.classification()
     d: numpy.ndarray = torch.Tensor.numpy(disparity)
     depth_reference: numpy.ndarray = torch.Tensor.numpy(image.disparity())
-    print("group start")
     groups = group_coordinates(torch.Tensor.numpy(c[0, :, :]))
-    print("group end")
 
     for group in groups:        
         color = list(numpy.random.choice(range(256), size=3))
@@ -143,69 +152,56 @@ for image in dataset.images:
     
     focal_estimate = FocalEstimator().estimate(groups, image.disparity())
 
-    # def save_estimate(type, city, name, image):
-    #     path = "/home/esko/Documents/Dippatyo/output2"
-    #     if not os.path.exists(os.path.join(path, type)):
-    #         os.makedirs(os.path.join(path, type))
-    #     if not os.path.exists(os.path.join(path, type, city)):
-    #         os.makedirs(os.path.join(path, type, city))
-    #     transform = transforms.ToPILImage()
-    #     img = transform(image)
-    #     img.save(os.path.join(path, type, city, name))
+    def save_estimate(type, city, name, image):
+        path = "/home/esko/Documents/Dippatyo/output"
+        if not os.path.exists(os.path.join(path, type)):
+            os.makedirs(os.path.join(path, type))
+        if not os.path.exists(os.path.join(path, type, city)):
+            os.makedirs(os.path.join(path, type, city))
+        transform = transforms.ToPILImage()
+        img = transform(image)
+        img.save(os.path.join(path, type, city, name))
+
+    save_estimate("focal", image.city, image.name, focal_estimate)
+
+    def show_image():
+        x = int(depth_reference.shape[1]/2.5)
+        y = int(depth_reference.shape[2]/2)
 
 
-    # save_estimate("focal", image.city, image.name, focal_estimate)
+        depth_reference[:, x-5:x+5, y-5:y+5] = numpy.array([255, 255, 0])[:, None, None]
 
-    print(f"{image.city} : {image.name}")
-    print(depth_reference.shape)
+        radius = 2
+        color = numpy.array([255, 0, 0])[:, None]  # Shape (3, 1)
 
+        points = 5
+        for i in range(points):
+            x2 = int((depth_reference.shape[2]-1) * (i / (points-1)))
+            y2 = int((depth_reference.shape[1]-1) * (i / (points-1)))
 
+            # depth_reference[:, 0:10, x2-5:x2+5] = numpy.array([255, 0, 255])[:, None, None]
+            # depth_reference[:, 502:512, x2-5:x2+5] = numpy.array([100, 100, 0])[:, None, None]
+            # depth_reference[:, y2-5:y2+5, 0:10] = numpy.array([150, 150, 0])[:, None, None]
+            # depth_reference[:, y2-5:y2+5, 1014:1024] = numpy.array([150, 0, 150])[:, None, None]
 
+            line_points = get_line_points(y, x, x2, 0, radius)
+            color_repeated = numpy.repeat(color, line_points[0].shape[0], axis=1)
+            depth_reference[:, line_points[1],line_points[0]] = color_repeated
 
-    # Find point to gather rays to
+            line_points = get_line_points(y, x, x2, 511, radius)
+            color_repeated = numpy.repeat(color, line_points[0].shape[0], axis=1)
+            depth_reference[:, line_points[1],line_points[0]] = color_repeated
 
-    x = int(depth_reference.shape[1]/2.5)
-    y = int(depth_reference.shape[2]/2)
+            line_points = get_line_points(y, x, 0, y2, radius)
+            color_repeated = numpy.repeat(color, line_points[0].shape[0], axis=1)
+            depth_reference[:, line_points[1],line_points[0]] = color_repeated
 
+            line_points = get_line_points(y, x, 1023, y2, radius)
+            color_repeated = numpy.repeat(color, line_points[0].shape[0], axis=1)
+            depth_reference[:, line_points[1],line_points[0]] = color_repeated
 
-    depth_reference[:, x-5:x+5, y-5:y+5] = numpy.array([255, 255, 0])[:, None, None]
+        grid = make_grid([torch.from_numpy(d), torch.from_numpy(depth_reference), focal_estimate])
+        show(grid)
+        plt.show()
 
-    radius = 2
-    color = numpy.array([255, 0, 0])[:, None]  # Shape (3, 1)
-
-    points = 5
-    for i in range(points):
-        x2 = int((depth_reference.shape[2]-1) * (i / (points-1)))
-        y2 = int((depth_reference.shape[1]-1) * (i / (points-1)))
-
-
-        # depth_reference[:, 0:10, x2-5:x2+5] = numpy.array([255, 0, 255])[:, None, None]
-
-        # depth_reference[:, 502:512, x2-5:x2+5] = numpy.array([100, 100, 0])[:, None, None]
-
-        # depth_reference[:, y2-5:y2+5, 0:10] = numpy.array([150, 150, 0])[:, None, None]
-
-        # depth_reference[:, y2-5:y2+5, 1014:1024] = numpy.array([150, 0, 150])[:, None, None]
-
-        line_points = get_line_points(y, x, x2, 0, radius)
-        color_repeated = numpy.repeat(color, line_points[0].shape[0], axis=1)
-        depth_reference[:, line_points[1],line_points[0]] = color_repeated
-
-        line_points = get_line_points(y, x, x2, 511, radius)
-        color_repeated = numpy.repeat(color, line_points[0].shape[0], axis=1)
-        depth_reference[:, line_points[1],line_points[0]] = color_repeated
-
-        line_points = get_line_points(y, x, 0, y2, radius)
-        color_repeated = numpy.repeat(color, line_points[0].shape[0], axis=1)
-        depth_reference[:, line_points[1],line_points[0]] = color_repeated
-
-        line_points = get_line_points(y, x, 1023, y2, radius)
-        color_repeated = numpy.repeat(color, line_points[0].shape[0], axis=1)
-        depth_reference[:, line_points[1],line_points[0]] = color_repeated
-
-
-    grid = make_grid([torch.from_numpy(d), torch.from_numpy(depth_reference), focal_estimate])
-
-    show(grid)
-
-    plt.show()
+    # show_image()
