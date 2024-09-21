@@ -138,15 +138,8 @@ for index, image in enumerate(dataset.images):
     disparity: torch.Tensor = image.disparity()
 
     c: torch.Tensor = image.classification()
-    d: numpy.ndarray = torch.Tensor.numpy(disparity)
     depth_reference: numpy.ndarray = torch.Tensor.numpy(image.disparity())
     groups = group_coordinates(torch.Tensor.numpy(c[0, :, :]))
-
-    for group in groups:        
-        color = list(numpy.random.choice(range(256), size=3))
-        Y, X = numpy.where(group==1)
-        for i in range(len(Y)):
-            d[:, Y[i], X[i]] = color
 
     # Estimate new disparity
     
@@ -199,6 +192,13 @@ for index, image in enumerate(dataset.images):
             line_points = get_line_points(y, x, 1023, y2, radius)
             color_repeated = numpy.repeat(color, line_points[0].shape[0], axis=1)
             depth_reference[:, line_points[1],line_points[0]] = color_repeated
+
+        d: numpy.ndarray = torch.Tensor.numpy(disparity)
+        for group in groups:        
+            color = list(numpy.random.choice(range(256), size=3))
+            Y, X = numpy.where(group==1)
+            for i in range(len(Y)):
+                d[:, Y[i], X[i]] = color
 
         grid = make_grid([torch.from_numpy(d), torch.from_numpy(depth_reference), focal_estimate])
         show(grid)

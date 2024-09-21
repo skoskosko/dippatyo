@@ -118,16 +118,6 @@ class FocalEstimator(EstimatorBase):
 
         return numpy.array(points_x), numpy.array(points_y)
 
-        
-    # def sort_by_distance(self, coords, point):
-    #     # Calculate Euclidean distance for each coordinate from the given point
-    #     distances = numpy.sqrt((coords[:, 0] - point[0])**2 + (coords[:, 1] - point[1])**2)
-        
-    #     # Sort the coordinates by distance in descending order (furthest to closest)
-    #     sorted_indices = numpy.argsort(distances)[::-1]
-        
-    #     # Return the sorted coordinates
-    #     return coords[sorted_indices]
     
     def sort_by_distance(self, line_points, point):
         # Stack the x and y coordinates to form an array of shape (n, 2)
@@ -156,111 +146,72 @@ class FocalEstimator(EstimatorBase):
 
         output = numpy.copy(torch.Tensor.numpy(disparity))
 
-        output[:, y-5:y+5, x-5:x+5] = numpy.array([255, 0, 255])[:, None, None]
-        
-        # vertical sides
-        # radius = 25
-        # points = 22
-        # for i in range(points):
-        #     x2 = int((output.shape[2]-1) * (i / (points-1)))
+        def frame_estimator(_y):
+            # 200 value at y
+            # 0 value at disparity.shape[1]
 
-        #     line_points = self.get_line_points( x2, 0, y, x, start_radius=radius)
-        #     line_point= self.sort_by_distance(line_points, (x,y))
-        #     color_gradient = numpy.linspace([255, 0, 0], [0, 0, 255], line_points[0].shape[0]).T
-        #     output[:, line_points[1],line_points[0]] = color_gradient
+            frame_length = disparity.shape[1] - y/2
 
-            # line_points = self.get_line_points( x2, 511, y, x, start_radius=radius)
-            # color_gradient = numpy.linspace([255, 0, 0], [0, 0, 255], line_points[0].shape[0]).T
-            # output[:, line_points[1],line_points[0]] = color_gradient
+            _y = _y - y/2
 
-        # # horisontal sides
-        # radius = 25
-        # points = 12
-        # for i in range(points):
-        #     y2 = int((output.shape[1]-1) * (i / (points-1)))
+            change = 180 / frame_length
 
-        #     line_points = self.get_line_points(0, y2, y, x, start_radius=radius)
-        #     color_repeated = numpy.repeat(color, line_points[0].shape[0], axis=1)
-        #     output[:, line_points[1],line_points[0]] = color_repeated
 
-        #     line_points = self.get_line_points(1023, y2, y, x, start_radius=radius)
-        #     color_repeated = numpy.repeat(color, line_points[0].shape[0], axis=1)
-        #     output[:, line_points[1],line_points[0]] = color_repeated
+            color = (_y * change)
+
+            if color < 0:
+                color = 0
+            elif color > 200:
+                raise Exception("IMPOSSIBLE!!!")
+
+            return [int(color), int(color), int(color)]
+
+        def set_horisontal_colors(line_points):
+            x_point = line_points[0][0] - 5
+            if x_point < 0: x_point = 0
+            start_color = numpy.average(disparity[:, line_points[1][0], x_point:x_point+5], axis=1)
+            if start_color[0] < 2:
+                start_color = frame_estimator(line_points[1][0])
+            end_color = numpy.average(disparity[:, line_points[1][-1], line_points[0][-1]:line_points[0][-1]+2], axis=1)
+            change = (end_color[0]-start_color[0]) / len(line_points[0])
+            for i in range(len(line_points[0])):
+                color = start_color[0] + change * i
+                if color < 0:
+                    color = 0
+                elif color > 255:
+                    color = 255
+                output[:, line_points[1][i], line_points[0][i]] = (numpy.rint(color), numpy.rint(color), numpy.rint(color))
+
+        def set_vertical_colors(line_points):
+            y_point = line_points[1][0] + 5
+            if y_point >= disparity.shape[1]: y_point = disparity.shape[1] -1
+
+            start_color = numpy.average(disparity[:, y_point-5: y_point, line_points[0][0]], axis=1)
+
+            if start_color[0] < 2:
+                # print(line_points[1][0])
+                start_color = frame_estimator(line_points[1][0])
+                # print(start_color)
+
+            end_color = numpy.average(disparity[:, line_points[1][-1]-2:line_points[1][-1], line_points[0][-1]], axis=1)
+            # print(end_color)
+            change = (end_color[0]-start_color[0]) / len(line_points[0])
+
+            for i in range(len(line_points[0])):
+                color = start_color[0] + change * i
+                if color < 0:
+                    color = 0
+                elif color > 255:
+                    color = 255
+                output[:, line_points[1][i], line_points[0][i]] = (numpy.rint(color), numpy.rint(color), numpy.rint(color))
 
 
 
         for group in groups:
             # Get furthest points
             Y, X = numpy.where(group==1)
-            rnd_color = list(numpy.random.choice(range(256), size=3))
-            color = numpy.array(rnd_color)[:, None]
-        
-            # print(min(Y))
-            # print(max(Y))
 
-            # if Y min is lower than y we just blend it in
-            # if higher we continue with focal
-        
             if min(Y) > y/2: # under focal line
-                def frame_estimator(_y):
-                    # 200 value at y
-                    # 0 value at disparity.shape[1]
-
-                    frame_length = disparity.shape[1] - y/2
-
-                    _y = _y - y/2
-
-                    change = 180 / frame_length
-
-
-                    color = (_y * change)
-
-                    if color < 0:
-                        color = 0
-                    elif color > 200:
-                        raise Exception("IMPOSSIBLE!!!")
-
-                    return [int(color), int(color), int(color)]
-
-                def set_horisontal_colors(line_points):
-                    x_point = line_points[0][0] - 5
-                    if x_point < 0: x_point = 0
-                    start_color = numpy.average(disparity[:, line_points[1][0], x_point:x_point+5], axis=1)
-                    if start_color[0] < 2:
-                        start_color = frame_estimator(line_points[1][0])
-                    end_color = numpy.average(disparity[:, line_points[1][-1], line_points[0][-1]:line_points[0][-1]+2], axis=1)
-                    change = (end_color[0]-start_color[0]) / len(line_points[0])
-                    for i in range(len(line_points[0])):
-                        color = start_color[0] + change * i
-                        if color < 0:
-                            color = 0
-                        elif color > 255:
-                            color = 255
-                        output[:, line_points[1][i], line_points[0][i]] = (numpy.rint(color), numpy.rint(color), numpy.rint(color))
-
-                def set_vertical_colors(line_points):
-                    y_point = line_points[1][0] + 5
-                    if y_point >= disparity.shape[1]: y_point = disparity.shape[1] -1
-
-                    start_color = numpy.average(disparity[:, y_point-5: y_point, line_points[0][0]], axis=1)
-
-                    if start_color[0] < 2:
-                        # print(line_points[1][0])
-                        start_color = frame_estimator(line_points[1][0])
-                        # print(start_color)
-
-                    end_color = numpy.average(disparity[:, line_points[1][-1]-2:line_points[1][-1], line_points[0][-1]], axis=1)
-                    # print(end_color)
-                    change = (end_color[0]-start_color[0]) / len(line_points[0])
-
-                    for i in range(len(line_points[0])):
-                        color = start_color[0] + change * i
-                        if color < 0:
-                            color = 0
-                        elif color > 255:
-                            color = 255
-                        output[:, line_points[1][i], line_points[0][i]] = (numpy.rint(color), numpy.rint(color), numpy.rint(color))
-
 
 
                 # Fit between thingys
@@ -291,17 +242,18 @@ class FocalEstimator(EstimatorBase):
 
 
             else:
-                if max(X) < x and min(X) < x: # completely left side of focal
+                if max(X) < x: # completely left side of focal
                     for _y in range(min(Y), max(Y)):
                         line_points = self.get_line_points(min(X), _y, x, y, x_limit=(0, max(X)+ 10))
                         set_horisontal_colors(line_points)
 
-                elif max(X) > x and min(X) > x: # completely rigth side
+                elif max(X) > x: # completely rigth side
                     for _y in range(min(Y), max(Y)):
                         line_points = self.get_line_points(max(X), _y, x, y, x_limit=(min(X) - 10, 1024))
                         set_horisontal_colors(line_points)
-                else:
-                    raise NotImplementedError("TOO HIGH")
+                for _x in range(min(X), max(X)):
+                    line_points = self.get_line_points(_x, max(Y), x, y, x_limit=(min(X) - 10, 1024))
+                    set_vertical_colors(line_points)
             # print(min(X))
 
 
