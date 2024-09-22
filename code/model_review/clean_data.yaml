@@ -827,7 +827,7 @@ bremen:
     name: failure
     version: v2
   bremen_000005_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000006_000019.png:
     name: vertical
@@ -857,7 +857,7 @@ bremen:
     name: combined
     version: v2
   bremen_000015_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000016_000019.png:
     name: focal
@@ -866,7 +866,7 @@ bremen:
     name: vertical
     version: v2
   bremen_000018_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000019_000019.png:
     name: focal
@@ -1001,7 +1001,7 @@ bremen:
     name: vertical_50
     version: v2
   bremen_000063_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000064_000019.png:
     name: horisontal_50
@@ -1016,7 +1016,7 @@ bremen:
     name: failure
     version: v2
   bremen_000068_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000069_000019.png:
     name: focal
@@ -1067,7 +1067,7 @@ bremen:
     name: failure
     version: v2
   bremen_000085_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000086_000019.png:
     name: failure
@@ -1115,7 +1115,7 @@ bremen:
     name: focal
     version: v2
   bremen_000101_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000102_000019.png:
     name: failure
@@ -1169,7 +1169,7 @@ bremen:
     name: combined_50
     version: v2
   bremen_000119_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000120_000019.png:
     name: focal
@@ -1265,7 +1265,7 @@ bremen:
     name: vertical
     version: v2
   bremen_000151_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000152_000019.png:
     name: vertical
@@ -1292,7 +1292,7 @@ bremen:
     name: combined
     version: v2
   bremen_000160_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000161_000019.png:
     name: vertical
@@ -1316,7 +1316,7 @@ bremen:
     name: vertical
     version: v2
   bremen_000168_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000169_000019.png:
     name: horisontal
@@ -1331,7 +1331,7 @@ bremen:
     name: vertical
     version: v2
   bremen_000173_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000174_000019.png:
     name: vertical
@@ -1382,7 +1382,7 @@ bremen:
     name: focal
     version: v2
   bremen_000190_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000191_000019.png:
     name: vertical
@@ -1421,7 +1421,7 @@ bremen:
     name: vertical
     version: v2
   bremen_000203_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000204_000019.png:
     name: vertical
@@ -1430,7 +1430,7 @@ bremen:
     name: vertical
     version: v2
   bremen_000206_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000207_000019.png:
     name: failure
@@ -1439,13 +1439,13 @@ bremen:
     name: vertical
     version: v2
   bremen_000209_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000210_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000211_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000212_000019.png:
     name: vertical
@@ -1454,7 +1454,7 @@ bremen:
     name: vertical
     version: v2
   bremen_000214_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000215_000019.png:
     name: failure
@@ -1466,10 +1466,10 @@ bremen:
     name: failure
     version: v2
   bremen_000218_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000219_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000220_000019.png:
     name: failure
@@ -1484,16 +1484,16 @@ bremen:
     name: vertical
     version: v2
   bremen_000224_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000225_000019.png:
     name: failure
     version: v2
   bremen_000226_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000227_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000228_000019.png:
     name: vertical
@@ -1562,7 +1562,7 @@ bremen:
     name: vertical
     version: v2
   bremen_000250_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000251_000019.png:
     name: focal
@@ -1637,7 +1637,7 @@ bremen:
     name: failure
     version: v2
   bremen_000275_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000276_000019.png:
     name: focal
@@ -1646,22 +1646,22 @@ bremen:
     name: failure
     version: v2
   bremen_000278_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000279_000019.png:
     name: horisontal
     version: v2
   bremen_000280_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000281_000019.png:
     name: vertical_50
     version: v2
   bremen_000282_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000283_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000284_000019.png:
     name: focal
@@ -1679,7 +1679,7 @@ bremen:
     name: vertical
     version: v2
   bremen_000289_000019.png:
-    name: failure
+    name: focal
     version: v2
   bremen_000290_000019.png:
     name: focal
@@ -1797,13 +1797,13 @@ cologne:
     name: horisontal_50
     version: v2
   cologne_000012_000019.png:
-    name: failure
+    name: focal
     version: v2
   cologne_000013_000019.png:
     name: vertical
     version: v2
   cologne_000014_000019.png:
-    name: failure
+    name: focal
     version: v2
   cologne_000015_000019.png:
     name: vertical
@@ -1854,7 +1854,7 @@ cologne:
     name: focal
     version: v2
   cologne_000031_000019.png:
-    name: failure
+    name: focal
     version: v2
   cologne_000032_000019.png:
     name: combined
@@ -1896,7 +1896,7 @@ cologne:
     name: focal
     version: v2
   cologne_000045_000019.png:
-    name: failure
+    name: focal
     version: v2
   cologne_000046_000019.png:
     name: vertical
@@ -1908,7 +1908,7 @@ cologne:
     name: vertical_50
     version: v2
   cologne_000049_000019.png:
-    name: failure
+    name: focal
     version: v2
   cologne_000050_000019.png:
     name: vertical
@@ -1941,7 +1941,7 @@ cologne:
     name: failure
     version: v2
   cologne_000060_000019.png:
-    name: failure
+    name: focal
     version: v2
   cologne_000061_000019.png:
     name: failure
@@ -1962,7 +1962,7 @@ cologne:
     name: vertical
     version: v2
   cologne_000067_000019.png:
-    name: failure
+    name: focal
     version: v2
   cologne_000068_000019.png:
     name: vertical_50
@@ -1974,7 +1974,7 @@ cologne:
     name: vertical
     version: v2
   cologne_000071_000019.png:
-    name: failure
+    name: focal
     version: v2
   cologne_000072_000019.png:
     name: vertical
@@ -1983,10 +1983,10 @@ cologne:
     name: vertical
     version: v2
   cologne_000074_000019.png:
-    name: failure
+    name: focal
     version: v2
   cologne_000075_000019.png:
-    name: failure
+    name: focal
     version: v2
   cologne_000076_000019.png:
     name: failure
@@ -2022,7 +2022,7 @@ cologne:
     name: failure
     version: v2
   cologne_000087_000019.png:
-    name: failure
+    name: focal
     version: v2
   cologne_000088_000019.png:
     name: vertical
@@ -2043,7 +2043,7 @@ cologne:
     name: vertical
     version: v2
   cologne_000094_000019.png:
-    name: failure
+    name: focal
     version: v2
   cologne_000095_000019.png:
     name: vertical
@@ -2079,7 +2079,7 @@ cologne:
     name: vertical
     version: v2
   cologne_000106_000019.png:
-    name: failure
+    name: focal
     version: v2
   cologne_000107_000019.png:
     name: vertical
@@ -2106,7 +2106,7 @@ cologne:
     name: vertical
     version: v2
   cologne_000115_000019.png:
-    name: failure
+    name: focal
     version: v2
   cologne_000116_000019.png:
     name: vertical
@@ -2169,7 +2169,7 @@ cologne:
     name: failure
     version: v2
   cologne_000136_000019.png:
-    name: failure
+    name: focal
     version: v2
   cologne_000137_000019.png:
     name: vertical
@@ -2190,7 +2190,7 @@ cologne:
     name: vertical
     version: v2
   cologne_000143_000019.png:
-    name: failure
+    name: focal
     version: v2
   cologne_000144_000019.png:
     name: vertical
@@ -2233,7 +2233,7 @@ darmstadt:
     name: horisontal
     version: v2
   darmstadt_000003_000019.png:
-    name: failure
+    name: focal
     version: v2
   darmstadt_000004_000019.png:
     name: focal
@@ -2320,13 +2320,13 @@ darmstadt:
     name: failure
     version: v2
   darmstadt_000032_000019.png:
-    name: failure
+    name: focal
     version: v2
   darmstadt_000033_000019.png:
     name: vertical
     version: v2
   darmstadt_000034_000019.png:
-    name: failure
+    name: focal
     version: v2
   darmstadt_000035_000019.png:
     name: combined
@@ -2335,7 +2335,7 @@ darmstadt:
     name: vertical
     version: v2
   darmstadt_000037_000019.png:
-    name: failure
+    name: focal
     version: v2
   darmstadt_000038_000019.png:
     name: failure
@@ -2392,10 +2392,10 @@ darmstadt:
     name: focal
     version: v2
   darmstadt_000056_000019.png:
-    name: failure
+    name: focal
     version: v2
   darmstadt_000057_000019.png:
-    name: failure
+    name: focal
     version: v2
   darmstadt_000058_000019.png:
     name: failure
@@ -2413,7 +2413,7 @@ darmstadt:
     name: vertical
     version: v2
   darmstadt_000063_000019.png:
-    name: failure
+    name: focal
     version: v2
   darmstadt_000064_000019.png:
     name: vertical
@@ -2434,10 +2434,10 @@ darmstadt:
     name: focal
     version: v2
   darmstadt_000070_000019.png:
-    name: failure
+    name: focal
     version: v2
   darmstadt_000071_000019.png:
-    name: failure
+    name: focal
     version: v2
   darmstadt_000072_000019.png:
     name: vertical
@@ -3137,7 +3137,7 @@ dusseldorf:
     name: combined
     version: v2
   dusseldorf_000219_000019.png:
-    name: failure
+    name: focal
     version: v2
   dusseldorf_000220_000019.png:
     name: combined
@@ -3162,7 +3162,7 @@ erfurt:
     name: focal
     version: v2
   erfurt_000006_000019.png:
-    name: failure
+    name: focal
     version: v2
   erfurt_000007_000019.png:
     name: focal
@@ -3177,7 +3177,7 @@ erfurt:
     name: focal
     version: v2
   erfurt_000011_000019.png:
-    name: failure
+    name: focal
     version: v2
   erfurt_000012_000019.png:
     name: vertical
@@ -3276,7 +3276,7 @@ erfurt:
     name: vertical
     version: v2
   erfurt_000044_000019.png:
-    name: failure
+    name: focal
     version: v2
   erfurt_000045_000019.png:
     name: horisontal_50
@@ -3327,7 +3327,7 @@ erfurt:
     name: focal
     version: v2
   erfurt_000061_000019.png:
-    name: failure
+    name: focal
     version: v2
   erfurt_000062_000019.png:
     name: focal
@@ -3499,7 +3499,7 @@ hamburg:
     name: focal
     version: v2
   hamburg_000000_005639.png:
-    name: failure
+    name: focal
     version: v2
   hamburg_000000_006192.png:
     name: vertical
@@ -3826,7 +3826,7 @@ hamburg:
     name: combined
     version: v2
   hamburg_000000_058591.png:
-    name: failure
+    name: focal
     version: v2
   hamburg_000000_059339.png:
     name: vertical
@@ -3877,7 +3877,7 @@ hamburg:
     name: combined_50
     version: v2
   hamburg_000000_065055.png:
-    name: failure
+    name: focal
     version: v2
   hamburg_000000_065604.png:
     name: vertical
@@ -4051,13 +4051,13 @@ hamburg:
     name: combined
     version: v2
   hamburg_000000_085413.png:
-    name: failure
+    name: focal
     version: v2
   hamburg_000000_085645.png:
     name: vertical
     version: v2
   hamburg_000000_085982.png:
-    name: failure
+    name: focal
     version: v2
   hamburg_000000_086499.png:
     name: focal
@@ -4174,7 +4174,7 @@ hamburg:
     name: vertical
     version: v2
   hamburg_000000_102379.png:
-    name: failure
+    name: focal
     version: v2
   hamburg_000000_102574.png:
     name: failure
@@ -4523,7 +4523,7 @@ hanover:
     name: vertical
     version: v2
   hanover_000000_032681.png:
-    name: failure
+    name: focal
     version: v2
   hanover_000000_033457.png:
     name: vertical
@@ -4577,7 +4577,7 @@ hanover:
     name: vertical
     version: v2
   hanover_000000_038927.png:
-    name: failure
+    name: focal
     version: v2
   hanover_000000_039021.png:
     name: vertical
@@ -4754,7 +4754,7 @@ hanover:
     name: focal
     version: v2
   hanover_000000_053027.png:
-    name: failure
+    name: focal
     version: v2
   hanover_000000_053437.png:
     name: vertical
@@ -4884,7 +4884,7 @@ jena:
     name: horisontal_50
     version: v2
   jena_000026_000019.png:
-    name: failure
+    name: focal
     version: v2
   jena_000027_000019.png:
     name: vertical
@@ -4998,7 +4998,7 @@ jena:
     name: combined
     version: v2
   jena_000064_000019.png:
-    name: failure
+    name: focal
     version: v2
   jena_000065_000019.png:
     name: vertical
@@ -5055,13 +5055,13 @@ jena:
     name: vertical
     version: v2
   jena_000083_000019.png:
-    name: failure
+    name: focal
     version: v2
   jena_000084_000019.png:
     name: focal
     version: v2
   jena_000085_000019.png:
-    name: failure
+    name: focal
     version: v2
   jena_000086_000019.png:
     name: focal
@@ -5073,7 +5073,7 @@ jena:
     name: vertical
     version: v2
   jena_000089_000019.png:
-    name: failure
+    name: focal
     version: v2
   jena_000090_000019.png:
     name: vertical
@@ -5148,10 +5148,10 @@ jena:
     name: vertical
     version: v2
   jena_000114_000019.png:
-    name: failure
+    name: focal
     version: v2
   jena_000115_000019.png:
-    name: failure
+    name: focal
     version: v2
   jena_000116_000019.png:
     name: vertical
@@ -5284,7 +5284,7 @@ krefeld:
     name: vertical
     version: v2
   krefeld_000000_016342.png:
-    name: failure
+    name: focal
     version: v2
   krefeld_000000_016863.png:
     name: vertical
@@ -6856,7 +6856,7 @@ stuttgart:
     name: failure
     version: v2
   stuttgart_000005_000019.png:
-    name: failure
+    name: focal
     version: v2
   stuttgart_000006_000019.png:
     name: focal
@@ -6874,7 +6874,7 @@ stuttgart:
     name: failure
     version: v2
   stuttgart_000011_000019.png:
-    name: failure
+    name: focal
     version: v2
   stuttgart_000012_000019.png:
     name: failure
@@ -6943,7 +6943,7 @@ stuttgart:
     name: failure
     version: v2
   stuttgart_000034_000019.png:
-    name: failure
+    name: focal
     version: v2
   stuttgart_000035_000019.png:
     name: focal
@@ -6991,7 +6991,7 @@ stuttgart:
     name: vertical
     version: v2
   stuttgart_000050_000019.png:
-    name: failure
+    name: focal
     version: v2
   stuttgart_000051_000019.png:
     name: focal
@@ -7090,7 +7090,7 @@ stuttgart:
     name: vertical
     version: v2
   stuttgart_000083_000019.png:
-    name: failure
+    name: focal
     version: v2
   stuttgart_000084_000019.png:
     name: vertical
@@ -7120,7 +7120,7 @@ stuttgart:
     name: failure
     version: v2
   stuttgart_000093_000019.png:
-    name: failure
+    name: focal
     version: v2
   stuttgart_000094_000019.png:
     name: vertical
@@ -7129,7 +7129,7 @@ stuttgart:
     name: vertical
     version: v2
   stuttgart_000096_000019.png:
-    name: failure
+    name: focal
     version: v2
   stuttgart_000097_000019.png:
     name: vertical
@@ -7189,10 +7189,10 @@ stuttgart:
     name: combined
     version: v2
   stuttgart_000116_000019.png:
-    name: failure
+    name: focal
     version: v2
   stuttgart_000117_000019.png:
-    name: failure
+    name: focal
     version: v2
   stuttgart_000118_000019.png:
     name: failure
@@ -7222,7 +7222,7 @@ stuttgart:
     name: focal
     version: v2
   stuttgart_000127_000019.png:
-    name: failure
+    name: focal
     version: v2
   stuttgart_000128_000019.png:
     name: focal
@@ -7231,10 +7231,10 @@ stuttgart:
     name: failure
     version: v2
   stuttgart_000130_000019.png:
-    name: failure
+    name: focal
     version: v2
   stuttgart_000131_000019.png:
-    name: failure
+    name: focal
     version: v2
   stuttgart_000132_000019.png:
     name: failure
@@ -7243,7 +7243,7 @@ stuttgart:
     name: failure
     version: v2
   stuttgart_000134_000019.png:
-    name: failure
+    name: focal
     version: v2
   stuttgart_000135_000019.png:
     name: vertical
@@ -7291,7 +7291,7 @@ stuttgart:
     name: failure
     version: v2
   stuttgart_000150_000019.png:
-    name: failure
+    name: focal
     version: v2
   stuttgart_000151_000019.png:
     name: failure
@@ -7318,7 +7318,7 @@ stuttgart:
     name: horisontal_50
     version: v2
   stuttgart_000159_000019.png:
-    name: failure
+    name: focal
     version: v2
   stuttgart_000160_000019.png:
     name: horisontal
@@ -7411,7 +7411,7 @@ stuttgart:
     name: vertical
     version: v2
   stuttgart_000190_000019.png:
-    name: failure
+    name: focal
     version: v2
   stuttgart_000191_000019.png:
     name: vertical
@@ -7535,7 +7535,7 @@ tubingen:
     name: failure
     version: v2
   tubingen_000035_000019.png:
-    name: failure
+    name: focal
     version: v2
   tubingen_000036_000019.png:
     name: horisontal
@@ -7601,13 +7601,13 @@ tubingen:
     name: combined
     version: v2
   tubingen_000057_000019.png:
-    name: failure
+    name: focal
     version: v2
   tubingen_000058_000019.png:
     name: horisontal
     version: v2
   tubingen_000059_000019.png:
-    name: failure
+    name: focal
     version: v2
   tubingen_000060_000019.png:
     name: vertical
@@ -7646,7 +7646,7 @@ tubingen:
     name: failure
     version: v2
   tubingen_000072_000019.png:
-    name: failure
+    name: focal
     version: v2
   tubingen_000073_000019.png:
     name: combined
@@ -7676,7 +7676,7 @@ tubingen:
     name: combined
     version: v2
   tubingen_000082_000019.png:
-    name: failure
+    name: focal
     version: v2
   tubingen_000083_000019.png:
     name: horisontal
@@ -7700,7 +7700,7 @@ tubingen:
     name: vertical
     version: v2
   tubingen_000090_000019.png:
-    name: failure
+    name: focal
     version: v2
   tubingen_000091_000019.png:
     name: failure
@@ -7802,7 +7802,7 @@ tubingen:
     name: combined_50
     version: v2
   tubingen_000124_000019.png:
-    name: failure
+    name: focal
     version: v2
   tubingen_000125_000019.png:
     name: vertical
@@ -7850,10 +7850,10 @@ tubingen:
     name: failure
     version: v2
   tubingen_000140_000019.png:
-    name: failure
+    name: focal
     version: v2
   tubingen_000141_000019.png:
-    name: failure
+    name: focal
     version: v2
   tubingen_000142_000019.png:
     name: vertical
@@ -7878,7 +7878,7 @@ ulm:
     name: focal
     version: v2
   ulm_000005_000019.png:
-    name: failure
+    name: focal
     version: v2
   ulm_000006_000019.png:
     name: vertical
@@ -7911,7 +7911,7 @@ ulm:
     name: combined_50
     version: v2
   ulm_000016_000019.png:
-    name: failure
+    name: focal
     version: v2
   ulm_000017_000019.png:
     name: focal
@@ -7923,7 +7923,7 @@ ulm:
     name: vertical
     version: v2
   ulm_000020_000019.png:
-    name: failure
+    name: focal
     version: v2
   ulm_000021_000019.png:
     name: vertical
@@ -7953,7 +7953,7 @@ ulm:
     name: failure
     version: v2
   ulm_000030_000019.png:
-    name: failure
+    name: focal
     version: v2
   ulm_000031_000019.png:
     name: combined
@@ -7962,7 +7962,7 @@ ulm:
     name: vertical
     version: v2
   ulm_000033_000019.png:
-    name: failure
+    name: focal
     version: v2
   ulm_000034_000019.png:
     name: vertical
@@ -8040,10 +8040,10 @@ ulm:
     name: vertical
     version: v2
   ulm_000059_000019.png:
-    name: failure
+    name: focal
     version: v2
   ulm_000060_000019.png:
-    name: failure
+    name: focal
     version: v2
   ulm_000061_000019.png:
     name: vertical
@@ -8371,7 +8371,7 @@ weimar:
     name: focal
     version: v2
   weimar_000074_000019.png:
-    name: failure
+    name: focal
     version: v2
   weimar_000075_000019.png:
     name: focal
@@ -8392,7 +8392,7 @@ weimar:
     name: vertical
     version: v2
   weimar_000081_000019.png:
-    name: failure
+    name: focal
     version: v2
   weimar_000082_000019.png:
     name: horisontal
@@ -8548,7 +8548,7 @@ weimar:
     name: vertical
     version: v2
   weimar_000133_000019.png:
-    name: failure
+    name: focal
     version: v2
   weimar_000134_000019.png:
     name: combined
@@ -8572,7 +8572,7 @@ weimar:
     name: focal
     version: v2
   weimar_000141_000019.png:
-    name: failure
+    name: focal
     version: v2
 zurich:
   zurich_000000_000019.png:

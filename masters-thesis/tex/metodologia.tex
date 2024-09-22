@@ -100,7 +100,7 @@ Datan läpikäynnin jälkeen valituksi tuli seuraavanlaisia kuvia.
 \begin{figure}[h]
 \centering
 \pdftooltip{\includegraphics[width=\textwidth]{figures/selectedimages.png}}{Selected}
-\caption{Selected}
+\caption{Valitut kuvat}
 \label{fig:selected}
 \end{figure}
 
@@ -150,7 +150,7 @@ Jos datasetti muodostettaisiin ottamalla samasta kohdasta useita kuvia,
 niin kauan että kaikki liikkuvat kohteet olisivat poistuneet,
 voitaisiin sen ja segmentaatiomallin avulla luoda huomattavasti parempaa koulutusdataa. 
 
-\section{Lopullinen malli}
+\section{Ensimmäinen malli}
 
 Datasta koulutettiin malli samalla pytorchin tarjoamalla "fcn\_resnet50" \cite{pytorchfcnresnet50} neuroverkolla kuin segmentaatiovaiheessa.
 Ulostulon muoto jaettiin 128 luokkaan, jotka vastaavat eri syvyyttä.
@@ -168,4 +168,75 @@ Näin voitiin käyttää valmista segmentaatio mallia värikuva sisääntulolla,
 
 Kuvasta Kuva \ref{fig:model}  nähdään että, koulutus itsessään pystyy tuottamaan hyvin samankaltaisia kuvia kuin laskettu malli. Koulutettu malli kuitenkin oletetusti perii koulutusdatan heikkoudet. Koska käytetty automatisoitu tapa ei tuota täydellistä dataa, ei myöskään koulutettu malli ole täydellinen. 
 
-Kuitenkin tässä tilanteessa, jossa ei ole tarvetta niin tarkalle lopputulokselle, tuottaa koulutettu malli vähemmän häiriötä kuin koneellisesti tuotettu malli. 
+
+\section{Datan jatkojalostus}
+
+Jotta mallista saataisiin parempi täytyy koulutusdataa pyrkiä jalostamaan tehokkaammin. 
+Aikaisemmat prosessointi tavat olivat melko yleisiä ja käytettäviä millä tahansa datalla. Paremman lopputuloksen saamiseksi voi olla tarpeellista on erikoistuneempia datankäsittelytapoja.
+Käytetty koulutusdata on kaupunkidataa. Tästä johtuen se on hyvin homogeenistä.
+Voimme käyttää tätä hyväksemme kun yritämme arvioida kohteiden takana olevaa syvyyttä.
+
+\begin{figure}[h]
+\centering
+\pdftooltip{\includegraphics[width=\textwidth]{figures/focal_image.png}}{Model}
+\caption{Kuvassa Esimerkki "polttopisteestä"}
+\label{fig:polttopiste}
+\end{figure}
+
+
+Kaupunkiympäristössä kuva on usein otettu samankaltaisesta asetelmasta tiellä ajavasta autosta. 
+Tästä johtuen voimme arvioida syvyyden muutoksen tapahtuvan hyvin samankaltaisesti eri kuvausajankohtina.
+Tämän arvion voimme tehdä arvioimalla "polttpoisteen" jossa todennäköisesti on kuvan suurin syvyys Kuva \ref{fig:model},
+poislukien taivas eli ainakin kuvan merkitsevän alaosan osalta. Vaikka esimerkkikuvassammekaan syvyys ei asetu täysin arvioituun kohtaan.
+On se silti tarpeeksi lähellä jotta sitä voitaisiin käyttää. 
+Kun yhdistämme tähän geneerisissä tavoissa käyttämämme pyyhkäysy tekniikan jonka suoritamme polttopisteen suuntaan.
+Saamme aikaan syvyyden muutoksen joka on luonnollisemman oloinen todelliseen syvyysdataan nähden.
+
+Tämän lisäksi voimme lisätä arvion syvyydestä kuvan eri alueilla. 
+Tämä helpottaa syvyyden arvioita tilanteissa joissa korvattava kohde alkaa jo kuvan reunalta.
+
+\begin{figure}[h]
+\centering
+\pdftooltip{\includegraphics[width=\textwidth]{figures/focal_depth.png}}{Model}
+\caption{Esimerkki syvyyden arvioinnista polttopistettä kohti}
+\label{fig:polttopiste_2}
+\end{figure}
+    
+Kuvassa \ref{fig:model}, näemmä että vasemmassa reunassa oleva auto alkaa suoraan kuvan reunalta.
+Näin ollen emme voi kuvasta tarkistaa alkavaa syvyyttä ennen autoa.
+Tässä voimme käyttää likimääräsistä arvoita syvyyksistä kuvan eri alueille. Vaikka saamanne lopputulos ei ole täydellinen,
+on se silti toimiva lähtökohta syvyyden korvaamiselle.
+
+Koska kyseessä on pelkästään käyttämäämme dataa varten valittu tekniikka, ei se tuota hyviä tuloksia kuin sen kanssa yhteensopivaan dataan.
+Vaikka suuri osa data onkin keskenään samankaltaista. Ei kuitenkaan kaikkien kuvien prosessointi ole järkevää sen avulla.
+Manuaalisen läpikäynnin jälkeen huomaamme, että kuitenkin vain noin neljäsosa kuvista on tuottanut parhaan prosessointi lopputuloksen focal eli polttopiste tekniikan avulla. 
+
+\begin{figure}[h]
+\centering
+\pdftooltip{\includegraphics[width=\textwidth]{figures/NewChart.png}}{Selected2}
+\caption{Uudet Valitut kuvat}
+\label{fig:selected2}
+\end{figure}
+
+Uusi tapa on kuitenkin ratkaissut osan kuvista joiden reuna alueet ovat olleet täynnä autoja. Siirtäen ne epäonnistuneiden kuvein osastolta testaukseen käytettäviin kuviin.
+
+\section{Lopullinen malli}
+
+Lopullinen tuotettu malli, on tehty samalla tavalla kuin ensimmäinenkin.
+Sen kouluttamiseen on vain käytetty hieman erilaista dataa. Sen toiminnan paremmuuden tietellinen analysointi ei anna kuitenkaan realistisia lopputuloksia.
+Alkuperäinen data sisältää niin paljon häiriötä ja epäpuhtauksia, että sen arvioinnin tarkkuus on hyvin hankalaa.
+
+\begin{figure}[h]
+\centering
+\pdftooltip{\includegraphics[width=\textwidth]{figures/new_model.png}}{uusi_malli}
+\caption{Uuden mallin lopputulos}
+\label{fig:uusi_malli}
+\end{figure}
+
+
+Vaikka malli saavuttaisikin "täydellisen" lopputuloksen ei se silti tuota haluttuja tuloksia, koska koulutusdata ei ole täydellistä.
+Tuotettu lopullinen malli onkin mielestäni tästä johtuen hyvä, vaikka sen tuottama kuva onkin "sumea". 
+Tämä sumeus auttaa piilottamaan epätarkkuuksia, ja todennäköisesti olisi riittävä mahdollisissa reaalimaailman käyttökohteissa.
+Kuvassa Kuva \ref{fig:uusi_malli} nähdään että uusi malli pystyy arvioimaan syvyyden autotien sivussa olevien autojen takaa. 
+Se myös pystyy joissain määrin arvioimaan autojen takana olevian puiden runkojen syvyyden. 
+Se on myöskin piilottanut autot silmämääräisesti paremmin kuin vanhassa kuvassa, jossa autojen ääriviivat olivat havaittavissa himmeästi.
