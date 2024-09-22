@@ -15,24 +15,41 @@ import yaml
 
 class CityScapesDataset(torch.utils.data.Dataset):
 
-    def __init__(self, in_memory=False):
+    def __init__(self, in_memory=False, test_set=False):
         """
         """
         self.size = 256
         self.root_dir = os.path.abspath(os.path.join(__file__, "..", "..", ".."))
-        self.l_image_root = os.path.join(self.root_dir, "dataset", "leftImg8bit_trainvaltest", "leftImg8bit", "train")
-        self.r_image_root = os.path.join(self.root_dir, "dataset", "rightImg8bit_trainvaltest", "rightImg8bit", "train")
-        self.truth_root = os.path.join(self.root_dir, "output")
 
-        with open(os.path.join(self.truth_root, "clean_data.yaml")) as stream:
-            data = yaml.safe_load(stream)
-        
-        self.items = []
+        if test_set:
+            self.l_image_root = os.path.join(self.root_dir, "dataset", "leftImg8bit_trainvaltest", "leftImg8bit", "test")
+            self.r_image_root = os.path.join(self.root_dir, "dataset", "rightImg8bit_trainvaltest", "rightImg8bit", "test")
+            self.truth_root = os.path.join(self.root_dir, "output")
 
-        for city, images in data.items():
-            for image, t in images.items():
-                if t != "failure":
-                    self.items.append({"city": city, "name": image, "truth_type": t})
+            self.items = []
+
+            for city in os.listdir(self.l_image_root):
+                city_dir = os.path.join(self.l_image_root, city)
+                if os.path.isdir(city_dir):
+                    # print(city)
+                    for l_image in os.listdir(city_dir):
+                        if l_image.endswith(".png"):
+                            self.items.append({"city": city, "name": l_image.replace("_leftImg8bit", "")})
+
+        else:
+            self.l_image_root = os.path.join(self.root_dir, "dataset", "leftImg8bit_trainvaltest", "leftImg8bit", "train")
+            self.r_image_root = os.path.join(self.root_dir, "dataset", "rightImg8bit_trainvaltest", "rightImg8bit", "train")
+            self.truth_root = os.path.join(self.root_dir, "output")
+
+            with open(os.path.join(self.truth_root, "clean_data.yaml")) as stream:
+                data = yaml.safe_load(stream)
+            
+            self.items = []
+
+            for city, images in data.items():
+                for image, t in images.items():
+                    if t["name"] != "failure":
+                        self.items.append({"city": city, "name": image, "truth_type": t["name"]})
 
     def __len__(self):
         return len(self.items)
@@ -58,12 +75,14 @@ class CityScapesDataset(torch.utils.data.Dataset):
         _image[0, :, :] = l_image
         _image[1, :, :] = r_image
 
+        try:
+            _truth = self._image(os.path.join(self.truth_root, self.items[idx]["truth_type"], self.items[idx]["city"], self.items[idx]["name"]))
+            _splitted_truth = torch.zeros(size=(128, l_image.shape[1], l_image.shape[2]), dtype=torch.bool)
 
-        _truth = self._image(os.path.join(self.truth_root, self.items[idx]["truth_type"], self.items[idx]["city"], self.items[idx]["name"]))
-        _splitted_truth = torch.zeros(size=(128, l_image.shape[1], l_image.shape[2]), dtype=torch.bool)
+            for i in range(128):
+                Y, X = numpy.where(numpy.logical_or(_truth[0] == i*2,_truth[0] == i*2+1))
+                _splitted_truth[i,Y,X] = 1
 
-        for i in range(128):
-            Y, X = numpy.where(numpy.logical_or(_truth[0] == i*2,_truth[0] == i*2+1))
-            _splitted_truth[i,Y,X] = 1
-
-        return _image.float(), _splitted_truth.float()
+            return _image.float(), _splitted_truth.float()
+        except:
+            return _image.float(), None

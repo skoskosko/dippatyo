@@ -22,7 +22,7 @@ from torchvision.transforms.functional import to_pil_image
 
 torch.cuda.empty_cache()
 
-dataset = CityScapesDataset()
+dataset = CityScapesDataset(test_set=True)
 
 
 EPOCHES = 100
@@ -31,7 +31,7 @@ DEVICE = 'cuda'
 
 
 model = torchvision.models.segmentation.fcn_resnet50(weights=None, num_classes=128)
-model.load_state_dict(torch.load("model.pth"), strict=False)
+model.load_state_dict(torch.load("tmp_best_model.pth"), strict=False)
 model.eval()
 model.to(DEVICE)
 
@@ -59,8 +59,8 @@ def to_img(image):
     return _output
 
 
-
-to_pil_image(to_img(target)).show()
+if target is not None:
+    to_pil_image(to_img(target)).show()
 
 _image = torch.zeros(size=(1, 3, image.shape[1], image.shape[2]), dtype=torch.uint8)
 
