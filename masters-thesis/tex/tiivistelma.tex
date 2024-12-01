@@ -1,11 +1,17 @@
 
-Koneoppimis sovellutuksissa datan hankinta on usein yksi suurimpia haasteita. 
-Tämä työ käsittelee, miten kahdella yleisemmin saatavilla olevasta datamallista voitaisiin yhdistää malli jolla pystyisi tunnistmaan todellisen ympäristön syvyyden, jättäen irtonaiset objektit huomiotta.
+Koneoppimisessa datan hankinta on usein yksi suurimpia haasteita. 
+Tämä työ käsittelee mallin luomista, jonka avulla voidaan tunnistaa stereokuvasta sen syvyys jättäen huomiotta irtonaiset objektit.
+Koska tälläista koulutusdataa ei ole helposti saatavilla yritetään se luoda yleisemmin saatavilla olevan datan avulla. 
 
-Tämä tehdään käyttäen segmentointi- sekä stereo-datan avulla.
+Koneoppimista käytetään usein objektien tunnistamiseen ja segmentointiin. Tästä johtuen siihen käytettäviä datamalleja on runsaasti saatavilla.
 
-Datan käsittelyyn käytetään semanttista segmentointia, stereokuvista haettua syvyyttä,
-sekä yksinkertaista algoritmiä syvyyden arviointiin tunnistettujen kohteiden takana.
+Toinen tarvittava tieto on syvyysdata. 
+Stereoanalyysiä on tehty jo ennen koneoppimisen yleistämistä joten sitäkin varten olevia datasettejä on runsaasti saatavilla. 
 
-Tästä johtuen lopputulos ei ole todennäköisesti kovin luotettava,
-mutta lopputuloksen pitäisi silti olla riittävä joihinkin ei kriittisiin sovellutuksiin.
+Puuttuvaksi dataksi jää kuvastatunnistettujen kohteiden taakse jäävä syvyys. Tähän ei ole helposti saatavilla olevia datasettejä.
+Näin ollen koulutusdataan on pyritty lisäämään kohteiden takana oleva syvyys arvioimalla niiden ympärillä olevien syvyyksien perusteella.
+Tässä on käytetty hyödyksi arvioituja syvyyksiä kuvan eri alueilla ja pyyhkäisty syvyys lineaarisesti kohti tätä arvioitua syvempää kohtaa.
+
+Koska lopullinen koulutusdata on hyvin likimääräistä ei voida olettaa että saatu malli on tarkka.
+Kuitenkin jo huonosti toimivaa matalan resoluution mallia voidaan käyttää arvioimaan,
+pystyisikö koneoppimista hyödyntää tälläisen "huonolaatuisen" datan kanssa hyödyllisen lopputuloksen saavuttamiseen.

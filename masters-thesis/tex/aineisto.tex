@@ -8,14 +8,14 @@ Datasetti pitää sisällään dispariteettidatan, sekä segmentaatiodatan.
 Data on autosta stereokameralla kuvattua.
 Malli on suunnattu automatisoituun liikenteeseen, ja siinä on paljon erilaisia kaupunkikuvia teiden varsilta.
 Tämä tuottaa hankaluuksia lopputuloksen kanssa, sillä malli toimii reaalimaailmassa vain kaupunkikuvissa.
-Kuitenkaan yleisempää disparteetti sekä segmentaatio mallia ei järkevästi löytynyt. 
+Kuitenkaan yleisempää disparteetti sekä segmentaatiomallia ei järkevästi löytynyt. 
 Tämän ongelman olisi voinut kiertää käyttämällä erillisiä malleja segmentointiin sekä dispariteettiin. 
 Kahden erialisen mallin yhdistäminen tuo kuitenkin enemmän riskejä.
 Kahden mallin tapauksessa, jouduttaisiin joko luottamaan segmentaatiomalliin datan valmistelussa, 
 tai kaikki data joduttaisiin käymään manuaalisesti läpi.
 
-Data on kerätty erilaisista kaupunki ympäristöistä, ajoneuvon kyydistä kuvaten.
-Tästä johtuen data on melko homogeenistä. Dataan on merkattu monia erilaisia segmentöintyjä kohteita, niinkuin ihmiisä polkupyöriä ja autoja. 
+Data on kerätty erilaisista kaupunkiympäristöistä, ajoneuvon kyydistä kuvaten.
+Tästä johtuen data on melko homogeenistä. Dataan on merkattu monia erilaisia segmentoituja kohteita, niinkuin ihmiisä polkupyöriä ja autoja. 
 Tämän työn kannalta kuitenkin tärkeintä on, että kaikki liikkuvat kohteet on merkattu.
 Kaikkia kuvia on tarjolla sekä vasemmasta että oikeasta kamerasta kuvattuna.
 Data on tämän työn kannalta melko helposti työstettävää. Koska kaikki kuvat ovat ajoneuvosta otettuja, on kuvattava alue rajoittunut alueisiin joissa voi autolla ajaa.
@@ -38,8 +38,7 @@ Tälläisiä kuvia ei tästä datasetistä löydy, koska sen pääkäyttökohde 
 
     
 Aineistossa on myös paljon kuvia jotka ovat "käyttökelvottomia" Kuva \ref{fig:extreme}.
-Vaikka kuva onkin ääri esimerkki, koska miltei koko kuvan alue on peittynyt ajoneuvon johdosta.
-Osoittaa se yleisen ongelman kuvissa. 
+Tämä kuva on hyvä esimerkki tilanteesta jossa edes ihminen ei pysty ilman laajaa taustatietoa arvelemaan mitä liikkuvien kohteiden takana olisi.
 Ilman jonkinlaista ulkoista tietoa, tai datan generointia ei vain ole mahdollista tietää mikä haluttu totuus on.
 Tämä tietysti on ongelma mitä tässä työssä halutaan ratkaista,
 mutta lähtökohtaisesti paras lopputulos saadaan oikealla datalla.

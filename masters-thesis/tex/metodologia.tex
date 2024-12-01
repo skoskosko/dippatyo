@@ -6,7 +6,7 @@ Manuaalisesti tämän voisi toteuttaa laskemalle kuvista dispariteetti, ja poist
 Jos lähtökohtana on kuvapari, on manuaalinenkin arviointi hyvin likimääräistä. Kuitenkin voidaan ajatella että perusperiaatteeltaan asioiden takana oleva syvyys jatkuu samanlaisena kuin asian ympärillä.
 Vaikka tämä ei aina päde, pyritään mallilla testaamaan, onko kappaleen täyttö sitä ympäröivillä syvyyksillä riittävä tekniikka.
 
-\subsection{Stereoanalyysi}
+\section{Stereoanalyysi}
 
 Syvyysdatan ja dispariteetin analysointi tehdään ilman neuroverkkoja.
 Tässä tapauksessa se tehdään Hirschmullerin SGM-algoritmillä \cite{hirschmuller2005babel}.
@@ -23,7 +23,7 @@ sekä lisäämällä stereo kuviin gaussisen sumennoksen laskennan helpottamisek
     
 Syvyysdatan kerääminen stereokuvista on mahdollista opencv2 kirjaston avulla.
 Sumennus lisättiin jotta mahdolliset kameran aiheuttamat häiriöt saadaan minimoitua.
-Käytetyt parametrit tarkoittavat että mahdollisia disparity tasoja on 128 ja alue jolta samankaltaisuutta verrataan on 20 pikselin kokoinen.
+Käytetyt parametrit tarkoittavat että mahdollisia "disparity" tasoja on 128 ja alue jolta samankaltaisuutta verrataan on 20 pikselin kokoinen.
 Funktiota ajettin HH modessa, joka tarkoittaa että se suoritetaan algoritmin alkuperäisellä suoritustavalla, 
 eikä kevennetyllä jota käytetään muistin säästämiseksi.
 
@@ -35,7 +35,7 @@ Tässä tilanteessa voisimme myös kouluttaa verkon jonka avulla saisimme hankit
 mutta koska syvyysdata ei ole yleisesti saatavilla olevaa koulutusdataa,
 ei voida olettaa että se olisi saatavilla tulevissa toteutuksissa. 
 
-\subsection{Semanttinen Segmentointi}
+\section{Semanttinen Segmentointi}
 
 Aineistossa on jo olemassa totuus segmentaatiodatasta.
 Käytämme tätä valmista dataa, mutta koulutamme silti sitä varten myös uuden verkon.
@@ -62,7 +62,7 @@ Koska sitä voisi tälläisissä tapauksissa käyttää pelkästään taustasyvy
 
 \section{Datan muodostus}
 
-Niin kuin aikaisemmin jo mainittu, tavoite on jalostaa data muotoon, jossa kaikki liikkuvat kohteet on hävitetty syvyysdatasta.
+Tämän työ tavoite on jalostaa data muotoon, jossa kaikki liikkuvat kohteet on hävitetty syvyysdatasta.
 Koska käytetty data on kaupunkidataa, tämä tarkoittaa autojen sekä ihmisten poistamista kuvista.
 Koska käytettävissämme on kuvien segmentaatiodata, voidaan niiden alue poistamalla dispariteetista saavuttaa tila, jossa niitä ei oteta huomioon.
 
@@ -82,29 +82,31 @@ Jos kohteen takana sen sijaan on aita vertikaalien pyyhkäisy osaisi ottaa sen h
 Ja yhdistetyssä tavassa nämä arvot on summattu, joten sen pitäisi olla keskiarvoltaan hyvä. 
 
 \begin{figure}[h]
-\centering
-\pdftooltip{\includegraphics[width=\textwidth]{figures/swipe.png}}{Swipe}
-\caption{Eri tyypin pyyhkäisyt syvyyden arviointiin}
-\label{fig:swipe}
-\end{figure}
+    \centering
+    \pdftooltip{\includegraphics[width=\textwidth]{figures/swipe.png}}{Swipe}
+    \caption{Eri tyypin pyyhkäisyt syvyyden arviointiin}
+    \label{fig:swipe}
+    \end{figure}
 
 
 Tässä kuvassa Kuva \ref{fig:swipe} on esitelty tavat vertikaali horisontaali sekä niiden yhdistetty arvo. 
 Siitä huomataan että mikään tavoista ei ole täydellinen.
 Tästä johtuen jotta datasta saadaan edes jollain tavalla käytettävää, tulee se käydä ensin läpi. 
 
+\begin{figure}[h]
+    \centering
+    \pdftooltip{\includegraphics[width=\textwidth]{figures/selectedimages.png}}{Selected}
+    \caption{Valitut kuvat}
+    \label{fig:selected}
+    \end{figure}
+
+
 Kuvien manuaalisessa valinnassa vertailtiin yllä mainittujen kuvien lisäksi pyyhkäisyjä,
 jotka ylittävät tunnistetun reunan 50:llä pikselillä.
-Datan läpikäynnin jälkeen valituksi tuli seuraavanlaisia kuvia.
+Datan läpikäynnin jälkeen valituksi tuli seuraavanlaisia kuvia Kuva \ref{fig:selected}.
 
-\begin{figure}[h]
-\centering
-\pdftooltip{\includegraphics[width=\textwidth]{figures/selectedimages.png}}{Selected}
-\caption{Valitut kuvat}
-\label{fig:selected}
-\end{figure}
 
-Tästä huomaamme että vertikaalinen valinta oli yleisin Kuva \ref{fig:selected} .
+Tästä huomaamme että vertikaalinen valinta oli yleisin.
 Yleensä jos horisontaalista dataa tarvittiin, se yleensä kannatti yhdistää vertikaalidataan.
 Tämä johtuu todennäköisesti datan luonteesta. Suuri osa kohteista on melko lähellä kameraa ja reunassa.
 Tämä johtaa tilanteeseen jossa analysoitavan alueen oikealla tai vasemmalla puolella ei ole tarpeeksi syvyysdataa jota voisi käyttää syvyyden generoimiseen.
@@ -186,7 +188,7 @@ Voimme käyttää tätä hyväksemme kun yritämme arvioida kohteiden takana ole
 
 Kaupunkiympäristössä kuva on usein otettu samankaltaisesta asetelmasta tiellä ajavasta autosta. 
 Tästä johtuen voimme arvioida syvyyden muutoksen tapahtuvan hyvin samankaltaisesti eri kuvausajankohtina.
-Tämän arvion voimme tehdä arvioimalla "polttpoisteen" jossa todennäköisesti on kuvan suurin syvyys Kuva \ref{fig:model},
+Tämän arvion voimme tehdä arvioimalla "polttpisteen" jossa todennäköisesti on kuvan suurin syvyys Kuva \ref{fig:model},
 poislukien taivas eli ainakin kuvan merkitsevän alaosan osalta. Vaikka esimerkkikuvassammekaan syvyys ei asetu täysin arvioituun kohtaan.
 On se silti tarpeeksi lähellä jotta sitä voitaisiin käyttää. 
 Kun yhdistämme tähän geneerisissä tavoissa käyttämämme pyyhkäysy tekniikan jonka suoritamme polttopisteen suuntaan.
@@ -209,7 +211,7 @@ on se silti toimiva lähtökohta syvyyden korvaamiselle.
 
 Koska kyseessä on pelkästään käyttämäämme dataa varten valittu tekniikka, ei se tuota hyviä tuloksia kuin sen kanssa yhteensopivaan dataan.
 Vaikka suuri osa data onkin keskenään samankaltaista. Ei kuitenkaan kaikkien kuvien prosessointi ole järkevää sen avulla.
-Manuaalisen läpikäynnin jälkeen huomaamme, että kuitenkin vain noin neljäsosa kuvista on tuottanut parhaan prosessointi lopputuloksen focal eli polttopiste tekniikan avulla. 
+Manuaalisen läpikäynnin jälkeen huomaamme, että kuitenkin vain noin neljäsosa kuvista on tuottanut parhaan prosessointi lopputuloksen "Focal" eli polttopiste tekniikan avulla. 
 
 \begin{figure}[h]
 \centering

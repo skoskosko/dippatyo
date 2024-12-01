@@ -12,7 +12,7 @@ Jos tiedetään kameroiden suhteelliset sijainnit tai jonkin pisteen etäisyys k
 \begin{figure}[h]
 \centering
 \pdftooltip{\includegraphics[width=\textwidth]{figures/stereo_depth.jpg}}{Stereo depth}
-\caption{Stereo syvyyden arviointi}
+\caption{Stereosyvyyden arviointi}
 \label{fig:stereo}
 \end{figure}
     
@@ -41,7 +41,7 @@ Tämä tekniikka ottaa huomioon pikselin ja sen ympäröivien pikselien arvot et
     E(d) = \sum_{p} D(p, d_p) + \sum_{q \in \mathcal{N}} R(p, d_p, q, d_q)
 \end{equation}
 
-Kaavassa \(D(p, d_p)\) summafunktio käy läpi kaikki kuvan pikselit ja vertaa niitä vertailupikseliin.
+Funktiossa \(D(p, d_p)\) summafunktio käy läpi kaikki kuvan pikselit ja vertaa niitä vertailupikseliin.
 Tämä antaa perusarvon yksittäisen pikselin samankaltaisuudelle.
 
 Tämän jälkeen pikselin ympäröiviä pikseleitä verrataan toisiinsa \(R(p, d_p, q, d_q)\).
@@ -64,11 +64,11 @@ Sen lähtökohta on ihmisaivojen toiminnan matkiminen joka on nykyisen koneoppim
     a = \sigma\left(\sum_i w_i x_i + b\right)
 \end{equation}
 
-Tämä on neuronin matemaattinen kaava,
+Yllä on neuroverkoissa käytettävän neuronin matemaattinen kaava,
 se tuottaa ulostulonaan arvon \(a\) saamiensa syötteiden perusteella.
 \(x_i\) on neuronin saama syöte.
 \(w_i\) on neuronille annettu painoarvo.
-\(b\) on neuronin harha arvo. \(\sigma\) on funktio joka muuttaa neuronin saavan armon välille 0,1.
+\(b\) on neuronin harha arvo. \(\sigma\) on funktio joka muuttaa neuronin saavan arvon välille 0,1.
 
 
 Neuroverkko on siis vain joukko yksinkertaisia matemaattisia funktioita,
@@ -113,13 +113,13 @@ Esimerkkejä käytöstä on esimerkiksi automatisoidussa liikenteessä esteiden 
 \end{figure}
 
 Tätä teknologiaa voidaan soveltaa useiden eri tunnistusongelmien ratkaisuun.
-Koulutusdatasta riippuen kuvasta voidaan tunnistaa mitä tahansa.
+Koulutusdatasta riippuen malli voiddaan kouluttaa minkä tahansa kuvassa näkyvän kohteen tunnistukseen.
 Samaa teknologiaa käytetään teollisissa sovellutuksissa laadunvalvonnassa,
 sekä lääketieteessä erilaisten skannausten analysoinnissa \cite{NagalakshmiT2022BCSS}.
 Mallin voi kouluttaa tunnistamaan useita tai vain yhtä asiaa riippuen käyttökohteesta.
 Toisin kuin perinteinen tunnistusmalli, joka tunnista yleensä vain mitä kuvassa on,
 segmnetaatiomalli antaa joka pikselille arvon jonka perusteella lopputuloksesta voidaan nähdä, mitä eri kohdissa kuvaa on.
-Jotta samanlainen lopputulos saataisiin kohteentunnistusmallilla pitäisi kuvaa käydä läpi pienemmissä lohkoissa jotta rajat löytyisivät.
+Jotta samanlainen lopputulos saataisiin kohteentunnistusmallilla, pitäisi kuvaa käydä läpi pienemmissä lohkoissa jotta rajat löytyisivät.
 Kohteen tunnistusta voisi myös hyödyntää eri kohteiden etäisyyden arviointiin, jota voisi hyödyntää niiden takana olevan syvyyden arvioimiseen \cite{ShiZhou2023VRBo}.
 
 Segmentointimallin kouluttaminen ja datasetin käsittely on hieman haastavampaa kuin kohteentunnistusmallin.
@@ -141,7 +141,7 @@ Tämän työn haluttu lopputulos on syvyyskartta \cite{IkeuchiKatsushi1987DaDM}.
 Syvyyskartta on yksinkertainen kuvan kaltainen esitystapa, jossa eri syvyyksillä on eri numeerinen arvo.
 Se voidaan näyttää esimerkiksi siten että kauempana kamerasta oleva kohde on tummemmalla värillä \ref{fig:depth}.
 Tärkeä ero 3d-malliin sekä syvyyskartan välillä on datan perspektiivi.
-Syvyyskartassa ei ole tietoa kohteiden takana olevasta tilasta, joten sitä voi tarkastella vain sen kuvaus perspektiivistä.
+Syvyyskartassa ei ole tietoa kohteiden takana olevasta tilasta, joten sitä voi tarkastella vain sen perspektiivistä, eikä näin ollen "pyörittää" yhtä vapaasti kuin 3d mallia.
 
 
 \begin{figure}[h]

@@ -5,3 +5,5 @@ citations
 output
 output_backup
 __pycache__
+code/.venv-old
+.venv

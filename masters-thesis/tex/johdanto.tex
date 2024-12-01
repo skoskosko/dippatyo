@@ -2,18 +2,18 @@
 \label{ch:johdanto}
 
 Koneoppimisella voidaan ratkaista monenlaisia ongelmia, mutta se on kuitenkin aina rajattu saatavilla olevaan koulutusdataan.
-Sen avulla voidaan pyrkiä ratkaisemaan normaalisti erittäin monimutkaisia algoritmeja vaativia ongelmia.
+Koneoppimisella avulla voidaan pyrkiä ratkaisemaan normaalisti erittäin monimutkaisia algoritmeja vaativia ongelmia.
 Käytännössä mikä tahansa tietotekninen ongelma on teoriassa ratkaistavissa koneoppimisella.
 Se ei kuitenkaan aina ole tarpeellinen tai mahdollinen ratkaisu.
 Tarpeettoman monimutkaisuuden sekä ”black box” ongelmien välttelyn ohella,
-yhtenä suurimpana esteenä sen toteuttamisessa on hyvän koulutusdatan hankkiminen.
-Suurin osa koneoppimisesta koulutetaan koulutusdatan avulla poslukien vahvistusoppiminen \cite{alma9911523590705973},
+yhtenä suurimpana esteenä erilaisten koneoppimis mallien toteuttamisessa on hyvän koulutusdatan hankkiminen.
+Suurin osa koneoppimisesta koulutetaan koulutusdatan avulla, poikkeuksiakin kuitenkin löytyy esimerkiksi vahvistusoppiminen \cite{alma9911523590705973},
 ja nämä mallit voivat olla vain yhtä hyviä kuin niissä käytettävä koulutusdata.
 
 Näin ollen jos halutaan luoda malli joka ei käytä yleisesti saatavilla olevaa koulutusdataa,
 hankaloituu koulutusprosessi suuresti.
-Yleisimmin saatavilla konenäkö mallit ovat ihmisten sekä asioiden tunnistamiseen \cite{kagglecomvis}.
-Jos tavoittelemamme asia poikkeaa tälläisestä perus tunnistamisesta ja luokittelusta 
+Yleisimmin saatavilla olevat konenäkö mallit ovat ihmisten sekä asioiden tunnistamiseen \cite{kagglecomvis}.
+Jos tavoittelemamme asia poikkeaa tälläisestä yleisesti tehtävästä tunnistusongelmasta
 emmekä halua tuottaa itse uutta dataa tyhjästä,
 jää mahdolliseksi vaihtoehdoksi olemassa olevien datamallien yhdisteleminen siten,
 että haluttu lopputulos saavutetaan.
@@ -21,7 +21,7 @@ että haluttu lopputulos saavutetaan.
 Kuitenkin mitä kauemmas siirrytään selkeästä tehtävästä niin kuin objektin tunnistus,
 hankaloituu totuuden määrittäminen ja näin ollen myös hyvän ja toimivan mallin luominen.
 
-Tässä työssä pyritään käyttämään luokittelu sekä syvyysdataa mallin luomiseen joka antaa syvyysdatan
+Tässä työssä pyritään käyttämään luokittelu, sekä syvyysdataa mallin luomiseen joka antaa syvyysdatan
 ilman liikkuvia kohteita, niin kuin autoja tai ihmisiä.
 Tämä pyritään saavuttamaan mahdollisimman automatisoidusti
 ja tavalla joka on hyödynnettävissä mahdollisimman geneerisesti eri koulutusdatan kanssa.
@@ -30,7 +30,7 @@ Lopullisen koulutusdatan tuottamiseen tarvitaan siis tieto irtonaisista kohteist
 kuvan syvyysdata sekä jonkinlainen arvio tunnistetun kohteen takana olevasta alueesta.
 Paras keino tämän datan arviontiin olisi kuvien manuaalinen läpikäynti ja syvyysdatan ”värittäminen” kuvaan.
 Tässä työssä kuitenkin pyritään työ tekemään mahdollisimman automaattisesti resurssien säästämiseksi.
-Vaikka datan tuottamiseen voidaankin käyttää pitkälti perinteisiä kuvankäsittely algoritmeja
+Vaikka datan tuottamiseen voidaankin käyttää pitkälti perinteisiä kuvankäsittelyalgoritmeja
 ei sen avulla todennäköisesti ole mahdollista tuottaa täysin luotettavaa dataa,
 koska kohteiden takana olevien asioiden tieto puuttuu stereokuvista.
 Tämän tiedon irrottaminen automaattisesti voisi olla mahdollista jos lähtökohtana käytettäisiin videokuvaa,
@@ -42,10 +42,10 @@ Tällaista mallia voisi pidemmälle jalostettuna hyödyntää moniin eri käytt�
 Sitä voisi hyödyntää automatisoinnissa, jossa tilasta vaaditaan puhdas 3d malli.
 Näin voidaan tuottaa esimerkiksi automaattiajamisessa käytettävät liikkeet suoraan tyhjään tilaan.
 Samaa voisi hyödyntää tilojen 3d skannauksessa.
-Tämä mahdollistaisi tilan skannauksen ilman sen valmistelua tai jälkikäyteistä datan käsittelyä ja jatkojalostuksella tunnistetut huonekalut tai muut siirrettävät asiat voitaisiin asettaa suoraan generoituun pistepilveen tai 3d malliin.
-Tämä mahdollistaisi myös 3d skannauksen esimerkiksi peleissä,
-jolloin ympäristö voisi olla suoraan interaktiivinen,
-ilman manuaalista työtä. 
+Tämä mahdollistaisi tilan skannauksen ilman sen valmistelua tai jälkikäteistä datan käsittelyä. 
+Jatkojalostuksella tunnistetut huonekalut tai muut siirrettävät asiat voitaisiin asettaa suoraan generoituun pistepilveen tai 3d malliin.
+Tämä voisi mahdollistaa 3d skannauksen esimerkiksi peleihin tai muuhun interaktiiviseen sisältöön,
+jolloin ympäristö voisi olla suoraan interaktiivinen, ilman manuaalista työtä. 
 
 Tässä työssä käytettävä kuva sekä syvyys data on itseajavien autojen kehitykseen liittyvää kaupunkidataa. 
 Siitä löytyy valmiina, syvyysdata sekä segmentointidata.
