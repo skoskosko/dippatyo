@@ -35,8 +35,6 @@
 
 \newcommand{\@mainlanguage}{finnish}
 \newcommand{\@otherlanguage}{english}
-\newcommand{\@citationstyle}{numeric}
-\newcommand{\@citationsorting}{none}
 \newif\if@customcitation\@customcitationtrue
 \newif\if@apacitation\@apacitationfalse
 
@@ -54,25 +52,6 @@
     \@langenglishfalse
     \renewcommand{\@mainlanguage}{finnish}
     \renewcommand{\@otherlanguage}{english}
-}
-
-% Citation style selection.
-\DeclareOption{numeric}{%
-    \renewcommand{\@citationstyle}{numeric}
-}
-\DeclareOption{authoryear}{%
-    \renewcommand{\@citationstyle}{authoryear}
-    \renewcommand{\@citationsorting}{nyt}
-}
-\DeclareOption{apa}{%
-    \renewcommand{\@citationstyle}{apa}
-    \renewcommand{\@citationsorting}{nyt}
-    \@customcitationfalse
-    \@apacitationtrue
-}
-\DeclareOption{ieee}{%
-    \renewcommand{\@citationstyle}{ieee}
-    \@customcitationfalse
 }
 
 % Draft setting
@@ -115,8 +94,10 @@
 \RequirePackage[explicit]{titlesec}
 \RequirePackage{setspace}
 \RequirePackage{parskip}
+\RequirePackage{tabularx}
+\RequirePackage{booktabs}
 
-\spacing{1.213}
+\setstretch{1.213}
 \setlength{\headheight}{14.5pt}
 
 \newlength\chapterspace
@@ -215,8 +196,9 @@
 \RequirePackage
     [backend=biber,
     autolang=other,
-    citestyle=\@citationstyle,
-    bibstyle=\@citationstyle]{biblatex}
+    citestyle=\mycitationstyle,
+    bibstyle=\mycitationstyle,
+    sorting=\mycitationsorting,]{biblatex}
 
 \DefineBibliographyStrings{finnish}{%
     bibliography = {Lähteet},
@@ -490,6 +472,10 @@ The originality of this thesis has been checked using the Turnitin OriginalityCh
     \newcommand{\@originalitytext}{\@engoriginalitytext}
     \newcommand{\@otheroriginalitytext}{\@finoriginalitytext}
     \newcommand{\@logofile}{figures/tau-logo-eng.eps}
+    \newcommand\@aidisclaimertitle{Use of artificial intelligence in this work}
+    \newcommand\@aidisclaimerfile{tex/use-of-ai.tex}
+    \newcommand\@yestextcmd{Yes}
+    \newcommand\@notextcmd{No}
 \else
     \newcommand{\@abstractname}{Tiivistelmä}
     \newcommand{\@otherabstractname}{Abstract}
@@ -501,6 +487,10 @@ The originality of this thesis has been checked using the Turnitin OriginalityCh
     \newcommand{\@originalitytext}{\@finoriginalitytext}
     \newcommand{\@otheroriginalitytext}{\@engoriginalitytext}
     \newcommand{\@logofile}{figures/tau-logo-fin.eps}
+    \newcommand\@aidisclaimertitle{Tekoälyn käyttö tässä työssä}
+    \newcommand\@aidisclaimerfile{tex/tekoalyn-kaytto.tex}
+    \newcommand\@yestextcmd{Kyllä}
+    \newcommand\@notextcmd{Ei}
 \fi
 
 % Make the title
