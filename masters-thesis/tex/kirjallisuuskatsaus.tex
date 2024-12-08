@@ -1,4 +1,30 @@
-\chapter{Kirjallisuuskatsaus}%
-\label{ch:Kirjallisuuskatsaus}
+Syvyyden analysointi on keskeinen osa monia käytännön sovelluksia.
+Se on yksi ensimmäisistä askeleista, jotka mahdollistavat interaktion reaalimaailman ja tietokoneohjelmien välillä.
+Yksi pitkään käytetty tapa tähän on stereo-analyysi,
+jossa kahden kuvan perusteella pyritään arvioimaan kohteiden etäisyyttä kameroista.
+Tämä saavutetaan tunnistamalla kuvista samankaltaisia alueita, jotka todennäköisesti viittaavat samaan kohteeseen.
+Stereokuva-analyysi vaatii, että kahden kuvan perspektiivi on erilainen toisiinsa nähden.
+Tällä hetkellä yksi käytetyimmistä algoritmeista on Hirschmüllerin kehittämä menetelmä \cite{hirschmuller2005babel}.
 
-Kirjoita tähän sellainen
+Stereokuva-analyysissä kuvan pikselit tai pikseliryhmät käydään läpi.
+Suurissa kuvissa tämä prosessi voi käydä nopeasti hyvin raskaaksi.
+Koneoppiminen on kuitenkin tarjonnut mahdollisen ratkaisun tähän ongelmaan \cite{LagaHamid2022ASoD}.
+Vaikka itse tarvittava prosessointiteho ei välttämättä vähene, koneoppimisen avulla on mahdollista saavuttaa nopeampaa ja tehokkaampaa prosessointia.
+Tämä johtuu pääasiassa nykyisten tietokonekomponenttien optimoinnista koneoppimista varten.
+Koneoppimismallit on helppo ajaa suoraan näytönohjaimen raudalla, mikä mahdollistaa laitteiston optimoinnin paremmin käyttötarkoitukseen \cite{LeeVictorW2010Dt1G}.
+
+Nykyisin tilan syvyyttä voidaan arvioida myös muilla tehokkaammilla menetelmillä, kuten lidarin avulla.
+Tämä syvyyden analysointitekniikka on yleisesti käytössä esimerkiksi autojen automatiikassa sen luotettavuuden vuoksi verrattuna perinteiseen kuva-analyysiin \cite{RorizRicardo2022ALTA}.
+LIDAR-data tarjoaa kuitenkin vähemmän mahdollisuuksia jälkikäteisanalyysiin.
+Vaikka teoriassa LIDAR-datasta voidaan suorittaa samat analyysit ja segmentoinnit kuin kuvista \cite{SunJiaming2020DRS3}, se tarjoaa vain syvyysdatan, kun taas stereo kuvat jotka tarjoavat syvyyden lisäksi itse kuvadatan.
+
+Kuvista on pitkään tehty erilaista objektin tunnistusta, ja erilaisten automaatiojärjestelmien yleistyessä on tämän ongelman merkitys vain kasvanut.
+Objektin tunnistus kuvassa on siis koneoppimisen keskeisiä haasteita, ja tästä syystä aiheesta löytyy paljon tutkimusta.
+Autonomisen liikenteen tutkimuksen yleistyessä kohteen tunnistuksen yhdistäminen 3D-dataan, olipa kyseessä LIDAR- tai stereokuva-analyysistä saatu data, on erityisen hyödyllistä kaupunkitilan analysoinnissa \cite{MengZeYu2024TODf}. Näiden tekniikoiden yhdistäminen voi tuottaa merkittäviä etuja erilaisissa oikeassa maailmassa toimivien järjestelmien kehityksessä ja käytössä.
+Lidar data tai stereo data ei kuitenkaan ole välttämätöntä, vaan koneoppimisen avulla voidaan jopa 2D-kuvista hakea erilaista 3D-dataa \cite{MaXinzhu20243ODF}.
+
+
+Stereokuva-analyysi ja objektin tunnistus ovat hyvin yleisiä tutkimuskohteita.
+Niiden yhdistäminen rajoittuu kuitenkin usein 3D-datan avulla tapahtuvaan asioiden tunnistamiseen tai objektien mallintamiseen, eikä 3D-objektien poistamiseen, kuten tässä työssä tavoitellaan.
+Vaikka perinteinen stereokuva-analyysi yhdistettynä kohteen tunnistukseen tuottaa tuloksia, ja sillä tavalla tuotettua dataa hyödynnetään tuotetun mallin koulutuksessa, neuroverkkomallien tapauksessa prosessointi on huomattavasti nopeampaa.
+Tällöin voidaan tarkastella, miten malli toimii tilanteissa, joihin perinteinen generointi ei pysty.
