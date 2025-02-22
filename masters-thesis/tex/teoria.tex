@@ -3,10 +3,10 @@
 
 \section{Stereoanalyysi}
 
-Stereoanalyysi kuvankäsittelyssä tarkoittaa kahdesta samasta kohteesta otetusta kuvasta olevien yhteneväisyyksien avulla syvyyden analysointia.
-Vaikka näitä tekniikoita voi soveltaa mihin samasta kohteesta otettuihin kuviin \cite{SumiYasushi20023ORi},
-tässä yhteydessä käytämme kuvia jotka ovat otettu samasta perspektiivistä siten että kuvat ovat horisontaalisesti vierekkäin.
-Mikäli tiedetään kameroiden suhteelliset sijainnit tai jonkin pisteen etäisyys kamerasta voidaan myös kuvasta arvioida absoluuttinen etäisyys kameraan. 
+Stereoanalyysi kuvankäsittelyssä tarkoittaa kahdesta samasta kohteesta otetusta kuvasta olevien yhteneväisyyksien avulla syvyyden analysointia.  
+Vaikka näitä tekniikoita voi soveltaa mihin tahansa samasta kohteesta otettuihin kuviin \cite{SumiYasushi20023ORi}, 
+tässä yhteydessä käytämme kuvia, jotka ovat otettu samasta perspektiivistä siten, että kuvat ovat horisontaalisesti vierekkäin. 
+Mikäli tiedetään kameroiden suhteelliset sijainnit tai jonkin pisteen etäisyys kamerasta, voidaan myös kuvasta arvioida absoluuttinen etäisyys kameraan. 
 
 \begin{figure}[h]
 \centering
@@ -15,60 +15,57 @@ Mikäli tiedetään kameroiden suhteelliset sijainnit tai jonkin pisteen etäisy
 \label{fig:stereo}
 \end{figure}
     
-Kun stereoparia analysoidaan ja tunnistetaan korreloiva piste molemmista kuvista,
-voidaan laskea kuvien välinen dispariteetti Kuva \ref{fig:stereo}
-Tämä tarkoittaa käytännöstä muutosta pisteen sijainnissa kuvien välillä.
-Periaatteessa vastaavat pisteet voivat sijaita missä tahansa kohtaa kuvaa.
-Tässä tapauksessa jossa kuvat ovat tietyssä suhteessa toisiinsa,
-voidaan olettaa stereoparin löytyvän x-akselilta tai ainakin melko läheltä sitä.
-Jos näin ei olisi jouduttaisiin kuvan jokaista pistettä vertaamaan jokaiseen pisteeseen toisessa kuvassa, 
-mikä tulisi nopeasti hyvin kalliiksi laskentatehon kannalta.
-Jos verrattava alue on myös hyvin pieni todennäköisyys tunnistaa useita samankaltaisia alueita kasvaa.
-Jos alue on suuri tai vertailu suoritetaan liian tarkasti,
-kasvaa todennäköisyys sille, että vaihtunut kuvakulma on niin erilainen, ettei sitä ei tunnisteta.
-Tämän ongelman ratkaisuun on kehitetty monia erilaisia tapoja.
-
+Kun stereoparia analysoidaan ja tunnistetaan korreloiva piste molemmista kuvista,  
+voidaan laskea kuvien välinen dispariteetti Luva \ref{fig:stereo}. 
+Tämä tarkoittaa käytännössä muutosta pisteen sijainnissa kuvien välillä. 
+Periaatteessa vastaavat pisteet voivat sijaita missä tahansa kohtaa kuvaa.  
+Tässä tapauksessa, jossa kuvat ovat tietyssä suhteessa toisiinsa, 
+voidaan olettaa stereoparin löytyvän x-akselilta tai ainakin melko läheltä sitä.  
+Jos näin ei olisi, jouduttaisiin kuvan jokaista pistettä vertaamaan jokaiseen pisteeseen toisessa kuvassa,  
+mikä tulisi nopeasti hyvin kalliiksi laskentatehon kannalta.  
+Jos verrattava alue on myös hyvin pieni, todennäköisyys tunnistaa useita samankaltaisia alueita kasvaa.  
+Jos alue on suuri tai vertailu suoritetaan liian tarkasti,  
+kasvaa todennäköisyys sille, että vaihtunut kuvakulma on niin erilainen, ettei sitä tunnisteta.  
+Tämän ongelman ratkaisuun on kehitetty monia erilaisia tapoja.  
 
 \subsection{SGM - Semi Global Matching}
 
 Jotta stereoanalyysi on mahdollista,
 tulee kuvasta tunnistaa samat kohteet.
-Yksi tapa tehdä tämä on Hircmullerin SGM tekniikalla \cite{hirschmuller2005babel}.
+Yksi tapa tehdä tämä on Hirschmüllerin SGM-tekniikalla \cite{hirschmuller2005babel}.  
 Tekniikka ottaa huomioon pikselin ja sen ympäröivien pikselien arvot etsiessään toisesta kuvasta vastaavaa arvoa. Haku voidaan tehdä kaavalla.
 
 \begin{equation}\label{yht:SGM}
     E(d) = \sum_{p} D(p, d_p) + \sum_{q \in \mathcal{N}} R(p, d_p, q, d_q)
 \end{equation}
 
-Funktiossa \(D(p, d_p)\) summafunktio käy läpi kaikki kuvan pikselit ja vertaa niitä vertailupikseliin.
-Näin saadaan perusarvon yksittäisen pikselin samankaltaisuudelle.
+Funktiossa \(D(p, d_p)\) summafunktio käy läpi kaikki kuvan pikselit ja vertaa niitä vertailupikseliin.  
+Näin saadaan perusarvo yksittäisen pikselin samankaltaisuudelle.  
 
-Seuraavaksi pikselin ympäröiviä pikseleitä verrataan toisiinsa \(R(p, d_p, q, d_q)\).
-Koska samaa asiaa ympäröivien pikselien tulisi olla samankaltaisia molemmissa kuvissa,
-vaikka ne onkin kuvattu hieman eri asennosta, voidaan tämän avulla arvioida onko kyseessä sama piste.
+Seuraavaksi pikselin ympäröiviä pikseleitä verrataan toisiinsa \(R(p, d_p, q, d_q)\).  
+Koska samaa asiaa ympäröivien pikselien tulisi olla samankaltaisia molemmissa kuvissa,  
+vaikka ne onkin kuvattu hieman eri asennosta, voidaan tämän avulla arvioida, onko kyseessä sama piste.  
 
-Tämän algoritmin Pythoniin toteuttaa opencv kirjaston SGBM \cite{opencvsgbm}.
-Kirjasto on muokattu alkuperäiseen toteutukseen verrattuna käymään läpi pikselijoukkoja, eikä yksittäisiä vain pikseleitä.
-Tämän avulla käytetty laskentateho on saatu huomattavasti pienemmäksi \cite{MemoryEfficientSGM}.
+Tämän algoritmin Pythoniin toteuttaa OpenCV-kirjaston SGBM \cite{opencvsgbm}.  
+Kirjasto on muokattu alkuperäiseen toteutukseen verrattuna käymään läpi pikselijoukkoja eikä vain yksittäisiä pikseleitä.  
+Tämän avulla käytetty laskentateho on saatu huomattavasti pienemmäksi \cite{MemoryEfficientSGM}.  
 
 \section{Neuroverkot} 
 
-Tämän työn lopputuotos on neuroverkko.
-Neuroverkko on yleisesti kuva-analyysiin sekä muuhun koneoppimiseen käytettävä tekniikka.
-Sen toiminta perustuu neuroneihin joita järjestetään verkkomaiseen rakenteeseen useisiin eri kerroksiin.
+Tämän työn lopputuotos on neuroverkko.  
+Neuroverkko on yleisesti kuva-analyysiin sekä muuhun koneoppimiseen käytettävä tekniikka.  
+Sen toiminta perustuu neuroneihin, joita järjestetään verkkomaiseen rakenteeseen useisiin eri kerroksiin.
 Neuroverkon lähtökohta on ihmisaivojen toiminnan matkiminen ja on nykyisen koneoppimistekniikan perusta \cite{PhamTrungQuang2023EotH}.
-
 
 \begin{equation}\label{yht:neuroni}
     a = \sigma\left(\sum_i w_i x_i + b\right)
 \end{equation}
 
 Yllä on neuroverkoissa käytettävän neuronin matemaattinen kaava,
-se tuottaa ulostulonaan arvon \(a\) saamiensa syötteiden perusteella.
-Kaavassa \(x_i\) on neuronin saama syöte ja
-\(w_i\) on neuronille annettu painoarvo.
+se tuottaa ulostulonaan arvon \(a\) saamiensa syötteiden perusteella.  
+Kaavassa \(x_i\) on neuronin saama syöte, ja  
+\(w_i\) on neuronille annettu painoarvo.  
 \(b\) on neuronin harha arvo. \(\sigma\) on funktio joka muuttaa neuronin saavan arvon välille 0,1.
-
 
 Neuroverkko on siis vain joukko yksinkertaisia matemaattisia funktioita,
 joiden toimintaa muokkaamalla pyritään saamaan haluttu lopputulos.
@@ -99,10 +96,11 @@ Olemassa ei ole yhtä parasta algoritmiä, vaan eri verkkojen ja käyttökohteid
 
 \section{Semantic segmentation}
 
-Semantic segmentation eli kuvan segmentointi on yleinen käyttökohde neuroverkoille.
-Sen avulla on helppo tehdä käytettäviä ja helposti hyödynnettäviä malleja.
-Segmentointi on hyvä esimerkki ongelmasta jolle on helppo tehdä koulutusdataa, mutta hankala luoda ohjelmallista toteutusta saman lopputuloksen saamiseksi.
-Esimerkkejä käytöstä on esimerkiksi automatisoidussa liikenteessä esteiden tunnistuksessa Kuva \ref{fig:labels}.
+Semantic segmentation eli kuvan segmentointi on yleinen käyttökohde neuroverkoille.  
+Sen avulla on helppo tehdä käytettäviä ja helposti hyödynnettäviä malleja.  
+Segmentointi on hyvä esimerkki ongelmasta, jolle on helppo tehdä koulutusdataa,
+mutta hankala luoda ohjelmallista toteutusta saman lopputuloksen saamiseksi.  
+Esimerkkejä käytöstä on esimerkiksi automatisoidussa liikenteessä esteiden tunnistuksessa Kuva \ref{fig:labels}.  
 
 \begin{figure}[h]
 \centering
@@ -136,12 +134,11 @@ Mitä enemmän alueet osuvat oikeaan, sitä pienemmäksi mallin virhe laskee.
 
 \section{Syvyyskartta}
 
-Tämän työn haluttu lopputulos on syvyyskartta \cite{IkeuchiKatsushi1987DaDM}.
-Syvyyskartta on yksinkertainen kuvan kaltainen esitystapa, jossa eri syvyyksillä on eri numeerinen arvo.
-Se voidaan näyttää esimerkiksi merkitsemällä kauempana kamerasta oleva kohde on tummemmalla värillä \ref{fig:depth}.
-Tärkeä ero 3d-malliin sekä syvyyskartan välillä on datan perspektiivi.
-Syvyyskartassa ei ole tietoa kohteiden takana olevasta tilasta, joten sitä voidaan tarkastella vain yhdestä perspektiivistä, eikä sitä näin ollen "pyörittää" yhtä vapaasti kuin 3d mallia.
-
+Tämän työn haluttu lopputulos on syvyyskartta \cite{IkeuchiKatsushi1987DaDM}.  
+Syvyyskartta on yksinkertainen kuvan kaltainen esitystapa, jossa eri syvyyksillä on eri numeerinen arvo.  
+Se voidaan näyttää esimerkiksi merkitsemällä kauempana kamerasta oleva kohde tummemmalla värillä \ref{fig:depth}.  
+Tärkeä ero 3D-malliin sekä syvyyskartan välillä on datan perspektiivi.  
+Syvyyskartassa ei ole tietoa kohteiden takana olevasta tilasta, joten sitä voidaan tarkastella vain yhdestä perspektiivistä, eikä sitä näin ollen "pyörittää" yhtä vapaasti kuin 3D-mallia.  
 
 \begin{figure}[h]
 \centering

@@ -1,15 +1,17 @@
-In Machine learning usually one of the hardest tasks is collecting sufficien data.
-This thesis tries to create a model, which can be used for detecting true depth ignoring all moving objects from a stereo image.
+In Machine learning usually one of the hardest tasks is collecting sufficient data.
+This thesis tries to create a model, which can be used for detecting true depth ignoring all moving objects from a stereo image.  
 Because datasets for this kind of task is not easily available, we try to create it using some more commonly available data as a basis.
 
-Machine learning is commonly used for different kinds of object detection and segmentation. Therefore there is lots of models available that we can use for detecting unstationary objects.
+Machine learning is commonly used for various types of object detection and segmentation.
+Therefore, there are many models available that we can use for detecting unstationary objects.  
 
-Other data we need is stereo images with depth. As stereoanalysis was common practice even before machine learning became commonplace there is no shortage of those datasets.
+Another required dataset consists of stereo images with depth information.
+Since stereo analysis was a common practice even before machine learning became commonplace, there is no shortage of such datasets.  
 
-Missing data is depth data behind detected moving objects. There is not easily available datasets providing this data. 
-Therefore trainingdata is being generated behind the objects using existing objects around the detected items. 
-For this task we take advantage of static camera placement in multiple images, which allows us to estimate depth in different areas of the image.
-Then we can do different kinds of swipes towards different depths achiecing linear depth changes instead of static objects.
+Missing data is the depth information behind detected moving objects. There are no easily available datasets providing this specific type of data.  
+Therefore, training data is generated behind the objects using existing objects around the detected items.
+For this task, we take advantage of a static camera setup with two images, allowing us to estimate depth in different areas of the image.
+Then, we apply different kinds of depth sweeps, achieving linear depth changes instead of static objects.  
 
-Because final data is very approximate, we can't assume that the achieved model will be accurate.
-However even with inaccurate model we canestimate if machine learning could be used for processing this kind of "low quality" data for useful end results.
+Because the final data is very approximate, we cannot assume that the resulting model will be accurate.  
+However, even an inaccurate model can help us evaluate whether machine learning could be used to process this kind of "low-quality" data for useful end results.

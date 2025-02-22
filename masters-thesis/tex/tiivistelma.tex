@@ -1,18 +1,17 @@
-
 Koneoppimisessa datan hankinta on usein yksi suurimpia haasteita. 
-Tämä työ käsittelee sellaisen mallin luomista, jonka avulla voidaan tunnistaa stereokuvasta sen syvyys jättäen huomiotta irtonaiset objektit.
-Koska tämän kaltaista koulutusdataa ei ole helposti saatavilla pyritään se tässä työssä luomaan yleisemmin saatavilla olevan datan avulla. 
+Tämä työ käsittelee sellaisen mallin luomista, jonka avulla voidaan tunnistaa stereokuvasta sen syvyys, jättäen huomiotta irtonaiset objektit.
+Koska tämän kaltaista koulutusdataa ei ole helposti saatavilla, pyritään se tässä työssä luomaan yleisemmin saatavilla olevan datan avulla. 
 
-Koneoppimista käytetään usein objektien tunnistamiseen ja segmentointiin ja tästä johtuen siihen käytettäviä datamalleja on runsaasti saatavilla.
+Koneoppimista käytetään usein objektien tunnistamiseen ja segmentointiin, ja tästä johtuen siihen käytettäviä datamalleja on runsaasti saatavilla.
 
 Toinen tarvittava tieto on syvyysdata. 
-Stereoanalyysiä on tehty jo ennen koneoppimisen yleistämistä joten sitäkin varten olevia datasettejä on runsaasti saatavilla. 
+Stereoanalyysiä on tehty jo ennen koneoppimisen yleistymistä, joten sitäkin varten olevia datasettejä on runsaasti saatavilla. 
 
-Puuttuvaksi dataksi jää kuvastatunnistettujen kohteiden taakse jäävä syvyys. Tähän ei ole helposti saatavilla olevia datasettejä.
+Puuttuvaksi dataksi jää kuvasta tunnistettujen kohteiden taakse jäävä syvyys. Tähän ei ole helposti saatavilla olevia datasettejä.
 Tästä johtuen segmentointidatan avulla syvyysdataan on pyritty lisäämään kohteiden takana oleva syvyys, käyttäen hyödyksi kohteen ympärillä olevia syvyyden vaihteluja.
 Kohteiden takana oleva syvyys on pyritty estimoimaan eri suuntaisilla syvyysarvon lineaarisilla pyyhkäisyillä.
 Näistä pyyhkäisyistä valitaan silmämääräisesti paras vaihtoehto.
 
-Koska lopullinen koulutusdata on hyvin likimääräistä ei voida olettaa että saatu malli olisi tarkka.
+Koska lopullinen koulutusdata on hyvin likimääräistä, ei voida olettaa, että saatu malli olisi tarkka.
 Kuitenkin jo huonosti toimivaa matalan resoluution mallia voidaan käyttää arvioimaan,
-voisiko koneoppimista hyödyntää tälläisen "huonolaatuisen datan" kanssa ja saavuttaa sen avulla hyväksyttävä lopputulos.
+voisiko koneoppimista hyödyntää tällaisen "huonolaatuisen datan" kanssa ja saavuttaa sen avulla hyväksyttävä lopputulos.
