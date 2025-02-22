@@ -1,30 +1,29 @@
 \chapter{Johdanto}%
 \label{ch:johdanto}
 
-Koneoppimisella voidaan ratkaista monenlaisia ongelmia, mutta se on kuitenkin aina rajattu saatavilla olevaan koulutusdataan.
-Koneoppimisella avulla voidaan pyrkiä ratkaisemaan normaalisti erittäin monimutkaisia algoritmeja vaativia ongelmia.
-Käytännössä mikä tahansa tietotekninen ongelma on teoriassa ratkaistavissa koneoppimisella.
-Se ei kuitenkaan aina ole tarpeellinen tai mahdollinen ratkaisu.
-Tarpeettoman monimutkaisuuden sekä ”black box” ongelmien välttelyn ohella,
-yhtenä suurimpana esteenä erilaisten koneoppimis mallien toteuttamisessa on hyvän koulutusdatan hankkiminen.
-Suurin osa koneoppimisesta koulutetaan koulutusdatan avulla, poikkeuksiakin kuitenkin löytyy esimerkiksi vahvistusoppiminen \cite{alma9911523590705973},
-ja nämä mallit voivat olla vain yhtä hyviä kuin niissä käytettävä koulutusdata.
+Koneoppimisella voidaan ratkaista monenlaisia ongelmia huolimatta siitä, että se on aina rajattu saatavilla olevaan koulutusdataan.
+Koneoppimisen avulla voidaan pyrkiä ratkaisemaan normaalisti erittäin monimutkaisia algoritmeja vaativia ongelmia.
+Käytännössä mikä tahansa tietotekninen ongelma on teoriassa ratkaistavissa koneoppimisella,
+vaikkakaan se ei aina ole tarpeellinen tai mahdollinen ratkaisu.
+Tarpeettoman monimutkaisuuden sekä ”black box” -ongelmien välttelyn ohella
+yhtenä suurimpana esteenä erilaisten koneoppimismallien toteuttamisessa on hyvän koulutusdatan hankkiminen.
+Suurin osa koneoppimisesta koulutetaan koulutusdatan avulla, vahvistusoppiminen \cite{alma9911523590705973} yhtenä yleisimmin käytettynä poikkeuksena. 
+Koulutusdatan käyttö kuitenin ohjaa lopullisen mallin tason vahvasti sidonnaiseksi koulutusdatan laatuun.
 
-Näin ollen jos halutaan luoda malli joka ei käytä yleisesti saatavilla olevaa koulutusdataa,
+Mikäli siis halutaan luoda malli joka ei käytä yleisesti saatavilla olevaa koulutusdataa,
 hankaloituu koulutusprosessi suuresti.
-Yleisimmin saatavilla olevat konenäkö mallit ovat ihmisten sekä asioiden tunnistamiseen \cite{kagglecomvis}.
-Jos tavoittelemamme asia poikkeaa tälläisestä yleisesti tehtävästä tunnistusongelmasta
-emmekä halua tuottaa itse uutta dataa tyhjästä,
-jää mahdolliseksi vaihtoehdoksi olemassa olevien datamallien yhdisteleminen siten,
+Yleisimmin saatavilla olevat konenäkömallit ovat tarkoitettu ihmisten sekä asioiden tunnistamiseen \cite{kagglecomvis}.
+Jos tavoittelemamme asia poikkeaa yleisestä tunnistusongelmasta ja emme halua tuottaa uutta dataa tyhjästä, 
+jää mahdolliseksi vaihtoehdoksi yhdistellä olemassa olevia datamalleja siten, 
 että haluttu lopputulos saavutetaan.
 
-Kuitenkin mitä kauemmas siirrytään selkeästä tehtävästä niin kuin objektin tunnistus,
+Mitä kauemmas siirrytään selkeästä tehtävästä kuten objektin tunnistus,
 hankaloituu totuuden määrittäminen ja näin ollen myös hyvän ja toimivan mallin luominen.
 
-Tässä työssä pyritään käyttämään luokittelu, sekä syvyysdataa mallin luomiseen joka antaa syvyysdatan
+Tässä työssä pyritään käyttämään sellaista luokittelua ja syvyysdataa mallin luomiseen joka antaa syvyysdatan
 ilman liikkuvia kohteita, niin kuin autoja tai ihmisiä.
 Tämä pyritään saavuttamaan mahdollisimman automatisoidusti
-ja tavalla joka on hyödynnettävissä mahdollisimman geneerisesti eri koulutusdatan kanssa.
+ja tavalla joka on hyödynnettävissä mahdollisimman geneerisesti erilaisen koulutusdatan kanssa.
 
 Lopullisen koulutusdatan tuottamiseen tarvitaan siis tieto irtonaisista kohteista kuvassa,
 kuvan syvyysdata sekä jonkinlainen arvio tunnistetun kohteen takana olevasta alueesta.
@@ -34,24 +33,24 @@ Vaikka datan tuottamiseen voidaankin käyttää pitkälti perinteisiä kuvankäs
 ei sen avulla todennäköisesti ole mahdollista tuottaa täysin luotettavaa dataa,
 koska kohteiden takana olevien asioiden tieto puuttuu stereokuvista.
 Tämän tiedon irrottaminen automaattisesti voisi olla mahdollista jos lähtökohtana käytettäisiin videokuvaa,
-mutta toteutettavan mallin monimutkaisuus kasvaisi huomattavasti.
-Datan luominen olisi myös mahdollista jos stereokameralla otettaisiin kuvia samasta kohteesta niin pitkällä aikavälillä että kaikki liikkuvat kohteet olisivat väistyneet.
+mutta toteutettavan mallin monimutkaisuus kasvaisi tällöin huomattavasti.
+Datan luominen olisi mahdollista myös ottamalla stereokameralla kuvia samasta kohteesta niin pitkällä aikavälillä että kaikki liikkuvat kohteet olisivat väistyneet.
 Tällaisen datan luominen tai löytäminen on kuitenkin hyvin työlästä. 
 
-Tällaista mallia voisi pidemmälle jalostettuna hyödyntää moniin eri käyttökohteisiin.
-Sitä voisi hyödyntää automatisoinnissa, jossa tilasta vaaditaan puhdas 3d malli.
+Nyt tehtyä mallia voisi pidemmälle jalostettuna hyödyntää moniin eri käyttökohteisiin.
+Esimerkiksi automaatiossa jossa tilasta vaaditaan puhdas 3d malli.
 Näin voidaan tuottaa esimerkiksi automaattiajamisessa käytettävät liikkeet suoraan tyhjään tilaan.
-Samaa voisi hyödyntää tilojen 3d skannauksessa.
-Tämä mahdollistaisi tilan skannauksen ilman sen valmistelua tai jälkikäteistä datan käsittelyä. 
-Jatkojalostuksella tunnistetut huonekalut tai muut siirrettävät asiat voitaisiin asettaa suoraan generoituun pistepilveen tai 3d malliin.
-Tämä voisi mahdollistaa 3d skannauksen esimerkiksi peleihin tai muuhun interaktiiviseen sisältöön,
+Samaa voisi hyödyntää tilojen 3d skannauksessa,
+jolloin mahdollistuisi tilan skannaus ilman sen valmistelua tai datan jälkikäteistä manuaalista käsittelyä. 
+Jatkokehityksessä tunnistetut huonekalut sekä muut siirrettävät esineet voitaisiin asettaa suoraan generoituun pistepilveen tai 3d malliin.
+Tämä puolestaan mahdollistaisi 3d skannauksen esimerkiksi peleihin tai muuhun interaktiiviseen sisältöön,
 jolloin ympäristö voisi olla suoraan interaktiivinen, ilman manuaalista työtä. 
 
-Tässä työssä käytettävä kuva sekä syvyys data on itseajavien autojen kehitykseen liittyvää kaupunkidataa. 
-Siitä löytyy valmiina, syvyysdata sekä segmentointidata.
-Kuitenkin koska mallin ja sen rakentamistyökalujen tulee olla hyödynnettävissä myös muulla datalla,
-käydään läpi myös stereokuvasta syvyysdatan hankinta,
-sekä segmentointimallin luonti. Lopputuloksessa käytetään kuitenkin,
+Tässä työssä käytettävä kuva sekä syvyysdata on itseajavien autojen kehitykseen liittyvää kaupunkidataa. 
+Datasta löytyy syvyysdata sekä segmentointidata.
+Koska mallin ja sen rakentamistyökalujen tulee olla hyödynnettävissä myös muulla datalla,
+käydään läpi myös stereokuvasta syvyysdatan hankinta sekä segmentointimallin luonti.
+Lopputuloksessa käytetään,
 valmiiksi tarjottuja malleja segmentoinnin sekä syvyysdatan osalta.
 
-Lopullisen tuotoksen olisi tarkoitus olla malli jolle tarjotaan stereokuva ja se palauttaa syvyysdatan ilman liikkuvia kohteita kuvassa.
+Lopullinen työ on malli jolle tarjotaan stereokuva ja se palauttaa syvyysdatan ilman liikkuvia kohteita kuvassa.

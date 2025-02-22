@@ -6,10 +6,12 @@
 Koulutettu malli vaikuttaa melko käyttökelpoiselta. Tärkeimpänä tuotoksena kuitenkin on datasetin prosessointiin toteutetut työkalut.
 Vaikka täydellistä tapaa ei löydettykään, on lopputuloksesta silti nähtävissä, että yritetty datankäsittely on mahdollista.
 Käytetyt tavat segmentoitujen alueiden poistamiseen näyttivät toimivan melko hyvin.
-Erityisesti vertikaalinen pyyhkäisy alueen ollessa kuvan keskellä tuotti hyviä tuloksia.
-Myöskin koulutusdatan ominaisuuksiin perustuva "polttopisteeseen" perustuva pyyhkäisy tekniikka vaikutti lupaavalta.
+Erityisesti vertikaalinen pyyhkäisy arvioidun alueen ollessa kuvan keskellä tuotti hyviä tuloksia.
+Koulutusdatan ominaisuuksiin perustuva "polttopisteeseen" perustuva pyyhkäisytekniikka vaikutti lupaavalta.
 Ongelmia kuitenkin tuotti datan epätarkkuus.
-Etenkin syvyysdata oli usein epätarkkaa segmentaatioon verratuuna. Tämä johti tilanteisiin, joissa pyyhkäisyn alku lähti virheellisestä syvyydestä ja koko lopullinen data oli pilalla. Yleinen ongelma oli myös pyyhkäisyn alkaminen kuvan ulkopuolelta.
+Etenkin syvyysdata oli usein epätarkkaa segmentaatioon verrattuna.
+Tämä johti tilanteisiin, joissa pyyhkäisyn alku lähti virheellisestä syvyydestä ja koko lopullinen data oli pilalla. 
+Yleinen ongelma oli myös pyyhkäisyn alkaminen kuvan ulkopuolelta.
 Näissäkin tilanteissa pyyhkäisyn alku saattoi alkaa väärästä syvyydestä.
 
 Mallin tuottamat tulokset olivat melko hyviä sen oman datan kanssa.
@@ -24,59 +26,60 @@ On nähtävissä että malli alkaa muodostua oikeaan suuntaan mutta se tarvitsis
 \end{figure}
 
 Yleisesti ottaen kuitenkin työn tuottaman mallin tuloksiin voidaan mielestäni olla tyytyväisiä.
-Jos tarve tämänkaltaiselle mallille kasvaa tarpeeksi suureksi, pystyy tämänkaltaisilla tekniikoilla dataa jalostamaan melko varmasti.
-Ja mallin antama "sumea" tulos on riittävän tarkka sen hyödyntämiseen esimerkiksi likimääräisten 3d mallien sijoittamiseen kuvien päälle.
+Jos tarve tämänkaltaiselle mallille kasvaa tarpeeksi suureksi, pystyy nyt käytetyillä tekniikoilla jalostamaan dataa melko varmasti.
+Myös mallin antama "sumea" tulos on riittävän tarkka hyödyntämään esimerkiksi likimääräisten 3d mallien sijoittamiseen kuvien päälle.
 
 \section{Käyttökohteet}
 
 Nykyisellään ainoa realistinen käyttökohde on itseajavien autojen ajoreittien suunnittelussa.
-Kuitenkin jos saataisiin segmentointi ja syvyysdataa esimerkiksi ilmakuvista tai sisätiloista, voisi tätä mallia käyttää myös niiden skannaamiseen.
+Mikäli olisi mahdollista saada segmentointi ja syvyysdataa esimerkiksi ilmakuvista tai sisätiloista, voisi tätä mallia lisäkoulutuksella käyttää myös niiden skannaamiseen.
 
-Mallin käyttäminen näihin tarkoituksiin ei pitäisi olla mikään ongelma, todennäköisesti ongelma olisi sama kuin nykyiselläänkin, eli datan muokkaus.
-Kuitenkin käytetyt tekniikat ja luodut skriptit pitäsi olla täysin käytettävissä minkä tahansa stereodatan kanssa.
+Mahdollinen ongelma tuolloin olisi sama kuin nykyiselläänkin, eli datan muokkaus.
+Kuitenkin käytetyt tekniikat ja luodut skriptit pitäisi olla täysin käytettävissä minkä tahansa stereodatan kanssa.
 Segmentointidatan ei tarvitse olla samasta lähteestä, jos löydetään luotettava malli tai ollaan valmiita manuaaliseen läpikäyntiin.
-Kuvattavasta kohteesta riippuen, nykypäivänä saatavilla olevat segmentaatio mallit voisi nähdä tarpeeksi luotettavaksi automaattiseen generointiin.
+Kuvattavasta kohteesta riippuen, nykypäivänä saatavilla olevat segmentaatiomallit voisi nähdä tarpeeksi luotettavaksi automaattiseen generointiin.
 
 \section{Kehitysehdotukset}
 
 
-Jos mallia optimoisi jollekkin pienemmälle verkolle sitä voisi ajaa suoraan esimerkiksi dronessa.
+Jos mallia optimoisi pienemmälle verkolle sitä voisi ajaa suoraan esimerkiksi kuvasulaitteella.
 Tämä mahdollistaisi esimerkiksi maaston skannaamisen ja datan välittömän käyttämisen laitteiden reitityksen suunnitteluun.
-Mallia voisi ehkä myös parantaa jos ajateltaisiin lähtökohtana olevan lidar-skannaus.
+Mallia voisi myös parantaa jos ajateltaisiin lähtökohtana olevan lidar-skannaus.
 Näin syvyysdata voisi olla luotettavampaa, koska lähdedatalla olisi varma totuus. 
 
-Tämä ei ole täysin suoraan semanttista segmentationia tai muuta yleistä koneoppimista.
-Tästä johtuen voisi miettiä olisiko jokin muu malli kuin semanttinen segmentationiin suunniteltu parempi.
-Tämä kuitenkin olisi loputon suo ja vaatisi hyvin paljon töitä.
-Se kuitenkin voisi olla tarpeellista jos malli halutaan ajaa edge laitteella niin kuin dronella. 
-Tämä voisi tehostaa toimintaa huomattavasti, koska ulostulon kokoa voitaisiin todennäköisesti pienentää melko paljon, kun jokaiselle syvyydelle ei tarvittaisi omaa segmentaatio luokkaa.
+Nyt luotu malli ei ole täysin suoraan semanttista segmentationia.
+Tästä johtuen voisi miettiä olisiko jokin muu verkko kuin semanttinen segmentationiin suunniteltu parempi.
+Tämä kuitenkin olisi loputon suo ja vaatisi hyvin paljon töitä,
+joka kuitenkin olisi tarpeellista jos malli halutaan ajaa edge-laitteella kuten esimerkiksi dronella. 
+Tämä voisi tehostaa toimintaa huomattavasti, koska ulostulon kokoa voitaisiin todennäköisesti pienentää melko paljon, jos jokaiselle syvyydelle ei tarvittaisi omaa segmentaatioluokkaa.
 
 Ehkä hyödyllisin jatkokehitys voisi olla loppudatan lisäanalyysi.
 Jos kuvien tuottamat 3d-pisteavaruudet saataisiin yhdistettyä, voitaisiin muodostaa tilojen 3d-skannauksia.
-Tämä olisi asia mikä tekisi tästä mallista oikeasti hyödyllisen ja tuotteistettavan.
+Tämä tekisi mallista oikeasti hyödyllisen ja tuotteistettavan.
 Nykyisellään sen käytännön hyöty ei ole kovin suuri muuhun kuin järjestelmille jotka erikseen tätä tarvitsevat.
-Mutta erilaisten tilojen 3d-skannaus ilman esteitä olisi hyödyllistä monilla aloilla; maanmittauksessa, sisustuksessa, kaupunki suunnittelussa ja monessa muussa.
+Erilaisten tilojen 3d-skannaus ilman esteitä olisi hyödyllistä esimerkiksi; maanmittauksessa, sisustuksessa tai kaupunkisuunnittelussa.
 
 Suurimpia ongelmia on kuitenkin koulutusdatan löytäminen.
-Yksi kehitysidea on rakentaa data kahden mallin avulla.
-Silloin voitaisiin käyttää mitä tahansa stereodataa, josta segmentoitaisiin objektit pois.
+Yksi kehitysidea on rakentaa data kahden mallin avulla, 
+jolloin voitaisiin käyttää mitä tahansa stereodataa, josta segmentoitaisiin objektit pois.
 Tämä kuitenkin muuttuvalla taustalla hankaloittaisi suuresti datan validointia.
-Jotta luotettavaa dataa saataisiin tulisi tilasta ottaa stereokuvia ja kaikki liikkuvat kohteet poistaa.
-Tämä olisi kuitenkin vielä työläämpää kuin kuvien manuaalinen tekeminen tai valvonta.
+Jotta luotettavaa dataa saataisiin tulisi tilasta ottaa stereokuvia ja kaikki liikkuvat kohteet poistaa,
+mikä olisi kuitenkin vielä työläämpää kuin kuvien manuaalinen tekeminen tai valvonta.
 Tälläisen datan rakentaminen voisi olla ehkä helpointa asettamalla staattinen stereo kamera ympäristöön,
 josta esimerkiki minuutin odotuksen jälkeen voidaan automaattisesti suodattaa kaikki kuvassa liikkuneet kohteet.
 Näin voitaisiin generoida melko monipuolista dataa, eikä dataa tarvitsisi edes suoranaisesti segmentöidä,
 koska kuvista muihin vertaamalla olisi liikkuvien alueiden tunnistaminen helppoa.
-Tämä tapakin on kuitenkin melko aikaa vievää kun puhutaan tarpeesta kuvata tuhansia kuvia hyödyllisen datasetin kouluttamiseen.
+Tämä tapa on kuitenkin melko aikaavievää kun puhutaan tarpeesta kuvata tuhansia kuvia hyödyllisen datasetin kouluttamiseen.
 
-Koulutusdatan muodostaminen voisi myös olla tehokasta videoiden perusteella.
-Kun liikkuvasta ajoneuvosta kuvataan. Pitäisi paikallaan pitäisi ainakin autojen tunnistamisen olla helppoa.
-Kyn tämän yhdistäisi jonkinnäköiseen 3d mallin rakentamiseen, jonka avulla arvioitaisiin ihmisten takana olevia asioita joita ei suoraan videolta saada.
-Videoiden prosessointi olisi kuitenkin kuviin verrattuna hyvin erilainen prosessi.
-Kuitenkin jos tälläinen prosessointi tuotettaisiin, olisi sille datan hankkiminen hyvin helppoa.
-Teoriassa staattisten kohteiden tunnistaminen olisi helppoa koska ne jäisivät kuvassa kokoajan taustalle.
-Syvyyden arviointi voitaisiin suorittaa likimääräisesti ilman stereo kameraa, koska samoista kohteista olisi useita kuvia.
-Näiden kohteiden sijoitus kuvissa sekä auton nopeusdatan anylsointi mahdollistaisi dispariteetti analyysin.
+Koulutusdatan muodostaminen voisi olla tehokasta videoiden perusteella.
+Liikkuvasta ajoneuvosta kuvatessa pitäisi paikallaan olevien objektien tunnistamisen olla melko helppoa.
+Tämän voisi yhdistäisi jonkinnäköiseen 3d mallin rakentamiseen, jolloin eri kohdista videota kerätty data voitaisiin hyödyntää kohteiden takana olevan tilan arviointiin.
+Videoiden prosessointi olisi kuitenkin kuviin verrattuna hyvin erilainen prosessi
+mutta jos tälläinen prosessointi saataisiin toimimaan, olisi sille datan hankkiminen hyvin helppoa.
+Teoriassa staattisten kohteiden tunnistaminen olisi helppoa koska ne jäisivät kuvassa kokoajan taustalle,
+syvyyden arviointi voitaisiin suorittaa likimääräisesti ilman stereo kameraa, koska samoista kohteista olisi useita kuvia.
+Näiden kohteiden sijoitus kuvissa sekä auton nopeusdatan anylsointi mahdollistaisi dispariteettianalyysin.
+Tai jos ajoneuvo olisi varustettu lidarilla voitaisiin suurin osa työstä tehdä suoraan pisteavaruuksia käsittelemällä.
 
 Vaihtoehto olisi myös generoida data tietokoneella graafisesti,
 mutta se toisi omat tekniset ongelmansa, ja sen hyödyntäminen oikeassa maailmassa voisi olla melko rajallista.

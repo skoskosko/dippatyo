@@ -2,43 +2,44 @@
 \label{ch:kirjallisuuskatsaus}
 
 Syvyyden analysointi on keskeinen osa monia käytännön sovelluksia.
-Se on yksi ensimmäisistä askeleista, jotka mahdollistavat interaktion reaalimaailman ja tietokoneohjelmien välillä.
-jossa kahden kuvan perusteella pyritään arvioimaan kohteiden etäisyyttä kameroista. 
+Se on yksi ensimmäisistä askeleista, jotka mahdollistavat interaktion reaalimaailman ja sellaisten tietokoneohjelmien välillä,
+joissa kahden kuvan perusteella pyritään arvioimaan kohteiden etäisyyttä kameroista. 
 Tämä saavutetaan tunnistamalla kuvista samankaltaisia alueita, jotka todennäköisesti viittaavat samaan kohteeseen.
-Stereokuva-analyysi vaatii, että kahden kuvan perspektiivi on erilainen toisiinsa nähden.
-Ensimmäisissä tekniikoissa käytettiin kuvaprosessoinnin reunan tunnistusta. Jonka avulla pyrittii löytämään stereo kuvista syvyyttä \cite{BakerHenryHarlyn1982DfEa}.
-Tälläinen tapa vaatii kuvalta esiprosessoinnin ja sen tarkkuus ei ole paras mahdollinen, koska se ei ota mitään muuta huomioon kuin suuria muutoksia.
-Se myöskin joutuu käymään kuvista paljon pikseleitä läpi. 
-Mikä johtaa suureen prosessointi aikaan.
-Tällä hetkellä yksi käytetyimmistä algoritmeista on Hirschmüllerin kehittämä menetelmä \cite{hirschmuller2005babel}.
-Siinä tätä reunan tunnistus tapaa on parannettu, etsimällä samankaltaisia alueita. 
-Siinä on myös paljon optimiointeja, pyyhkäisyjen määrään ja etsintä alueisiin jotta prosessointi aika saataisiin minimoitua.
+Stereokuva-analyysi vaatii kahden kuvaperspektiivin olevan toisiinsa nähden erilaiset.
+Ensimmäisissä tekniikoissa käytettiin kuvaprosessoinnin reunan tunnistusta, jonka avulla pyrittii löytämään stereokuvista syvyyttä \cite{BakerHenryHarlyn1982DfEa}.
+Tämä tapa vaatii kuvalta esiprosessoinnin ja sen tarkkuus ei ole paras mahdollinen, koska se ei ota huomioon mitään muuta kuin suuria muutoksia.
+Lisäksi tämä tekniikka joutuu käymään kuvista paljon pikseleitä läpi. 
+Mikä johtaa suureen prosessointi aikaan, mikä puolestaan johtaa pidempään prosessointiaikaan.
+Tällä hetkellä yksi käytetyimmistä algoritmeista on Hirschmüllerin kehittämä menetelmä \cite{hirschmuller2005babel},
+jossa reunantunnistustapaa on parannettu, etsimällä samankaltaisia alueita. 
+Hirschmüllerin mallissa on myös paljon optimiointeja, pyyhkäisyjen määrään ja etsintä alueisiin jotta prosessointi aika saataisiin minimoitua.
 
-Stereokuva-analyysissä kuvan pikselit tai pikseliryhmät käydään läpi.
+Stereokuva-analyysissä käydään läpi kuvan pikseleitä ja pikseliryhmiä.
 Suurissa kuvissa tämä prosessi voi käydä nopeasti hyvin raskaaksi.
 Koneoppiminen on kuitenkin tarjonnut mahdollisen ratkaisun tähän ongelmaan \cite{LagaHamid2022ASoD}.
-Vaikka itse tarvittava prosessointiteho ei välttämättä vähene, koneoppimisen avulla on mahdollista saavuttaa nopeampaa ja tehokkaampaa prosessointia.
-Tämä johtuu pääasiassa nykyisten tietokonekomponenttien optimoinnista koneoppimista varten.
-Koneoppimismallit on helppo ajaa suoraan näytönohjaimen raudalla, mikä mahdollistaa laitteiston optimoinnin paremmin käyttötarkoitukseen \cite{LeeVictorW2010Dt1G}.
+Vaikka koneoppimisessa itse tarvittava prosessointiteho ei välttämättä vähene, 
+sen avulla on mahdollista saavuttaa nopeampaa ja tehokkaampaa prosessointia,
+johtuen pääasiassa nykyisten tietokonekomponenttien optimoinnista koneoppimista varten.
+Koneoppimismallit on helppo ajaa suoraan näytönohjaimilla, mikä puolestaan mahdollistaa laitteiston optimoinnin paremmin käyttötarkoitukseen \cite{LeeVictorW2010Dt1G}.
 Tehokkaammat tietokonekomponentit ovat johtaneet useiden eri teknologioiden siirtymisen hyödyntämään koneoppimista.
-Varsinkin tälläisten "abstraktien" ongelmien kanssa koneoppimisella voidaan saada tehokkaita ratkaisuja.
+Varsinkin abstraktien ongelmien ollessa kyseessä koneoppimisella voidaan saada aikaan tehokkaita ratkaisuja.
 
 
-Nykyisin tilan syvyyttä voidaan arvioida myös muilla tehokkaammilla menetelmillä, kuten lidarin avulla.
-Tämä syvyyden analysointitekniikka on yleisesti käytössä, esimerkiksi autojen adaptiivisissä nopeussäätimissä, sen luotettavuuden vuoksi verrattuna perinteiseen kuva-analyysiin \cite{RorizRicardo2022ALTA}.
+Nykyisin tilan syvyyttä voidaan arvioida myös kuvapohjaista-analyysiä tehokkaammilla menetelmillä, kuten lidarin avulla.
+Tämä syvyyden analysointitekniikka on yleisesti käytössä, esimerkiksi autojen adaptiivisissä nopeussäätimissä, koska se on perinteistä kuva-analyysiä luotettavampaa \cite{RorizRicardo2022ALTA}.
 LIDAR-data tarjoaa kuitenkin vähemmän mahdollisuuksia jälkikäteisanalyysiin.
-Vaikka teoriassa LIDAR-datasta voidaan suorittaa samat analyysit ja segmentoinnit kuin kuvista \cite{SunJiaming2020DRS3}, se tarjoaa vain syvyysdatan, kun taas stereo kuvat jotka tarjoavat syvyyden lisäksi itse kuvadatan.
+Vaikka teoriassa LIDAR-datasta voidaan suorittaa samat analyysit ja segmentoinnit kuin kuvista \cite{SunJiaming2020DRS3}, tarjoaa se vain syvyysdatan.
+Stereokuvissa analysoidun syvyysdatan lisäksi on tarjolla myös värejä, tekstuureja ja muita mahdollisia lisäanalyysikohteita.
 
-Tässä työssä tarvitaan myös objektin tunnistusta.
+Tässä työssä hyödynnetään myös objektintunnistusta.
 Kuvista on pitkään tehty erilaista objektin tunnistusta, ja erilaisten automaatiojärjestelmien yleistyessä on tämän ongelman merkitys vain kasvanut. 
-Sekin on malliesimerkki ongelmasta jossa koneooppiminen omiaan.
-Objektin tunnistus kuvassa on siis koneoppimisen keskeisiä haasteita, ja tästä syystä aiheesta löytyy paljon tutkimusta.
+Objektin tunnistus kuvassa on koneoppimisen keskeisiä haasteita, näin ollen aiheesta löytyy paljon tutkimustietoa.
 Autonomisen liikenteen tutkimuksen yleistyessä kohteen tunnistuksen yhdistäminen 3D-dataan, olipa kyseessä LIDAR- tai stereokuva-analyysistä saatu data, on erityisen hyödyllistä kaupunkitilan analysoinnissa \cite{MengZeYu2024TODf}. Näiden tekniikoiden yhdistäminen voi tuottaa merkittäviä etuja erilaisissa oikeassa maailmassa toimivien järjestelmien kehityksessä ja käytössä.
-Lidar data tai stereo data ei kuitenkaan ole välttämätöntä, vaan koneoppimisen avulla voidaan jopa 2D-kuvista hakea erilaista 3D-dataa \cite{MaXinzhu20243ODF}.
+Lidar-data tai stereodata eivät kuitenkaan ole välttämättömiä, vaan koneoppimisen avulla voidaan jopa 2D-kuvista hakea erilaista 3D-dataa \cite{MaXinzhu20243ODF}.
 
 
-Stereokuva-analyysi ja objektin tunnistus ovat hyvin yleisiä tutkimuskohteita.
+Stereokuva-analyysi ja objektintunnistus ovat hyvin yleisiä tutkimuskohteita.
 Niiden yhdistäminen rajoittuu kuitenkin usein 3D-datan avulla tapahtuvaan asioiden tunnistamiseen tai objektien mallintamiseen, eikä 3D-objektien poistamiseen, kuten tässä työssä tavoitellaan.
 Vaikka perinteinen stereokuva-analyysi yhdistettynä kohteen tunnistukseen tuottaa tuloksia, ja sillä tavalla tuotettua dataa hyödynnetään mallin koulutuksessa, neuroverkkomallien tapauksessa prosessointi on huomattavasti nopeampaa.
-Yksi malli myöskin poistaa tarpeen useille väli vaiheille, joita koulutusdatan käsittelyyn vaaditaan.
-Mallia on myös mahdollisuus hyödyntää tilanteissa joihin datan käsittely ohjelmallisesti ei kykene.
+Lisäksi yksi malli poistaa tarpeen useille välivaiheille, joita koulutusdatan käsittelyyn muutoin vaaditaan.
+Mallia voi myös hyödyntää tilanteissa joissa datan generointi kuvasta ei muutoin ole mahdollista, esimerkiksi puutteellisesta datasta johtuen.
