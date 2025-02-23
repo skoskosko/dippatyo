@@ -4,11 +4,13 @@
 Syvyyden analysointi on keskeinen osa monia käytännön sovelluksia.  
 Se on yksi ensimmäisistä askeleista, jotka mahdollistavat interaktion reaalimaailman ja sellaisten tietokoneohjelmien välillä,  
 joissa kahden kuvan perusteella pyritään arvioimaan kohteiden etäisyyttä kameroista.  
-Tämä saavutetaan tunnistamalla kuvista samankaltaisia alueita, jotka todennäköisesti viittaavat samaan kohteeseen.  
+Tämä saavutetaan tunnistamalla kuvista samankaltaisia alueita, jotka todennäköisesti viittaavat samaan kohteeseen.
+
 Stereokuva-analyysi vaatii kahden kuvaperspektiivin olevan toisiinsa nähden erilaiset.  
 Ensimmäisissä tekniikoissa käytettiin kuvaprosessoinnin reunantunnistusta, jonka avulla pyrittiin löytämään stereokuvista syvyyttä \cite{BakerHenryHarlyn1982DfEa}.  
 Tämä tapa vaatii kuvalta esiprosessoinnin ja sen tarkkuus ei ole paras mahdollinen, koska se ei ota huomioon mitään muuta kuin suuria muutoksia.
-Lisäksi tämä tekniikka joutuu käymään läpi suuren määrän kuvan pikseleitä, mikä johtaa pitkään prosessointiaikaan. 
+Lisäksi tämä tekniikka joutuu käymään läpi suuren määrän kuvan pikseleitä, mikä johtaa pitkään prosessointiaikaan.
+
 Tällä hetkellä yksi käytetyimmistä algoritmeista on Hirschmüllerin kehittämä menetelmä \cite{hirschmuller2005babel},  
 jossa reunantunnistustapaa on parannettu etsimällä samankaltaisia alueita.  
 Hirschmüllerin mallissa on myös paljon optimointeja, joilla pyritään vähentämään pyyhkäisyjen määrää ja etsintäalueita, jotta prosessointiaika minimoituu. 
@@ -31,15 +33,15 @@ Vaikka teoriassa LIDAR-datasta voidaan suorittaa samat analyysit ja segmentoinni
 Stereokuvissa analysoidun syvyysdatan lisäksi on tarjolla myös värejä, tekstuureja ja muita mahdollisia lisäanalyysikohteita.  
 
 Tässä työssä hyödynnetään myös objektintunnistusta.  
-Kuvista on pitkään tehty erilaista objektintunnistusta, ja erilaisten automaatiojärjestelmien yleistyessä on tämän ongelman merkitys vain kasvanut.
-Objektintunnistus kuvassa on koneoppimisen keskeisiä haasteita, ja näin ollen aiheesta löytyy paljon tutkimustietoa.
+Kuvista on pitkään tehty erilaista objektintunnistusta ja erilaisten automaatiojärjestelmien yleistyessä on tämän ongelman merkitys vain kasvanut.
+Objektintunnistus kuvassa on koneoppimisen keskeisiä haasteita ja näin ollen aiheesta löytyy paljon tutkimustietoa.
 Autonomisen liikenteen tutkimuksen yleistyessä kohteen tunnistuksen yhdistäminen 3D-dataan,
 olipa kyseessä LIDAR- tai stereokuva-analyysistä saatu data, on erityisen hyödyllistä kaupunkitilan analysoinnissa \cite{MengZeYu2024TODf}.
 Näiden tekniikoiden yhdistäminen voi tuottaa merkittäviä etuja erilaisten oikeassa maailmassa toimivien järjestelmien kehityksessä ja käytössä.  
 LIDAR-data tai stereodata eivät kuitenkaan ole välttämättömiä, vaan koneoppimisen avulla voidaan jopa 2D-kuvista hakea erilaista 3D-dataa \cite{MaXinzhu20243ODF}.  
 
 Stereokuva-analyysi ja objektintunnistus ovat hyvin yleisiä tutkimuskohteita.  
-Niiden yhdistäminen rajoittuu kuitenkin usein 3D-datan avulla tapahtuvaan asioiden tunnistamiseen tai objektien mallintamiseen, eikä 3D-objektien poistamiseen, kuten tässä työssä tavoitellaan.  
-Vaikka perinteinen stereokuva-analyysi yhdistettynä kohteen tunnistukseen tuottaa tuloksia, ja sillä tavalla tuotettua dataa hyödynnetään mallin koulutuksessa, neuroverkkomallien tapauksessa prosessointi on huomattavasti nopeampaa.  
+Niiden yhdistäminen rajoittuu kuitenkin usein 3D-datan avulla tapahtuvaan asioiden tunnistamiseen tai objektien mallintamiseen, eikä 3D-objektien poistamiseen, jota tässä työssä tavoitellaan.  
+Vaikka perinteinen stereokuva-analyysi yhdistettynä kohteen tunnistukseen tuottaa tuloksia ja sillä tavalla tuotettua dataa hyödynnetään mallin koulutuksessa, neuroverkkomallien tapauksessa prosessointi on huomattavasti nopeampaa.  
 Lisäksi yksi malli poistaa tarpeen useille välivaiheille, joita koulutusdatan käsittelyyn muutoin vaaditaan.  
-Mallia voi myös hyödyntää tilanteissa, joissa datan generointi kuvasta ei muutoin ole mahdollista, esimerkiksi puutteellisesta datasta johtuen. 
+Mallia voi myös hyödyntää tilanteissa, joissa datan generointi kuvasta ei muutoin ole mahdollista esimerkiksi puutteellisesta datasta johtuen. 

@@ -5,7 +5,7 @@
 
 Stereoanalyysi kuvankäsittelyssä tarkoittaa kahdesta samasta kohteesta otetusta kuvasta olevien yhteneväisyyksien avulla syvyyden analysointia.  
 Vaikka näitä tekniikoita voi soveltaa mihin tahansa samasta kohteesta otettuihin kuviin \cite{SumiYasushi20023ORi}, 
-tässä yhteydessä käytämme kuvia, jotka ovat otettu samasta perspektiivistä siten, että kuvat ovat horisontaalisesti vierekkäin. 
+tässä yhteydessä käytetään kuvia, jotka ovat otettu samasta perspektiivistä siten, että kuvat ovat horisontaalisesti vierekkäin. 
 Mikäli tiedetään kameroiden suhteelliset sijainnit tai jonkin pisteen etäisyys kamerasta, voidaan myös kuvasta arvioida absoluuttinen etäisyys kameraan. 
 
 \begin{figure}[h]
@@ -16,14 +16,14 @@ Mikäli tiedetään kameroiden suhteelliset sijainnit tai jonkin pisteen etäisy
 \end{figure}
     
 Kun stereoparia analysoidaan ja tunnistetaan korreloiva piste molemmista kuvista,  
-voidaan laskea kuvien välinen dispariteetti Luva \ref{fig:stereo}. 
+voidaan laskea kuvien välinen dispariteetti Kuva \ref{fig:stereo}. 
 Tämä tarkoittaa käytännössä muutosta pisteen sijainnissa kuvien välillä. 
 Periaatteessa vastaavat pisteet voivat sijaita missä tahansa kohtaa kuvaa.  
 Tässä tapauksessa, jossa kuvat ovat tietyssä suhteessa toisiinsa, 
 voidaan olettaa stereoparin löytyvän x-akselilta tai ainakin melko läheltä sitä.  
 Jos näin ei olisi, jouduttaisiin kuvan jokaista pistettä vertaamaan jokaiseen pisteeseen toisessa kuvassa,  
-mikä tulisi nopeasti hyvin kalliiksi laskentatehon kannalta.  
-Jos verrattava alue on myös hyvin pieni, todennäköisyys tunnistaa useita samankaltaisia alueita kasvaa.  
+mikä tulisi hyvin kalliiksi laskentatehon kannalta.  
+Jos verrattava alue on hyvin pieni, todennäköisyys tunnistaa useita samankaltaisia alueita kasvaa.  
 Jos alue on suuri tai vertailu suoritetaan liian tarkasti,  
 kasvaa todennäköisyys sille, että vaihtunut kuvakulma on niin erilainen, ettei sitä tunnisteta.  
 Tämän ongelman ratkaisuun on kehitetty monia erilaisia tapoja.  
@@ -62,36 +62,38 @@ Neuroverkon lähtökohta on ihmisaivojen toiminnan matkiminen ja on nykyisen kon
 \end{equation}
 
 Yllä on neuroverkoissa käytettävän neuronin matemaattinen kaava,
-se tuottaa ulostulonaan arvon \(a\) saamiensa syötteiden perusteella.  
-Kaavassa \(x_i\) on neuronin saama syöte, ja  
-\(w_i\) on neuronille annettu painoarvo.  
-\(b\) on neuronin harha arvo. \(\sigma\) on funktio joka muuttaa neuronin saavan arvon välille 0,1.
+joka tuottaa ulostulonaan arvon \(a\) saamiensa syötteiden perusteella.  
+Kaavassa \(x_i\) on neuronin saama syöte ja  
+\(w_i\) on neuronille annettu painoarvo.
+Neuronin harha arvo on \(b\) ja \(\sigma\) on funktio, joka muuttaa neuronin saavan arvon välille 0,1.
 
 Neuroverkko on siis vain joukko yksinkertaisia matemaattisia funktioita,
 joiden toimintaa muokkaamalla pyritään saamaan haluttu lopputulos.
-Jotta lopputulos on haluttu pitää tätä koulutusprosessia kuitenkin valvoa.
+Jotta lopputulos on haluttu, pitää tätä koulutusprosessia kuitenkin valvoa.
 
 
-Asetettaessa neuroneita eri kerroksiin siten, että verkon sisääntulo on esimerkiksi valokuvan kokoinen, 
-ja ulostulo on yhen neuronin ulostulo, 
+Asetettaessa neuroneita eri kerroksiin siten, että verkon sisääntulo on esimerkiksi valokuvan kokoinen
+ja ulostulo on yhden neuronin ulostulo, 
 voidaan verkolle syöttää kuvia esimerkiksi kissoista ja koirista.
 Kun näille kuville annetaan arvot 0 ja 1 kuvan aiheen mukaan, voidaan verkko kouluttaa tunnistamaan kissoja ja koiria.
 Koulutuksen aikana verkko muuttaa arvojaan \(w_i\) ja \(b\).
 Nämä arvot se saa yrittämällä erilaisia arvoja neuroneille.
+
 Kun verkkoa tämän jälkeen testataan, voidaan saaduista lopputuloksista valita paras.
-Lopputulosta voidaan lähteä parantelemaan, testaamalla toimiiko suuremmat vai pienemmät arvot paremmin.
-Kun näitä kahta arvoa eri neuroneilla muutetaan voidaan saada paremmin toimiva neuroverkko.
-Tarpeeksi monen yrityksen jälkeen, saadaan siis todennäköisesti verkko joka tunnistaa onko kuvassa todennäköisemmin kissa vai koira
+Lopputulosta voidaan lähteä parantelemaan testaamalla toimivatko suuremmat vai pienemmät arvot paremmin.
+Kun näitä kahta arvoa eri neuroneilla muutetaan, voidaan saada paremmin toimiva neuroverkko.
+Tarpeeksi monen yrityksen jälkeen saadaan siis todennäköisesti verkko, joka tunnistaa onko kuvassa todennäköisemmin kissa vai koira.
 
 Tätä satunnaisuutta pyritään siis parantamaan ohjaamalla verkon koulutusta.
 Parantaminen tapahtuu tappiofunktion (loss function) sekä takaisinvirtausalgoritmin (backpopagation algorithm) avulla.
 
 Tappiofunktion tehtävä on kertoa, kuinka paljon saatu tulos eroaa halutusta.
 Esimerkkitapauksessamme tämä käytännössä testaa, verkon lopputuloksen ja laskee kuinka monta arvausta verkko sai oikein,
-eli tarkistaisi onko verkolle annetun kissa kuvan ulostulon arvo mikä sen pitäisi olla.
-Koska virheentunnistus ei kuitenkaan aina ole yhtä yksinkertaista, tämän työn lopputulos on verkko joka yrittää luoda kuvasta syvyyskartan.
-Tässä tapauksessa tappiofunktio ei voi vaan tarkistaa binääristä arvoa vaan joudumme hyödyntämään neliösummaa tai jotakin muu tapa virheen tarkistukseen.
-Kun virhe on tunnistettu verkkoa muokataan takaisinvirtaus algoritmin perusteella.
+eli tarkistaisi onko verkolle annetun kissa-kuvan ulostulon arvo se, mikä sen pitäisi olla.
+Koska virheentunnistus ei kuitenkaan aina ole yhtä yksinkertaista, tämän työn lopputuotos on verkko joka yrittää luoda kuvasta syvyyskartan.
+
+Tässä tapauksessa tappiofunktio ei voi ainoastaan tarkistaa binääristä arvoa, vaan joudutaan hyödyntämään neliösummaa tai jotakin muuta tapaa virheen tarkistukseen.
+Kun virhe on tunnistettu, verkkoa muokataan takaisinvirtausalgoritmin perusteella.
 Olemassa ei ole yhtä parasta algoritmiä, vaan eri verkkojen ja käyttökohteiden tapauksessa eri algoritmit voivat tuoda hyvin erilaisia tuloksia.
 
 \section{Semantic segmentation}
@@ -105,31 +107,30 @@ Esimerkkejä käytöstä on esimerkiksi automatisoidussa liikenteessä esteiden 
 \begin{figure}[h]
 \centering
 \pdftooltip{\includegraphics[width=\textwidth]{figures/stuttgart03.png}}{Cityscapes esimerkki kuva stuttgart03}
-\caption[Tämä on lyhyt kuvateksti.]{Cityscapes datestin esimerkki segmentointi dataa, jossa kaupunkinäkymän erilaiset tunnistattavat kohteet on merkitty eri väreillä.}
+\caption[Tämä on lyhyt kuvateksti.]{Cityscapes datestin esimerkkisegmentointidataa, jossa kaupunkinäkymän erilaiset tunnistattavat kohteet on merkitty eri väreillä.}
 \label{fig:labels}
 \end{figure}
 
 Tätä teknologiaa voidaan soveltaa useiden eri tunnistusongelmien ratkaisuun.
-Koulutusdatasta riippuen malli voidaan voiddaan kouluttaa minkä tahansa kuvassa näkyvän kohteen tunnistukseen.
-Samaa teknologiaa käytetään teollisissa sovellutuksissa laadunvalvonnassa,
+Koulutusdatasta riippuen malli voidaan kouluttaa minkä tahansa kuvassa näkyvän kohteen tunnistukseen.
+Samaa teknologiaa käytetään teollisissa sovellutuksissa laadunvalvonnassa
 sekä lääketieteessä erilaisten skannausten analysoinnissa \cite{NagalakshmiT2022BCSS}.
 Mallin voi kouluttaa tunnistamaan useita tai vain yhtä asiaa riippuen käyttökohteesta.
 Toisin kuin perinteinen tunnistusmalli, joka tunnista yleensä vain mitä kuvassa on,
-segmentaatiomalli antaa joka pikselille arvon jonka perusteella lopputuloksesta voidaan nähdä, mitä eri kohdissa kuvaa on.
-Saadakseen samanlaisen lopputuloksen kohteentunnistusmallilla, pitäisi kuvaa käydä läpi pienemmissä lohkoissa jotta rajat löytyisivät.
-Kohteen tunnistusta voisi myös hyödyntää eri kohteiden etäisyyden arviointiin, jota voisi hyödyntää niiden takana olevan syvyyden arvioimiseen \cite{ShiZhou2023VRBo}.
+segmentaatiomalli antaa joka pikselille arvon, jonka perusteella lopputuloksesta voidaan nähdä mitä eri kohdissa kuvaa on.
+Saadakseen samanlaisen lopputuloksen kohteentunnistusmallilla pitäisi kuvaa käydä läpi pienemmissä lohkoissa, jotta rajat löytyisivät.
+Kohteen tunnistusta voisi käyttää myös eri kohteiden etäisyyden arviointiin, jota voisi hyödyntää niiden takana olevan syvyyden arvioimiseen \cite{ShiZhou2023VRBo}.
 
 Segmentointimallin kouluttaminen ja datasetin käsittely on hieman haastavampaa kuin kohteentunnistusmallin.
 Jotta mallin voi kouluttaa tunnistamaan asiat pikselitasolla, on myös opetusdatan oltava pikselitasolla määriteltyä. 
-Myöskin datan koulutuksessa käytettävä tappiofunktion määrittely hieman hankaloituu.
+Myös datan koulutuksessa käytettävä tappiofunktion määrittely hieman hankaloituu.
 Mallin koulutuksessa pitää käyttää jotain muuta tapaa tunnistaa sen onnistuminen, kuin vain ”onko kyseessä auto”.
 
-Yksi yleinen segmentointimallin koulutuksessa käytettävä ja tässä työssäkin käytetty tappion laskutapa, 
-on ristientropian virhefunktio (Cross Entropy Loss) \cite{CrossEntropyLoss}. 
-
+Yksi yleinen segmentointimallin koulutuksessa käytettävä ja tässä työssäkin käytetty tappion laskutapa 
+on ristientropian virhefunktio (Cross Entropy Loss) \cite{CrossEntropyLoss}.
 Tämä Virhefunktio vertaa mallin tuottamia todennäköisyyksiä oikeaan malliin. 
-Sille lasketaan virhe ottamalla negatiivinen logaritmi oikeaan luokkaan liittyvästä todennäköisyydestä ja lisäämällä sen arvo kaikkien havaintojen yli.
-Tämä siis tarkoittaa, että mallin ennustaman todennäköisyyden ja todellisen luokan välille lasketaan epävarmuus jonka avulla mallia voidaan ohjata oikeaan suuntaan.
+Se laskee virheen ottamalla negatiivinen logaritmi oikeaan luokkaan liittyvästä todennäköisyydestä ja lisäämällä saatu arvo kaikkien havaintojen yli.
+Mallin ennustaman todennäköisyyden ja todellisen luokan välille lasketaan epävarmuus, jonka avulla mallia voidaan ohjata oikeaan suuntaan.
 Mitä enemmän alueet osuvat oikeaan, sitä pienemmäksi mallin virhe laskee.
 
 \section{Syvyyskartta}
@@ -138,7 +139,7 @@ Tämän työn haluttu lopputulos on syvyyskartta \cite{IkeuchiKatsushi1987DaDM}.
 Syvyyskartta on yksinkertainen kuvan kaltainen esitystapa, jossa eri syvyyksillä on eri numeerinen arvo.  
 Se voidaan näyttää esimerkiksi merkitsemällä kauempana kamerasta oleva kohde tummemmalla värillä \ref{fig:depth}.  
 Tärkeä ero 3D-malliin sekä syvyyskartan välillä on datan perspektiivi.  
-Syvyyskartassa ei ole tietoa kohteiden takana olevasta tilasta, joten sitä voidaan tarkastella vain yhdestä perspektiivistä, eikä sitä näin ollen "pyörittää" yhtä vapaasti kuin 3D-mallia.  
+Syvyyskartassa ei ole tietoa kohteiden takana olevasta tilasta, joten sitä voidaan tarkastella vain yhdestä perspektiivistä, eikä sitä näin ollen voi "pyörittää" yhtä vapaasti kuin 3D-mallia.  
 
 \begin{figure}[h]
 \centering
