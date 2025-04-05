@@ -1,57 +1,18 @@
-https://intra.tuni.fi/fi/opiskelu/opiskelu-0/opinnaytetyot/diplomityo
+# This repository container my master thesis.
+
+(Please don't hold it against me.)
+
+This thesis was done with as little work as possible, to get my studies wrapped up. 
+
+My thesis is about combining existing datasets, like stereo data and semantic segmentation data into one dataset, and model.
+
+This would make it little bit easier to train depth map analysis with information about objects in the detection field.
+
+Master thesis itself is in latex format base for it, it from [Tunis repo](https://gitlab.com/tuni-official/thesis-templates/masters-thesis) but I have just copied the files here without git history. There might have been one re pull and migration due to some package mismatch. If I remember correctly. 
+
+The work itself is published in Trepo
 
 
-Combining stereo detection with semantic segmentation to create 3d pointcloud with seperate objects
+*code* folder contains code made in this work
 
-Tämä dataset hoitaa kaiken
-
-stereo depth map tästä
-
-with https://www.cityscapes-dataset.com
-
-sitten object dettectiuonilla irrotettavat objectit ja generoi niiden taakse syvyys
-
-
-code --enable-features=UseOzonePlatform --ozone-platform=wayland
-
-# Työvaiheet
-
-## Vakoile muita
-
-varastin pohjaa näistä töistä
-
-https://trepo.tuni.fi/handle/10024/123597
-
-https://trepo.tuni.fi/handle/10024/143480
-
-https://trepo.tuni.fi/handle/10024/137323
-
-https://trepo.tuni.fi/handle/10024/121397
-
-https://trepo.tuni.fi/handle/10024/122734
-
-https://trepo.tuni.fi/handle/10024/149199   !!!!!!!!!!!!!!!!!!!!!!!!! 3d depth
-
-
-
-## Kirjoita lähteiden avulla lisää
-
-## Tee 3d point cloud koska sitä yritetään
-
-## Korjaa koodisi
-
-
-- tee skripti joka ottaa syvyys kartasta semantic segmentation mallin mukaan asioita pois
-    - Tähän ok cancel, ja kopsaa "uusi totuus"
-
-
-
-## KIRJOITA LISÄÄ TÄSTÄ
-
-
-
-https://andor.tuni.fi/discovery/search?query=any,contains,Stereo%20Matching&tab=Everything&search_scope=My_inst_and_CI_extended_search&sortby=date_a&vid=358FIN_TAMPO:VU1&facet=searchcreationdate,include,1801%7C,%7C2005&mfacet=rtype,include,articles,1&lang=fi&offset=0
-
-https://www.tsv.fi/julkaisufoorumi/haku.php?nimeke=&konferenssilyh=&issn=0005-8580&tyyppi=kaikki&kieli=&maa=&wos=&scopus=&nappi=Hae
-
-https://jfp.csc.fi/jufoportaali
+*masters-thesis* folder contains the work itself
