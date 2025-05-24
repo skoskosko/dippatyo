@@ -3,7 +3,7 @@
 To use these scripts you need to get [cityscapes dataset](https://www.cityscapes-dataset.com/).
 
 Codebase here is quite a mess. I didn't really make it to be edited or used. Only for my own reference.
-[cityscapescripts(https://github.com/mcordts/cityscapesScripts) are used by old_scripts. The scripts used in the work itself are in seperate folders.
+[cityscapescripts](https://github.com/mcordts/cityscapesScripts) are used by old_scripts. The scripts used in the work itself are in seperate folders.
 
 Lots of these scripts include hard coded paths on my machine. So if you want to use them fix those first. Usually I have hardcodes them in dataset.py files (which yeah, should be a common lib for all of them)
 

@@ -2,6 +2,4 @@
 
 If for some reason you are reading this. Stop it! These are just for me. There is nothing important here. 
 
-Only unprofessional language and other stupid stuff.
-
-!!
+Most of these are just scripts for testing that my environment worked properly
