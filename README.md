@@ -1,4 +1,4 @@
-# This repository container my master thesis.
+# This repository contains my master thesis.
 
 (Please don't hold it against me.)
 
